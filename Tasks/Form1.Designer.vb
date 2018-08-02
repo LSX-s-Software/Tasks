@@ -28,6 +28,7 @@ Partial Class Form1
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -42,7 +43,6 @@ Partial Class Form1
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.StatusStrip1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
@@ -72,6 +72,10 @@ Partial Class Form1
         'ColumnHeader4
         '
         resources.ApplyResources(Me.ColumnHeader4, "ColumnHeader4")
+        '
+        'ColumnHeader7
+        '
+        resources.ApplyResources(Me.ColumnHeader7, "ColumnHeader7")
         '
         'ImageList1
         '
@@ -161,10 +165,6 @@ Partial Class Form1
         '
         resources.ApplyResources(Me.Label1, "Label1")
         Me.Label1.Name = "Label1"
-        '
-        'ColumnHeader7
-        '
-        resources.ApplyResources(Me.ColumnHeader7, "ColumnHeader7")
         '
         'Form1
         '
