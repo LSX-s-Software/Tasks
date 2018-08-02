@@ -21,8 +21,8 @@
         result = Dialog1.ShowDialog()
         If result = DialogResult.OK Then
             If Dialog1.RadioButton1.Checked = True Then
-                itm = ListView1.Items.Add(Dialog1.DateTimePicker1.Value)
-                itm.SubItems.AddRange({Dialog1.TextBox1.Text, Dialog1.TextBox2.Text, Now})
+                itm = ListView1.Items.Add(Dialog1.TextBox1.Text)
+                itm.SubItems.AddRange({Dialog1.DateTimePicker1.Value, Dialog1.TextBox2.Text, Now})
             Else
                 itm = ListView2.Items.Add(Dialog1.DateTimePicker1.Value)
                 itm.SubItems.AddRange({Dialog1.TextBox1.Text, Dialog1.TextBox2.Text, Now})
@@ -57,7 +57,7 @@
         Dim i As Integer
         Dim t1, t2 As Int64
         For i = 0 To ListView1.Items.Count - 1
-            t1 = System.DateTime.Parse(ListView1.Items(i).Text).Subtract(DateTime.Now).TotalMilliseconds '现在时间到截至时间的长度
+            t1 = System.DateTime.Parse(ListView1.Items(i).SubItems(1).Text).Subtract(DateTime.Now).TotalMilliseconds '现在时间到截至时间的长度
             t2 = System.DateTime.Parse(DateTime.Now).Subtract(ListView1.Items(i).SubItems(3).Text).TotalMilliseconds + 1 '从任务创建到现在的时间
             If ((t1 + t2) > t2) And (t1 >= 0) Then
                 ListView1.Items(i).ImageIndex = Int(t2 / (t1 + t2) * 100)
@@ -84,18 +84,37 @@
     Private Sub DrawProgressBar()
         Dim bmp As Bitmap
         Dim gra As Graphics
-        Dim border As Pen = New Pen(Color.Black, 1)
+        Dim border As Pen = New Pen(Color.FromArgb(0, 160, 233), 2)
         Dim b1 As SolidBrush = New SolidBrush(Color.FromArgb(0, 160, 233))
         Dim b As SolidBrush = New SolidBrush(Color.White)
         Dim i, c As Integer
         For i = 1 To 100
-            bmp = New Bitmap(50, 25)
+            If i < 80 Then
+                border = New Pen(Color.FromArgb(0, 160, 233), 2)
+                b1 = New SolidBrush(Color.FromArgb(0, 160, 233))
+            ElseIf (i >= 65) And (i < 90) Then
+                border = New Pen(Color.Orange, 2)
+                b1 = New SolidBrush(Color.Orange)
+            ElseIf (i >= 90) Then
+                border = New Pen(Color.FromArgb(255, 0, 0), 2)
+                b1 = New SolidBrush(Color.FromArgb(255, 0, 0))
+            End If
+            bmp = New Bitmap(10, 25)
             gra = Graphics.FromImage(bmp)
-            gra.FillRectangle(b, 0, 0, 50, 25)
-            gra.DrawRectangle(border, 0, 0, 49, 23)
-            c = Int(i / 2) - 1
-            gra.FillRectangle(b1, 1, 1, c, 22)
+            gra.FillRectangle(b, 0, 0, 10, 25)
+            gra.DrawRectangle(border, 1, 1, 8, 23)
+            c = Int(i / 4) - 1
+            gra.FillRectangle(b1, 1, 1, 8, c)
             ImageList1.Images.Add(bmp)
         Next
+    End Sub
+
+    Private Sub ListView2_ItemChecked(sender As Object, e As ItemCheckedEventArgs) Handles ListView2.ItemChecked
+        If ListView2.CheckedItems IsNot Nothing AndAlso ListView2.CheckedItems.Count > 0 Then
+            Dim i As Integer
+            For i = ListView2.CheckedItems.Count - 1 To 0 Step -1
+                ListView2.CheckedItems(i).Remove()
+            Next
+        End If
     End Sub
 End Class

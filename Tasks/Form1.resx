@@ -154,7 +154,7 @@
     <value>232, 17</value>
   </metadata>
   <data name="ImageList1.ImageSize" type="System.Drawing.Size, System.Drawing">
-    <value>50, 25</value>
+    <value>10, 25</value>
   </data>
   <data name="ListView1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 96</value>

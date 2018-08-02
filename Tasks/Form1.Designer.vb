@@ -135,6 +135,7 @@ Partial Class Form1
         'ListView2
         '
         resources.ApplyResources(Me.ListView2, "ListView2")
+        Me.ListView2.CheckBoxes = True
         Me.ListView2.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader5, Me.ColumnHeader6})
         Me.ListView2.FullRowSelect = True
         Me.ListView2.GridLines = True
