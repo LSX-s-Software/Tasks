@@ -121,7 +121,7 @@ Partial Class Dialog1
         Me.GroupBox3.Size = New System.Drawing.Size(208, 63)
         Me.GroupBox3.TabIndex = 7
         Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "内容是"
+        Me.GroupBox3.Text = "标题是"
         '
         'TextBox1
         '

@@ -22,6 +22,7 @@
         GroupBox3.Visible = False
         GroupBox4.Visible = False
         TextBox1.Text = ""
+        TextBox2.Text = ""
         Button_Next.Enabled = False
         steps = 1
         DateTimePicker1.Value = Now

@@ -117,4 +117,40 @@
             Next
         End If
     End Sub
+
+    Private Sub ListView1_Click(sender As Object, e As EventArgs) Handles ListView1.Click
+        If ListView1.SelectedItems.Count > 0 Then
+            Button_Del.Visible = True
+            Button_Edit.Visible = True
+        Else
+            Button_Del.Visible = False
+            Button_Edit.Visible = False
+        End If
+    End Sub
+
+    Private Sub ListView2_Click(sender As Object, e As EventArgs) Handles ListView2.Click
+        If ListView2.SelectedItems.Count > 0 Then
+            Button_Del.Visible = True
+            Button_Edit.Visible = True
+        Else
+            Button_Del.Visible = False
+            Button_Edit.Visible = False
+        End If
+    End Sub
+
+    Private Sub Button_Edit_Click(sender As Object, e As EventArgs) Handles Button_Edit.Click
+        Dim r As DialogResult
+        r = Dialog2.ShowDialog()
+        If r = DialogResult.OK Then
+            If SelectedView Is ListView1 Then
+                SelectedView.SelectedItems(0).Text = Dialog2.TextBox1.Text
+                SelectedView.SelectedItems(0).SubItems(1).Text = Dialog2.DateTimePicker1.Value
+                SelectedView.SelectedItems(0).SubItems(2).Text = Dialog2.TextBox2.Text
+            Else
+                SelectedView.SelectedItems(0).Text = Dialog2.DateTimePicker1.Value
+                SelectedView.SelectedItems(0).SubItems(1).Text = Dialog2.TextBox1.Text
+                SelectedView.SelectedItems(0).SubItems(2).Text = Dialog2.TextBox2.Text
+            End If
+        End If
+    End Sub
 End Class

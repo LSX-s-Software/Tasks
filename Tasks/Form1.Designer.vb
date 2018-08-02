@@ -33,18 +33,17 @@ Partial Class Form1
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button_Del = New System.Windows.Forms.Button()
-        Me.Button_Add = New System.Windows.Forms.Button()
         Me.ListView2 = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button_Add = New System.Windows.Forms.Button()
+        Me.Button_Edit = New System.Windows.Forms.Button()
+        Me.Button_Del = New System.Windows.Forms.Button()
+        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.StatusStrip1.SuspendLayout()
-        Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ListView1
@@ -101,37 +100,6 @@ Partial Class Form1
         resources.ApplyResources(Me.ToolStripStatusLabel3, "ToolStripStatusLabel3")
         Me.ToolStripStatusLabel3.Spring = True
         '
-        'TableLayoutPanel1
-        '
-        resources.ApplyResources(Me.TableLayoutPanel1, "TableLayoutPanel1")
-        Me.TableLayoutPanel1.Controls.Add(Me.Button2, 1, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Button_Del, 0, 0)
-        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        '
-        'Button2
-        '
-        resources.ApplyResources(Me.Button2, "Button2")
-        Me.Button2.Name = "Button2"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button_Del
-        '
-        Me.Button_Del.BackColor = System.Drawing.Color.Transparent
-        resources.ApplyResources(Me.Button_Del, "Button_Del")
-        Me.Button_Del.Image = Global.Tasks.My.Resources.Resources.Trash
-        Me.Button_Del.Name = "Button_Del"
-        Me.Button_Del.UseVisualStyleBackColor = False
-        '
-        'Button_Add
-        '
-        resources.ApplyResources(Me.Button_Add, "Button_Add")
-        Me.Button_Add.BackColor = System.Drawing.Color.Transparent
-        Me.Button_Add.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button_Add.FlatAppearance.BorderSize = 0
-        Me.Button_Add.Image = Global.Tasks.My.Resources.Resources.add
-        Me.Button_Add.Name = "Button_Add"
-        Me.Button_Add.UseVisualStyleBackColor = False
-        '
         'ListView2
         '
         resources.ApplyResources(Me.ListView2, "ListView2")
@@ -167,22 +135,53 @@ Partial Class Form1
         resources.ApplyResources(Me.Label1, "Label1")
         Me.Label1.Name = "Label1"
         '
+        'Button_Add
+        '
+        resources.ApplyResources(Me.Button_Add, "Button_Add")
+        Me.Button_Add.BackColor = System.Drawing.Color.Transparent
+        Me.Button_Add.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button_Add.FlatAppearance.BorderSize = 0
+        Me.Button_Add.Image = Global.Tasks.My.Resources.Resources.add
+        Me.Button_Add.Name = "Button_Add"
+        Me.Button_Add.UseVisualStyleBackColor = False
+        '
+        'Button_Edit
+        '
+        resources.ApplyResources(Me.Button_Edit, "Button_Edit")
+        Me.Button_Edit.BackColor = System.Drawing.Color.Transparent
+        Me.Button_Edit.Image = Global.Tasks.My.Resources.Resources.Edit
+        Me.Button_Edit.Name = "Button_Edit"
+        Me.Button_Edit.UseVisualStyleBackColor = False
+        '
+        'Button_Del
+        '
+        resources.ApplyResources(Me.Button_Del, "Button_Del")
+        Me.Button_Del.BackColor = System.Drawing.Color.Transparent
+        Me.Button_Del.Image = Global.Tasks.My.Resources.Resources.Trash
+        Me.Button_Del.Name = "Button_Del"
+        Me.Button_Del.UseVisualStyleBackColor = False
+        '
+        'Timer2
+        '
+        Me.Timer2.Enabled = True
+        Me.Timer2.Interval = 3000
+        '
         'Form1
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         resources.ApplyResources(Me, "$this")
+        Me.Controls.Add(Me.Button_Del)
+        Me.Controls.Add(Me.Button_Edit)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button_Add)
-        Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.ListView1)
         Me.Controls.Add(Me.ListView2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
         Me.Name = "Form1"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
-        Me.TableLayoutPanel1.ResumeLayout(False)
-        Me.TableLayoutPanel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -195,10 +194,9 @@ Partial Class Form1
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
-    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents Button_Add As Button
     Friend WithEvents Button_Del As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents Button_Edit As Button
     Friend WithEvents ListView2 As ListView
     Friend WithEvents ColumnHeader1 As ColumnHeader
     Friend WithEvents ColumnHeader5 As ColumnHeader
@@ -207,4 +205,5 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents ImageList1 As ImageList
     Friend WithEvents ColumnHeader7 As ColumnHeader
+    Friend WithEvents Timer2 As Timer
 End Class
