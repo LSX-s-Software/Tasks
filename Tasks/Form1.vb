@@ -1,5 +1,6 @@
 ﻿Public Class Form1
     Public SelectedView As ListView
+    Public reminded As ListViewItem()
     Private Sub StatusStrip1_MouseEnter(sender As Object, e As EventArgs) Handles StatusStrip1.MouseEnter
         Cursor = Cursors.Hand
     End Sub
@@ -57,7 +58,7 @@
         Label1.Text = "提醒事项"
     End Sub
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick  '提醒功能
         Dim i As Integer
         Dim t1, t2 As Int64
         For i = 0 To ListView1.Items.Count - 1
@@ -68,11 +69,29 @@
             Else
                 ListView1.Items(i).ImageIndex = 99
             End If
-            If t1 <= 0 Then
-                'MsgBox("任务‘" & ListView1.Items(i).Text & "’已到截止时间！", MsgBoxStyle.Information)
+            If (t1 <= 0) AndAlso Not Find(ListView1.Items(i)) Then
+                If reminded Is Nothing Then
+                    reminded = New ListViewItem() {ListView1.Items(i)}
+                Else
+                    reminded = reminded.Concat({ListView1.Items(i)}).ToArray
+                End If
+                Form2.Show() '打开提醒窗体
+                Form2.Label2.Text = ListView1.Items(i).Text
+                Enabled = False
             End If
         Next
     End Sub
+
+    Private Function Find(ByVal item As ListViewItem) As Boolean
+        Dim i As Integer
+        Find = False
+        If reminded Is Nothing Then Return False
+        For i = 0 To reminded.Count - 1
+            If reminded(i) Is item Then
+                Return True
+            End If
+        Next
+    End Function
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim a As New Drawing2D.GraphicsPath()
