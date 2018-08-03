@@ -8,7 +8,7 @@
         Cursor = Cursors.Default
     End Sub
 
-    Private Sub Button_Add_Click(sender As Object, e As EventArgs) Handles Button_Add.Click
+    Public Sub Add()
         Dim result
         Dim itm As ListViewItem
         If ListView1.Visible = True Then
@@ -28,6 +28,10 @@
                 itm.SubItems.AddRange({Dialog1.TextBox1.Text, Dialog1.TextBox2.Text, Now})
             End If
         End If
+    End Sub
+
+    Private Sub Button_Add_Click(sender As Object, e As EventArgs) Handles Button_Add.Click
+        Add()
     End Sub
 
     Private Sub Button_Del_Click(sender As Object, e As EventArgs) Handles Button_Del.Click
@@ -139,6 +143,10 @@
     End Sub
 
     Private Sub Button_Edit_Click(sender As Object, e As EventArgs) Handles Button_Edit.Click
+        Edit()
+    End Sub
+
+    Public Sub Edit()
         Dim r As DialogResult
         r = Dialog2.ShowDialog()
         If r = DialogResult.OK Then
@@ -152,5 +160,62 @@
                 SelectedView.SelectedItems(0).SubItems(2).Text = Dialog2.TextBox2.Text
             End If
         End If
+    End Sub
+
+    Private Sub 新建ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 新建ToolStripMenuItem.Click
+        Add()
+    End Sub
+
+    Private Sub 编辑ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 编辑ToolStripMenuItem.Click
+        Edit()
+    End Sub
+
+    Private Sub 删除ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 删除ToolStripMenuItem.Click
+        On Error Resume Next
+        SelectedView.SelectedItems(0).Remove()
+    End Sub
+
+    Private Sub ContextMenuStrip1_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip1.Opening
+        If ListView1.SelectedItems.Count > 0 Then
+            ToolStripTextBox1.Visible = True
+            ToolStripTextBox2.Visible = True
+            ToolStripMenuItem1.Visible = True
+            ToolStripMenuItem2.Visible = True
+            ToolStripSeparator1.Visible = True
+            ToolStripTextBox1.Text = ListView1.SelectedItems(0).SubItems(3).Text
+            ToolStripTextBox2.Text = ListView1.SelectedItems(0).SubItems(2).Text
+        Else
+            ToolStripTextBox1.Visible = False
+            ToolStripTextBox2.Visible = False
+            ToolStripMenuItem1.Visible = False
+            ToolStripMenuItem2.Visible = False
+            ToolStripSeparator1.Visible = False
+        End If
+    End Sub
+
+    Private Sub ContextMenuStrip2_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip2.Opening
+        If ListView2.SelectedItems.Count > 0 Then
+            ToolStripTextBox3.Visible = True
+            ToolStripMenuItem3.Visible = True
+            ToolStripSeparator2.Visible = True
+            ToolStripTextBox3.Text = ListView2.SelectedItems(0).SubItems(3).Text
+        Else
+            ToolStripTextBox3.Visible = False
+            ToolStripMenuItem3.Visible = False
+            ToolStripSeparator2.Visible = False
+        End If
+    End Sub
+
+    Private Sub ToolStripMenuItem5_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem5.Click
+        Add()
+    End Sub
+
+    Private Sub ToolStripMenuItem6_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem6.Click
+        Edit()
+    End Sub
+
+    Private Sub ToolStripMenuItem7_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem7.Click
+        On Error Resume Next
+        SelectedView.SelectedItems(0).Remove()
     End Sub
 End Class
