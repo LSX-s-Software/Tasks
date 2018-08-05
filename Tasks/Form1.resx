@@ -420,35 +420,41 @@
   <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="Button_Add.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <metadata name="Timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>348, 17</value>
+  </metadata>
+  <data name="Button_Del.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <data name="Button_Add.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="Button_Del.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 10.5pt</value>
   </data>
-  <data name="Button_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="Button_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="Button_Add.Location" type="System.Drawing.Point, System.Drawing">
-    <value>738, 376</value>
+  <data name="Button_Del.Location" type="System.Drawing.Point, System.Drawing">
+    <value>692, 376</value>
   </data>
-  <data name="Button_Add.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="Button_Del.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 40</value>
   </data>
-  <data name="Button_Add.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="Button_Del.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;Button_Add.Name" xml:space="preserve">
-    <value>Button_Add</value>
+  <data name="Button_Del.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;Button_Add.Type" xml:space="preserve">
+  <data name="&gt;&gt;Button_Del.Name" xml:space="preserve">
+    <value>Button_Del</value>
+  </data>
+  <data name="&gt;&gt;Button_Del.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Button_Add.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Button_Del.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;Button_Add.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;Button_Del.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="Button_Edit.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -486,42 +492,36 @@
   <data name="&gt;&gt;Button_Edit.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="Button_Del.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="Button_Add.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <data name="Button_Del.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="Button_Add.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 10.5pt</value>
   </data>
-  <data name="Button_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="Button_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="Button_Del.Location" type="System.Drawing.Point, System.Drawing">
-    <value>692, 376</value>
+  <data name="Button_Add.Location" type="System.Drawing.Point, System.Drawing">
+    <value>738, 376</value>
   </data>
-  <data name="Button_Del.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="Button_Add.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 40</value>
   </data>
-  <data name="Button_Del.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="Button_Add.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="Button_Del.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;Button_Add.Name" xml:space="preserve">
+    <value>Button_Add</value>
   </data>
-  <data name="&gt;&gt;Button_Del.Name" xml:space="preserve">
-    <value>Button_Del</value>
-  </data>
-  <data name="&gt;&gt;Button_Del.Type" xml:space="preserve">
+  <data name="&gt;&gt;Button_Add.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Button_Del.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Button_Add.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;Button_Del.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;Button_Add.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
-  <metadata name="Timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>348, 17</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -1211,24 +1211,6 @@
   <data name="&gt;&gt;ToolStripSeparator1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;新建ToolStripMenuItem.Name" xml:space="preserve">
-    <value>新建ToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;新建ToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;编辑ToolStripMenuItem.Name" xml:space="preserve">
-    <value>编辑ToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;编辑ToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;删除ToolStripMenuItem.Name" xml:space="preserve">
-    <value>删除ToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;删除ToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;ImageList1.Name" xml:space="preserve">
     <value>ImageList1</value>
   </data>
@@ -1283,6 +1265,36 @@
   <data name="&gt;&gt;ToolStripSeparator2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;Timer1.Name" xml:space="preserve">
+    <value>Timer1</value>
+  </data>
+  <data name="&gt;&gt;Timer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Timer2.Name" xml:space="preserve">
+    <value>Timer2</value>
+  </data>
+  <data name="&gt;&gt;Timer2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;新建ToolStripMenuItem.Name" xml:space="preserve">
+    <value>新建ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;新建ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;编辑ToolStripMenuItem.Name" xml:space="preserve">
+    <value>编辑ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;编辑ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;删除ToolStripMenuItem.Name" xml:space="preserve">
+    <value>删除ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;删除ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;ToolStripMenuItem5.Name" xml:space="preserve">
     <value>ToolStripMenuItem5</value>
   </data>
@@ -1300,18 +1312,6 @@
   </data>
   <data name="&gt;&gt;ToolStripMenuItem7.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Timer1.Name" xml:space="preserve">
-    <value>Timer1</value>
-  </data>
-  <data name="&gt;&gt;Timer1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Timer2.Name" xml:space="preserve">
-    <value>Timer2</value>
-  </data>
-  <data name="&gt;&gt;Timer2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form1</value>

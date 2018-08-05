@@ -42,7 +42,7 @@
 
     Private Sub ToolStripStatusLabel2_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel2.Click
         SelectedView = ListView1
-        ToolStripStatusLabel2.ForeColor = Color.FromArgb(0, 160, 233)
+        ToolStripStatusLabel2.ForeColor = My.Settings.ThemeColor
         ToolStripStatusLabel3.ForeColor = Color.Black
         ListView1.Visible = True
         ListView2.Visible = False
@@ -51,7 +51,7 @@
 
     Private Sub ToolStripStatusLabel3_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel3.Click
         SelectedView = ListView2
-        ToolStripStatusLabel3.ForeColor = Color.FromArgb(0, 160, 233)
+        ToolStripStatusLabel3.ForeColor = My.Settings.ThemeColor
         ToolStripStatusLabel2.ForeColor = Color.Black
         ListView2.Visible = True
         ListView1.Visible = False
@@ -70,13 +70,13 @@
                 ListView1.Items(i).ImageIndex = 99
             End If
             If (t1 <= 0) AndAlso Not Find(ListView1.Items(i)) Then
+                Form2.Show() '打开提醒窗体
+                Form2.Label2.Text = ListView1.Items(i).Text
                 If reminded Is Nothing Then
                     reminded = New ListViewItem() {ListView1.Items(i)}
                 Else
                     reminded = reminded.Concat({ListView1.Items(i)}).ToArray
                 End If
-                Form2.Show() '打开提醒窗体
-                Form2.Label2.Text = ListView1.Items(i).Text
                 Enabled = False
             End If
         Next
@@ -98,7 +98,7 @@
         a.AddEllipse(2, 2, 35, 35)
         Button_Add.Region = New Region(a)
         Button_Add.BringToFront()
-        ToolStripStatusLabel2.ForeColor = Color.FromArgb(0, 160, 233)
+        ToolStripStatusLabel2.ForeColor = My.Settings.ThemeColor
         SelectedView = ListView1
         Show()
         DrawProgressBar()
@@ -107,18 +107,21 @@
     Private Sub DrawProgressBar()
         Dim bmp As Bitmap
         Dim gra As Graphics
-        Dim border As Pen = New Pen(Color.FromArgb(0, 160, 233), 2)
-        Dim b1 As SolidBrush = New SolidBrush(Color.FromArgb(0, 160, 233))
+        Dim ThemeColor As Color = My.Settings.ThemeColor
+        Dim border As Pen = New Pen(ThemeColor, 2)
+        Dim b1 As SolidBrush = New SolidBrush(ThemeColor)
         Dim b As SolidBrush = New SolidBrush(Color.White)
         Dim i, c As Integer
+        Dim NoticeLevel As Integer = My.Settings.NoticeLevel
+        Dim WarningLevel As Integer = My.Settings.WarningLevel
         For i = 1 To 100
-            If i < 80 Then
-                border = New Pen(Color.FromArgb(0, 160, 233), 2)
-                b1 = New SolidBrush(Color.FromArgb(0, 160, 233))
-            ElseIf (i >= 65) And (i < 90) Then
+            If i < NoticeLevel Then
+                border = New Pen(ThemeColor, 2)
+                b1 = New SolidBrush(My.Settings.ThemeColor)
+            ElseIf (i >= NoticeLevel) And (i < WarningLevel) Then
                 border = New Pen(Color.Orange, 2)
                 b1 = New SolidBrush(Color.Orange)
-            ElseIf (i >= 90) Then
+            ElseIf (i >= WarningLevel) Then
                 border = New Pen(Color.FromArgb(255, 0, 0), 2)
                 b1 = New SolidBrush(Color.FromArgb(255, 0, 0))
             End If
@@ -236,5 +239,9 @@
     Private Sub ToolStripMenuItem7_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem7.Click
         On Error Resume Next
         SelectedView.SelectedItems(0).Remove()
+    End Sub
+
+    Private Sub Form1_DoubleClick(sender As Object, e As EventArgs) Handles Me.DoubleClick
+        Settings.ShowDialog()
     End Sub
 End Class

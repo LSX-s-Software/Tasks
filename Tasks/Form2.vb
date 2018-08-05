@@ -6,9 +6,10 @@
         loc.X = Screen.PrimaryScreen.WorkingArea.Width - Width - 10
         loc.Y = Screen.PrimaryScreen.WorkingArea.Height - Height - 40
         Location = loc
-        BackColor = Color.FromArgb(0, 160, 233)
-        ForeColor = Color.White
-        Button1.BackColor = Color.FromArgb(0, 160, 233)
+        BackColor = My.Settings.ThemeColor
+        Label1.ForeColor = My.Settings.TForeColor
+        Label2.ForeColor = My.Settings.TForeColor
+        Button1.BackColor = My.Settings.ThemeColor
     End Sub
 
     Private Function RoundedRectPath(ByVal Rectangle As Rectangle, ByVal r As Integer) As Drawing2D.GraphicsPath

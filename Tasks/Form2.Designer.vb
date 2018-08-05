@@ -43,6 +43,7 @@ Partial Class Form2
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("微软雅黑", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ControlText
         Me.Label1.Location = New System.Drawing.Point(149, 33)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(210, 123)
@@ -52,8 +53,8 @@ Partial Class Form2
         'Button1
         '
         Me.Button1.BackColor = System.Drawing.SystemColors.Control
+        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Button1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.White
         Me.Button1.Location = New System.Drawing.Point(449, 12)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(38, 165)
