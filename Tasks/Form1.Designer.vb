@@ -50,6 +50,7 @@ Partial Class Form1
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.Button_Setting = New System.Windows.Forms.Button()
         Me.Button_Del = New System.Windows.Forms.Button()
         Me.Button_Edit = New System.Windows.Forms.Button()
         Me.Button_Add = New System.Windows.Forms.Button()
@@ -218,11 +219,18 @@ Partial Class Form1
         Me.Timer2.Enabled = True
         Me.Timer2.Interval = 3000
         '
+        'Button_Setting
+        '
+        Me.Button_Setting.Image = Global.Tasks.My.Resources.Resources.Setting
+        resources.ApplyResources(Me.Button_Setting, "Button_Setting")
+        Me.Button_Setting.Name = "Button_Setting"
+        Me.Button_Setting.UseVisualStyleBackColor = True
+        '
         'Button_Del
         '
         resources.ApplyResources(Me.Button_Del, "Button_Del")
         Me.Button_Del.BackColor = System.Drawing.Color.Transparent
-        Me.Button_Del.Image = Global.Tasks.My.Resources.Resources.Trash
+        Me.Button_Del.Image = Global.Tasks.My.Resources.Resources.Trash1
         Me.Button_Del.Name = "Button_Del"
         Me.Button_Del.UseVisualStyleBackColor = False
         '
@@ -258,7 +266,7 @@ Partial Class Form1
         '
         '删除ToolStripMenuItem
         '
-        Me.删除ToolStripMenuItem.Image = Global.Tasks.My.Resources.Resources.Trash
+        Me.删除ToolStripMenuItem.Image = Global.Tasks.My.Resources.Resources.Trash1
         Me.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem"
         resources.ApplyResources(Me.删除ToolStripMenuItem, "删除ToolStripMenuItem")
         '
@@ -276,7 +284,7 @@ Partial Class Form1
         '
         'ToolStripMenuItem7
         '
-        Me.ToolStripMenuItem7.Image = Global.Tasks.My.Resources.Resources.Trash
+        Me.ToolStripMenuItem7.Image = Global.Tasks.My.Resources.Resources.Trash1
         Me.ToolStripMenuItem7.Name = "ToolStripMenuItem7"
         resources.ApplyResources(Me.ToolStripMenuItem7, "ToolStripMenuItem7")
         '
@@ -284,6 +292,7 @@ Partial Class Form1
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         resources.ApplyResources(Me, "$this")
+        Me.Controls.Add(Me.Button_Setting)
         Me.Controls.Add(Me.Button_Del)
         Me.Controls.Add(Me.Button_Edit)
         Me.Controls.Add(Me.Label1)
@@ -340,4 +349,5 @@ Partial Class Form1
     Friend WithEvents ToolStripMenuItem5 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem6 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem7 As ToolStripMenuItem
+    Friend WithEvents Button_Setting As Button
 End Class

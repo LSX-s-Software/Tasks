@@ -41,7 +41,6 @@
         Dim b As SolidBrush = New SolidBrush(ThemeColor) '普通的颜色
         Dim b1 As SolidBrush = New SolidBrush(Color.Orange) '注意的颜色
         Dim b2 As SolidBrush = New SolidBrush(Color.FromArgb(255, 0, 0)) '警告的颜色
-        Dim c As Integer
         Dim NoticeLevel As Integer = My.Settings.NoticeLevel
         Dim WarningLevel As Integer = My.Settings.WarningLevel
         bmp = New Bitmap(PictureBox1.Width, PictureBox1.Height)

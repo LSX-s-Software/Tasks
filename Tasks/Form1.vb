@@ -241,7 +241,7 @@
         SelectedView.SelectedItems(0).Remove()
     End Sub
 
-    Private Sub Form1_DoubleClick(sender As Object, e As EventArgs) Handles Me.DoubleClick
+    Private Sub Button_Setting_Click(sender As Object, e As EventArgs) Handles Button_Setting.Click
         Settings.ShowDialog()
     End Sub
 End Class

@@ -176,6 +176,9 @@
   <ItemGroup>
     <None Include="bin\Debug\icon\Edit.ico" />
     <None Include="bin\Debug\icon\icon大.png" />
+    <None Include="bin\Debug\icon\Trash1.ico" />
+    <None Include="bin\Debug\icon\edit1.ico" />
+    <None Include="bin\Debug\icon\Setting.ico" />
     <Content Include="项目1.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
