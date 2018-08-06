@@ -72,12 +72,12 @@
         My.Settings.RemindInterval = ComboBox1.Text
         My.Settings.Save()
         '------开机启动选项----------
-        If CheckBox1.Checked = True Then
+        If (CheckBox1.Checked) AndAlso (Not My.Settings.RunWhenSysStart) Then
             Dim Reg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Run", True)
             Reg.SetValue(Application.ProductName, Application.StartupPath & "\" & Application.ProductName & ".exe") '写入注册表
             Reg.Close()
             My.Settings.RunWhenSysStart = True
-        Else
+        ElseIf (CheckBox1.Checked = False) AndAlso (My.Settings.RunWhenSysStart) Then
             Dim Reg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Run", True)
             Reg.DeleteValue(Application.ProductName) '删除注册表键
             Reg.Close()
