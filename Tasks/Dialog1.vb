@@ -15,7 +15,6 @@
         '初始化窗口
         Show()
         Label1.Top = 208
-        Label1.ForeColor = My.Settings.TForeColor
         Button_Next.BackColor = My.Settings.ThemeColor
         OK_Button.Visible = False
         Button_Next.Visible = True
