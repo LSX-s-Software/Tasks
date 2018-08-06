@@ -1,6 +1,7 @@
 ﻿Public Class Form1
     Public SelectedView As ListView
     Public reminded As ListViewItem()
+    Public RemindInt, t As Long
     Private Sub StatusStrip1_MouseEnter(sender As Object, e As EventArgs) Handles StatusStrip1.MouseEnter
         Cursor = Cursors.Hand
     End Sub
@@ -62,7 +63,7 @@
         Dim i As Integer
         Dim t1, t2 As Int64
         For i = 0 To ListView1.Items.Count - 1
-            t1 = System.DateTime.Parse(ListView1.Items(i).SubItems(1).Text).Subtract(DateTime.Now).TotalMilliseconds '现在时间到截至时间的长度
+            t1 = System.DateTime.Parse(ListView1.Items(i).SubItems(1).Text).Subtract(DateTime.Now).TotalMilliseconds '现在时间到截止时间的长度
             t2 = System.DateTime.Parse(DateTime.Now).Subtract(ListView1.Items(i).SubItems(3).Text).TotalMilliseconds + 1 '从任务创建到现在的时间
             If ((t1 + t2) > t2) And (t1 >= 0) Then
                 ListView1.Items(i).ImageIndex = Int(t2 / (t1 + t2) * 100)
@@ -76,6 +77,27 @@
                     reminded = New ListViewItem() {ListView1.Items(i)}
                 Else
                     reminded = reminded.Concat({ListView1.Items(i)}).ToArray
+                End If
+                Enabled = False
+            End If
+        Next
+        '------------------------------------------
+        For i = 0 To ListView2.Items.Count - 1
+            t1 = System.DateTime.Parse(ListView2.Items(i).Text).Subtract(DateTime.Now).TotalMilliseconds '现在时间到截止时间的长度
+            t2 = System.DateTime.Parse(DateTime.Now).Subtract(ListView2.Items(i).SubItems(3).Text).TotalMilliseconds + 1 '从任务创建到现在的时间
+            If ((t1 + t2) > t2) And (t1 >= 0) Then
+                ListView2.Items(i).ImageIndex = Int(t2 / (t1 + t2) * 100)
+            Else
+                ListView2.Items(i).ImageIndex = 99
+            End If
+            If (t1 <= 0) AndAlso Not Find(ListView2.Items(i)) Then
+                Form2.Show() '打开提醒窗体
+                Form2.Label1.Text = "您的提醒事项" & ChrW(13) & ChrW(13) & "时间已到"
+                Form2.Label2.Text = ListView2.Items(i).SubItems(1).Text
+                If reminded Is Nothing Then
+                    reminded = New ListViewItem() {ListView2.Items(i)}
+                Else
+                    reminded = reminded.Concat({ListView2.Items(i)}).ToArray
                 End If
                 Enabled = False
             End If
@@ -100,6 +122,11 @@
         Button_Add.BringToFront()
         ToolStripStatusLabel2.ForeColor = My.Settings.ThemeColor
         SelectedView = ListView1
+        If My.Settings.RemindInterval <> "永不重复" Then
+            RemindInt = CInt(My.Settings.RemindInterval) * 60
+        Else
+            Timer3.Enabled = False
+        End If
         Show()
         DrawProgressBar()
     End Sub
@@ -243,5 +270,14 @@
 
     Private Sub Button_Setting_Click(sender As Object, e As EventArgs) Handles Button_Setting.Click
         Settings.ShowDialog()
+    End Sub
+
+    Private Sub Timer3_Tick(sender As Object, e As EventArgs) Handles Timer3.Tick
+        If t >= RemindInt Then
+            reminded = {}
+            t = 0
+        Else
+            t = t + 10
+        End If
     End Sub
 End Class

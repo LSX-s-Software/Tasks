@@ -111,7 +111,7 @@ Partial Class Dialog1
         Me.GroupBox2.Size = New System.Drawing.Size(208, 63)
         Me.GroupBox2.TabIndex = 6
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "截至时间是"
+        Me.GroupBox2.Text = "截止时间是"
         '
         'GroupBox3
         '

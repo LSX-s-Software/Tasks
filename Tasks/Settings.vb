@@ -15,6 +15,7 @@
         PictureBox3.BackColor = My.Settings.TForeColor
         TrackBar1.Value = My.Settings.NoticeLevel
         TrackBar2.Value = My.Settings.WarningLevel
+        ComboBox1.SelectedItem = My.Settings.RemindInterval
 
         DrawProgressBar()
     End Sub
@@ -67,6 +68,7 @@
             MsgBox("主题色不能与字体颜色相同，请重新选择", MsgBoxStyle.Exclamation)
             Exit Sub
         End If
+        My.Settings.RemindInterval = ComboBox1.Text
         My.Settings.Save()
         Close()
     End Sub

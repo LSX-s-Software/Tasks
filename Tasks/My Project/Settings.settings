@@ -14,5 +14,8 @@
     <Setting Name="WarningLevel" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">90</Value>
     </Setting>
+    <Setting Name="RemindInterval" Type="System.String" Scope="User">
+      <Value Profile="(Default)">900000</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

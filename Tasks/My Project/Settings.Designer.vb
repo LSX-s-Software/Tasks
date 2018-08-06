@@ -101,6 +101,18 @@ Namespace My
                 Me("WarningLevel") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("900000")>  _
+        Public Property RemindInterval() As String
+            Get
+                Return CType(Me("RemindInterval"),String)
+            End Get
+            Set
+                Me("RemindInterval") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

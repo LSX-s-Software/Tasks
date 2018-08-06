@@ -35,6 +35,9 @@ Partial Class Form1
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripTextBox2 = New System.Windows.Forms.ToolStripTextBox()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.新建ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.编辑ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.删除ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -47,6 +50,9 @@ Partial Class Form1
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripTextBox3 = New System.Windows.Forms.ToolStripTextBox()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem6 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem7 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
@@ -54,12 +60,7 @@ Partial Class Form1
         Me.Button_Del = New System.Windows.Forms.Button()
         Me.Button_Edit = New System.Windows.Forms.Button()
         Me.Button_Add = New System.Windows.Forms.Button()
-        Me.新建ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.编辑ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.删除ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem6 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem7 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.ContextMenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ContextMenuStrip2.SuspendLayout()
@@ -130,6 +131,24 @@ Partial Class Form1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         resources.ApplyResources(Me.ToolStripSeparator1, "ToolStripSeparator1")
+        '
+        '新建ToolStripMenuItem
+        '
+        Me.新建ToolStripMenuItem.Image = Global.Tasks.My.Resources.Resources.add
+        Me.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem"
+        resources.ApplyResources(Me.新建ToolStripMenuItem, "新建ToolStripMenuItem")
+        '
+        '编辑ToolStripMenuItem
+        '
+        Me.编辑ToolStripMenuItem.Image = Global.Tasks.My.Resources.Resources.Edit
+        Me.编辑ToolStripMenuItem.Name = "编辑ToolStripMenuItem"
+        resources.ApplyResources(Me.编辑ToolStripMenuItem, "编辑ToolStripMenuItem")
+        '
+        '删除ToolStripMenuItem
+        '
+        Me.删除ToolStripMenuItem.Image = Global.Tasks.My.Resources.Resources.Trash1
+        Me.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem"
+        resources.ApplyResources(Me.删除ToolStripMenuItem, "删除ToolStripMenuItem")
         '
         'ImageList1
         '
@@ -204,6 +223,24 @@ Partial Class Form1
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
         resources.ApplyResources(Me.ToolStripSeparator2, "ToolStripSeparator2")
         '
+        'ToolStripMenuItem5
+        '
+        Me.ToolStripMenuItem5.Image = Global.Tasks.My.Resources.Resources.add
+        Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
+        resources.ApplyResources(Me.ToolStripMenuItem5, "ToolStripMenuItem5")
+        '
+        'ToolStripMenuItem6
+        '
+        Me.ToolStripMenuItem6.Image = Global.Tasks.My.Resources.Resources.Edit
+        Me.ToolStripMenuItem6.Name = "ToolStripMenuItem6"
+        resources.ApplyResources(Me.ToolStripMenuItem6, "ToolStripMenuItem6")
+        '
+        'ToolStripMenuItem7
+        '
+        Me.ToolStripMenuItem7.Image = Global.Tasks.My.Resources.Resources.Trash1
+        Me.ToolStripMenuItem7.Name = "ToolStripMenuItem7"
+        resources.ApplyResources(Me.ToolStripMenuItem7, "ToolStripMenuItem7")
+        '
         'Timer1
         '
         Me.Timer1.Enabled = True
@@ -252,41 +289,10 @@ Partial Class Form1
         Me.Button_Add.Name = "Button_Add"
         Me.Button_Add.UseVisualStyleBackColor = False
         '
-        '新建ToolStripMenuItem
+        'Timer3
         '
-        Me.新建ToolStripMenuItem.Image = Global.Tasks.My.Resources.Resources.add
-        Me.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem"
-        resources.ApplyResources(Me.新建ToolStripMenuItem, "新建ToolStripMenuItem")
-        '
-        '编辑ToolStripMenuItem
-        '
-        Me.编辑ToolStripMenuItem.Image = Global.Tasks.My.Resources.Resources.Edit
-        Me.编辑ToolStripMenuItem.Name = "编辑ToolStripMenuItem"
-        resources.ApplyResources(Me.编辑ToolStripMenuItem, "编辑ToolStripMenuItem")
-        '
-        '删除ToolStripMenuItem
-        '
-        Me.删除ToolStripMenuItem.Image = Global.Tasks.My.Resources.Resources.Trash1
-        Me.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem"
-        resources.ApplyResources(Me.删除ToolStripMenuItem, "删除ToolStripMenuItem")
-        '
-        'ToolStripMenuItem5
-        '
-        Me.ToolStripMenuItem5.Image = Global.Tasks.My.Resources.Resources.add
-        Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
-        resources.ApplyResources(Me.ToolStripMenuItem5, "ToolStripMenuItem5")
-        '
-        'ToolStripMenuItem6
-        '
-        Me.ToolStripMenuItem6.Image = Global.Tasks.My.Resources.Resources.Edit
-        Me.ToolStripMenuItem6.Name = "ToolStripMenuItem6"
-        resources.ApplyResources(Me.ToolStripMenuItem6, "ToolStripMenuItem6")
-        '
-        'ToolStripMenuItem7
-        '
-        Me.ToolStripMenuItem7.Image = Global.Tasks.My.Resources.Resources.Trash1
-        Me.ToolStripMenuItem7.Name = "ToolStripMenuItem7"
-        resources.ApplyResources(Me.ToolStripMenuItem7, "ToolStripMenuItem7")
+        Me.Timer3.Enabled = True
+        Me.Timer3.Interval = 10000
         '
         'Form1
         '
@@ -350,4 +356,5 @@ Partial Class Form1
     Friend WithEvents ToolStripMenuItem6 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem7 As ToolStripMenuItem
     Friend WithEvents Button_Setting As Button
+    Friend WithEvents Timer3 As Timer
 End Class
