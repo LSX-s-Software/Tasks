@@ -11,6 +11,8 @@
     End Sub
 
     Private Sub Dialog2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        BackColor = My.Settings.ThemeColor
+        ForeColor = My.Settings.TForeColor
         Show()
         With Form1
             If Form1.SelectedView Is .ListView1 Then

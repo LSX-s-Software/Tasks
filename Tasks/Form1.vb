@@ -204,6 +204,9 @@ Public Class Form1
     End Sub
 
     Public Sub Edit()
+        If ListView1.SelectedItems.Count = 0 And ListView2.SelectedItems.Count = 0 Then
+            Exit Sub
+        End If
         Dim r As DialogResult
         r = Dialog2.ShowDialog()
         If r = DialogResult.OK Then
