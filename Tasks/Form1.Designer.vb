@@ -63,9 +63,11 @@ Partial Class Form1
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.ContextMenuStrip3 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.打开主窗体ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.设置ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripSeparator()
         Me.退出ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.设置ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ContextMenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ContextMenuStrip2.SuspendLayout()
@@ -184,7 +186,7 @@ Partial Class Form1
         '
         resources.ApplyResources(Me.ListView2, "ListView2")
         Me.ListView2.CheckBoxes = True
-        Me.ListView2.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader5, Me.ColumnHeader6})
+        Me.ListView2.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader8, Me.ColumnHeader9})
         Me.ListView2.ContextMenuStrip = Me.ContextMenuStrip2
         Me.ListView2.FullRowSelect = True
         Me.ListView2.LabelEdit = True
@@ -310,6 +312,11 @@ Partial Class Form1
         Me.打开主窗体ToolStripMenuItem.Name = "打开主窗体ToolStripMenuItem"
         resources.ApplyResources(Me.打开主窗体ToolStripMenuItem, "打开主窗体ToolStripMenuItem")
         '
+        '设置ToolStripMenuItem
+        '
+        Me.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem"
+        resources.ApplyResources(Me.设置ToolStripMenuItem, "设置ToolStripMenuItem")
+        '
         'ToolStripMenuItem4
         '
         Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
@@ -320,10 +327,13 @@ Partial Class Form1
         Me.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem"
         resources.ApplyResources(Me.退出ToolStripMenuItem, "退出ToolStripMenuItem")
         '
-        '设置ToolStripMenuItem
+        'ColumnHeader8
         '
-        Me.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem"
-        resources.ApplyResources(Me.设置ToolStripMenuItem, "设置ToolStripMenuItem")
+        resources.ApplyResources(Me.ColumnHeader8, "ColumnHeader8")
+        '
+        'ColumnHeader9
+        '
+        resources.ApplyResources(Me.ColumnHeader9, "ColumnHeader9")
         '
         'Form1
         '
@@ -394,4 +404,6 @@ Partial Class Form1
     Friend WithEvents 设置ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem4 As ToolStripSeparator
     Friend WithEvents 退出ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ColumnHeader8 As ColumnHeader
+    Friend WithEvents ColumnHeader9 As ColumnHeader
 End Class

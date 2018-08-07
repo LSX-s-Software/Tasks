@@ -1,6 +1,7 @@
 ﻿Public Class Dialog1
     Dim speed As Byte
     Dim steps As Byte
+    Dim originXY As Point
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles OK_Button.Click
         DialogResult = DialogResult.OK
         Hide()
@@ -24,6 +25,7 @@
         GroupBox4.Visible = False
         TextBox1.Text = ""
         TextBox2.Text = ""
+        ComboBox1.SelectedItem = "从不"
         Button_Next.Enabled = False
         steps = 1
         DateTimePicker1.Value = Now
@@ -123,5 +125,28 @@
             e.Handled = True
             MsgBox("文本不能包含以下字符" & vbCrLf & "|")
         End If
+    End Sub
+
+    Private Sub Dialog1_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
+        If e.Button = MouseButtons.Left Then
+            Location = PointToScreen(e.Location) - originXY
+        End If
+    End Sub
+
+    Private Sub Dialog1_MouseDown(sender As Object, e As MouseEventArgs) Handles Me.MouseDown
+        originXY = e.Location
+    End Sub
+
+    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
+        Dim dday, dhour, dmin, dsec As Integer
+        dday = DateDiff(DateInterval.DayOfYear, Now, DateTimePicker1.Value)
+        dhour = DateDiff(DateInterval.Hour, Now, DateTimePicker1.Value) - dday * 24
+        dmin = DateDiff(DateInterval.Minute, Now, DateTimePicker1.Value) - dday * 24 * 60 - dhour * 60
+        dsec = DateDiff(DateInterval.Second, Now, DateTimePicker1.Value) - dday * 24 * 86400 - dhour * 3600 - dmin * 60
+        Label2.Text = "距今"
+        If dday <> 0 Then Label2.Text = Label2.Text & dday & "天"
+        If dhour <> 0 Then Label2.Text = Label2.Text & dhour & "小时"
+        If dmin <> 0 Then Label2.Text = Label2.Text & dmin & "分"
+        Label2.Text = Label2.Text & dsec & "秒"
     End Sub
 End Class

@@ -71,7 +71,9 @@
                     .Items(.Items.Count - 1).SubItems.Add(file(i + 1))
                     .Items(.Items.Count - 1).SubItems.Add(file(i + 2))
                     .Items(.Items.Count - 1).SubItems.Add(file(i + 3))
-                    i = i + 4
+                    .Items(.Items.Count - 1).SubItems.Add(file(i + 4))
+                    .Items(.Items.Count - 1).SubItems.Add(file(i + 5))
+                    i = i + 6
                 Loop
             End With
         End If

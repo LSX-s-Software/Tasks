@@ -38,6 +38,9 @@ Partial Class Dialog1
         Me.Button_Next = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -92,7 +95,6 @@ Partial Class Dialog1
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.GroupBox2)
         Me.GroupBox1.Controls.Add(Me.RadioButton2)
         Me.GroupBox1.Controls.Add(Me.RadioButton1)
         Me.GroupBox1.Location = New System.Drawing.Point(211, 219)
@@ -104,11 +106,13 @@ Partial Class Dialog1
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.GroupBox3)
+        Me.GroupBox2.Controls.Add(Me.ComboBox1)
+        Me.GroupBox2.Controls.Add(Me.Label3)
+        Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.DateTimePicker1)
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 0)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 46)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(208, 63)
+        Me.GroupBox2.Size = New System.Drawing.Size(208, 103)
         Me.GroupBox2.TabIndex = 6
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "截止时间是"
@@ -116,7 +120,7 @@ Partial Class Dialog1
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.TextBox1)
-        Me.GroupBox3.Location = New System.Drawing.Point(0, 0)
+        Me.GroupBox3.Location = New System.Drawing.Point(461, 101)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(208, 63)
         Me.GroupBox3.TabIndex = 7
@@ -178,7 +182,7 @@ Partial Class Dialog1
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.TextBox2)
-        Me.GroupBox4.Location = New System.Drawing.Point(211, 288)
+        Me.GroupBox4.Location = New System.Drawing.Point(461, 170)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(208, 54)
         Me.GroupBox4.TabIndex = 8
@@ -195,6 +199,36 @@ Partial Class Dialog1
         Me.TextBox2.TabIndex = 0
         Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'Label2
+        '
+        Me.Label2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label2.Location = New System.Drawing.Point(6, 51)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(196, 17)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "距今0秒"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(6, 74)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(56, 17)
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "重复提醒"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"从不", "每天", "每两天", "每周", "每两周", "每月", "每年"})
+        Me.ComboBox1.Location = New System.Drawing.Point(68, 71)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(134, 25)
+        Me.ComboBox1.TabIndex = 3
+        '
         'Dialog1
         '
         Me.AcceptButton = Me.OK_Button
@@ -202,6 +236,8 @@ Partial Class Dialog1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
         Me.ClientSize = New System.Drawing.Size(630, 394)
+        Me.Controls.Add(Me.GroupBox2)
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.Button_Next)
         Me.Controls.Add(Me.GroupBox1)
@@ -221,6 +257,7 @@ Partial Class Dialog1
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
@@ -243,4 +280,7 @@ Partial Class Dialog1
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Label3 As Label
 End Class

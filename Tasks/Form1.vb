@@ -30,7 +30,14 @@ Public Class Form1
                 itm.SubItems.AddRange({Dialog1.DateTimePicker1.Value, Dialog1.TextBox2.Text, Now})
             Else
                 itm = ListView2.Items.Add(Dialog1.DateTimePicker1.Value)
-                itm.SubItems.AddRange({Dialog1.TextBox1.Text, Dialog1.TextBox2.Text, Now})
+                Dim nextt As Date
+                Select Case Dialog1.ComboBox1.Text
+                    Case "从不"
+                        nextt = Dialog1.DateTimePicker1.Value
+                    Case "每天"
+
+                End Select
+                itm.SubItems.AddRange({Dialog1.TextBox1.Text, Dialog1.TextBox2.Text, Now, Dialog1.ComboBox1.Text, nextt})
             End If
         End If
     End Sub
