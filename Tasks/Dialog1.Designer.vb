@@ -127,6 +127,7 @@ Partial Class Dialog1
         '
         Me.TextBox1.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.TextBox1.Location = New System.Drawing.Point(6, 22)
+        Me.TextBox1.MaxLength = 100
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(196, 26)
         Me.TextBox1.TabIndex = 0
@@ -188,6 +189,7 @@ Partial Class Dialog1
         '
         Me.TextBox2.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.TextBox2.Location = New System.Drawing.Point(6, 22)
+        Me.TextBox2.MaxLength = 100
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(196, 26)
         Me.TextBox2.TabIndex = 0

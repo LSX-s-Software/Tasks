@@ -29,6 +29,8 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Form1.Enabled = True
+        Form1.Timer1.Enabled = True
+        Form1.Timer3.Enabled = True
         AnimateOut()
     End Sub
 

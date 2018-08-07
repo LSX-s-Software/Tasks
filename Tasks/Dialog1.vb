@@ -110,4 +110,18 @@
             OK_Button.Enabled = True
         End If
     End Sub
+
+    Private Sub TextBox1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox1.KeyPress
+        If e.KeyChar = "|" Then
+            e.Handled = True
+            MsgBox("文本不能包含以下字符" & vbCrLf & "|")
+        End If
+    End Sub
+
+    Private Sub TextBox2_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox2.KeyPress
+        If e.KeyChar = "|" Then
+            e.Handled = True
+            MsgBox("文本不能包含以下字符" & vbCrLf & "|")
+        End If
+    End Sub
 End Class

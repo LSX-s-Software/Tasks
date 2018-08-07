@@ -1,4 +1,7 @@
-﻿Public Class Form1
+﻿Imports System.ComponentModel
+Imports Microsoft.VisualBasic.FileIO.FileSystem
+
+Public Class Form1
     Public SelectedView As ListView
     Public reminded As ListViewItem()
     Public RemindInt, t As Long
@@ -79,6 +82,9 @@
                     reminded = reminded.Concat({ListView1.Items(i)}).ToArray
                 End If
                 Enabled = False
+                Timer1.Enabled = False
+                Timer3.Enabled = False
+                Exit Sub
             End If
         Next
         '------------------------------------------
@@ -100,6 +106,9 @@
                     reminded = reminded.Concat({ListView2.Items(i)}).ToArray
                 End If
                 Enabled = False
+                Timer1.Enabled = False
+                Timer3.Enabled = False
+                Exit Sub
             End If
         Next
     End Sub
@@ -127,7 +136,6 @@
         Else
             Timer3.Enabled = False
         End If
-        Show()
         DrawProgressBar()
     End Sub
 
@@ -279,5 +287,33 @@
         Else
             t = t + 10
         End If
+    End Sub
+
+    Private Sub Form1_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        '-----------------保存----------------
+        Dim file As String = ""
+        e.Cancel = True
+        Text = "Tasks - [保存信息中...]"
+        For i = 0 To ListView1.Items.Count - 1
+            file = file & ListView1.Items(i).Text & "|"
+            For j = 1 To ListView1.Items(0).SubItems.Count - 1
+                file = file & ListView1.Items(i).SubItems(j).Text & "|"
+            Next j
+        Next i
+        file = file & "END OF LIST1|"
+        For i = 0 To ListView2.Items.Count - 1
+            file = file & ListView2.Items(i).Text & "|"
+            For j = 1 To ListView2.Items(0).SubItems.Count - 1
+                file = file & ListView2.Items(i).SubItems(j).Text & "|"
+            Next j
+        Next
+        file = file & "END OF FILE" '文件终止
+        If Not (FileExists(Application.StartupPath & "\Saves.tasks")) Then
+            WriteAllText(Application.StartupPath & "\Saves.tasks", file, False, System.Text.Encoding.Default)
+        Else
+            WriteAllText(Application.StartupPath & "\Saves.tasks", file, False)
+        End If
+        '------------------------------------
+        Application.Exit()
     End Sub
 End Class

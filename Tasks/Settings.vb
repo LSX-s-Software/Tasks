@@ -74,14 +74,14 @@
         '------开机启动选项----------
         If (CheckBox1.Checked) AndAlso (Not My.Settings.RunWhenSysStart) Then
             Dim Reg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Run", True)
-            Reg.SetValue(Application.ProductName, Application.StartupPath & "\" & Application.ProductName & ".exe") '写入注册表
+            Reg.SetValue(Application.ProductName, Application.StartupPath & "\" & Application.ProductName & ".exe" & " -h") '写入注册表
             Reg.Close()
             My.Settings.RunWhenSysStart = True
         ElseIf (CheckBox1.Checked = False) AndAlso (My.Settings.RunWhenSysStart) Then
+            My.Settings.RunWhenSysStart = False
             Dim Reg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Run", True)
             Reg.DeleteValue(Application.ProductName) '删除注册表键
             Reg.Close()
-            My.Settings.RunWhenSysStart = False
         End If
         '----------------------------
         MsgBox("保存成功！部分设置需要在重启软件后生效", MsgBoxStyle.Information)

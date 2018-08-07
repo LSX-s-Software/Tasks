@@ -55,7 +55,6 @@ Partial Class Form1
         Me.ToolStripMenuItem7 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.Button_Setting = New System.Windows.Forms.Button()
         Me.Button_Del = New System.Windows.Forms.Button()
         Me.Button_Edit = New System.Windows.Forms.Button()
@@ -181,7 +180,6 @@ Partial Class Form1
         Me.ListView2.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader5, Me.ColumnHeader6})
         Me.ListView2.ContextMenuStrip = Me.ContextMenuStrip2
         Me.ListView2.FullRowSelect = True
-        Me.ListView2.GridLines = True
         Me.ListView2.LabelEdit = True
         Me.ListView2.MultiSelect = False
         Me.ListView2.Name = "ListView2"
@@ -250,11 +248,6 @@ Partial Class Form1
         '
         resources.ApplyResources(Me.Label1, "Label1")
         Me.Label1.Name = "Label1"
-        '
-        'Timer2
-        '
-        Me.Timer2.Enabled = True
-        Me.Timer2.Interval = 3000
         '
         'Button_Setting
         '
@@ -338,7 +331,6 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents ImageList1 As ImageList
     Friend WithEvents ColumnHeader7 As ColumnHeader
-    Friend WithEvents Timer2 As Timer
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ToolStripTextBox1 As ToolStripTextBox
