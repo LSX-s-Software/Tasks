@@ -289,10 +289,26 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub Form1_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+    Private Sub 打开主窗体ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 打开主窗体ToolStripMenuItem.Click
+        Show()
+    End Sub
+
+    Private Sub 设置ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 设置ToolStripMenuItem.Click
+        Settings.ShowDialog(Me)
+    End Sub
+
+    Private Sub 退出ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 退出ToolStripMenuItem.Click
+        Save()
+        Application.Exit()
+    End Sub
+
+    Private Sub NotifyIcon1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles NotifyIcon1.MouseDoubleClick
+        Show()
+    End Sub
+
+    Private Sub Save()
         '-----------------保存----------------
         Dim file As String = ""
-        e.Cancel = True
         Text = "Tasks - [保存信息中...]"
         For i = 0 To ListView1.Items.Count - 1
             file = file & ListView1.Items(i).Text & "|"
@@ -314,6 +330,23 @@ Public Class Form1
             WriteAllText(Application.StartupPath & "\Saves.tasks", file, False)
         End If
         '------------------------------------
-        Application.Exit()
+    End Sub
+
+    Private Sub Form1_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        Dim r As MsgBoxResult = MsgBoxResult.No
+        If sender Is Me Then
+            r = MsgBox("是否需要隐藏至托盘？", MsgBoxStyle.YesNo)
+        End If
+        If r = MsgBoxResult.Yes Then
+            e.Cancel = True
+            Hide()
+            NotifyIcon1.BalloonTipIcon = ToolTipIcon.Info
+            NotifyIcon1.BalloonTipTitle = "Tasks"
+            NotifyIcon1.BalloonTipText = "Tasks已隐藏至托盘↓"
+            NotifyIcon1.ShowBalloonTip(3000)
+        Else
+            Save()
+            Application.Exit()
+        End If
     End Sub
 End Class

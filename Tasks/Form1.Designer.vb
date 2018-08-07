@@ -60,9 +60,16 @@ Partial Class Form1
         Me.Button_Edit = New System.Windows.Forms.Button()
         Me.Button_Add = New System.Windows.Forms.Button()
         Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
+        Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.ContextMenuStrip3 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.打开主窗体ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.退出ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.设置ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ContextMenuStrip2.SuspendLayout()
+        Me.ContextMenuStrip3.SuspendLayout()
         Me.SuspendLayout()
         '
         'ListView1
@@ -287,6 +294,37 @@ Partial Class Form1
         Me.Timer3.Enabled = True
         Me.Timer3.Interval = 10000
         '
+        'NotifyIcon1
+        '
+        Me.NotifyIcon1.ContextMenuStrip = Me.ContextMenuStrip3
+        resources.ApplyResources(Me.NotifyIcon1, "NotifyIcon1")
+        '
+        'ContextMenuStrip3
+        '
+        Me.ContextMenuStrip3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.打开主窗体ToolStripMenuItem, Me.设置ToolStripMenuItem, Me.ToolStripMenuItem4, Me.退出ToolStripMenuItem})
+        Me.ContextMenuStrip3.Name = "ContextMenuStrip3"
+        resources.ApplyResources(Me.ContextMenuStrip3, "ContextMenuStrip3")
+        '
+        '打开主窗体ToolStripMenuItem
+        '
+        Me.打开主窗体ToolStripMenuItem.Name = "打开主窗体ToolStripMenuItem"
+        resources.ApplyResources(Me.打开主窗体ToolStripMenuItem, "打开主窗体ToolStripMenuItem")
+        '
+        'ToolStripMenuItem4
+        '
+        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
+        resources.ApplyResources(Me.ToolStripMenuItem4, "ToolStripMenuItem4")
+        '
+        '退出ToolStripMenuItem
+        '
+        Me.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem"
+        resources.ApplyResources(Me.退出ToolStripMenuItem, "退出ToolStripMenuItem")
+        '
+        '设置ToolStripMenuItem
+        '
+        Me.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem"
+        resources.ApplyResources(Me.设置ToolStripMenuItem, "设置ToolStripMenuItem")
+        '
         'Form1
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -308,6 +346,7 @@ Partial Class Form1
         Me.StatusStrip1.PerformLayout()
         Me.ContextMenuStrip2.ResumeLayout(False)
         Me.ContextMenuStrip2.PerformLayout()
+        Me.ContextMenuStrip3.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -349,4 +388,10 @@ Partial Class Form1
     Friend WithEvents ToolStripMenuItem7 As ToolStripMenuItem
     Friend WithEvents Button_Setting As Button
     Friend WithEvents Timer3 As Timer
+    Friend WithEvents NotifyIcon1 As NotifyIcon
+    Friend WithEvents ContextMenuStrip3 As ContextMenuStrip
+    Friend WithEvents 打开主窗体ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 设置ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem4 As ToolStripSeparator
+    Friend WithEvents 退出ToolStripMenuItem As ToolStripMenuItem
 End Class
