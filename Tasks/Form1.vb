@@ -30,24 +30,7 @@ Public Class Form1
                 itm.SubItems.AddRange({Dialog1.DateTimePicker1.Value, Dialog1.TextBox2.Text, Now})
             Else
                 itm = ListView2.Items.Add(Dialog1.DateTimePicker1.Value)
-                Dim nextt As Date
-                Select Case Dialog1.ComboBox1.Text
-                    Case "从不"
-                        nextt = Dialog1.DateTimePicker1.Value
-                    Case "每天"
-                        nextt = DateAdd(DateInterval.DayOfYear, 1, Dialog1.DateTimePicker1.Value)
-                    Case "每两天"
-                        nextt = DateAdd(DateInterval.DayOfYear, 2, Dialog1.DateTimePicker1.Value)
-                    Case "每周"
-                        nextt = DateAdd(DateInterval.DayOfYear, 7, Dialog1.DateTimePicker1.Value)
-                    Case "每两周"
-                        nextt = DateAdd(DateInterval.DayOfYear, 14, Dialog1.DateTimePicker1.Value)
-                    Case "每月"
-                        nextt = DateAdd(DateInterval.Month, 1, Dialog1.DateTimePicker1.Value)
-                    Case "每年"
-                        nextt = DateAdd(DateInterval.Year, 1, Dialog1.DateTimePicker1.Value)
-                End Select
-                itm.SubItems.AddRange({Dialog1.TextBox1.Text, Dialog1.TextBox2.Text, Now, Dialog1.ComboBox1.Text, nextt})
+                itm.SubItems.AddRange({Dialog1.TextBox1.Text, Dialog1.TextBox2.Text, Now, Dialog1.ComboBox1.Text, CalculateNextDate(Dialog1.DateTimePicker1.Value, Dialog1.ComboBox1.Text)})
             End If
         End If
     End Sub
@@ -115,25 +98,10 @@ Public Class Form1
             End If
             If (t1 <= 0) AndAlso Not Find(ListView2.Items(i)) Then
                 If ListView2.Items(i).SubItems(4).Text <> "从不" Then
-                    Dim nextt As Date
-                    Select Case ListView2.Items(i).SubItems(4).Text
-                        Case "每天"
-                            nextt = DateAdd(DateInterval.DayOfYear, 1, CDate(ListView2.Items(i).Text))
-                        Case "每两天"
-                            nextt = DateAdd(DateInterval.DayOfYear, 2, CDate(ListView2.Items(i).Text))
-                        Case "每周"
-                            nextt = DateAdd(DateInterval.DayOfYear, 7, CDate(ListView2.Items(i).Text))
-                        Case "每两周"
-                            nextt = DateAdd(DateInterval.DayOfYear, 14, CDate(ListView2.Items(i).Text))
-                        Case "每月"
-                            nextt = DateAdd(DateInterval.Month, 1, CDate(ListView2.Items(i).Text))
-                        Case "每年"
-                            nextt = DateAdd(DateInterval.Year, 1, CDate(ListView2.Items(i).Text))
-                    End Select
                     Dim itm = ListView2.Items(i).Clone()
                     ListView2.Items.Add(itm)
                     itm.Text = ListView2.Items(i).SubItems(5).Text
-                    itm.Subitems(5).text = nextt
+                    itm.Subitems(5).text = CalculateNextDate(itm.Text, itm.SubItems(4).Text)
                     itm = Nothing
                 End If
                 Form2.Show() '打开提醒窗体
@@ -147,10 +115,29 @@ Public Class Form1
                 Enabled = False
                 Timer1.Enabled = False
                 Timer3.Enabled = False
-                    Exit Sub
-                End If
+                Exit Sub
+            End If
         Next
     End Sub
+
+    Private Function CalculateNextDate(origin As Date, 方式 As String) As Date
+        Dim nextt As Date
+        Select Case 方式
+            Case "每天"
+                nextt = DateAdd(DateInterval.DayOfYear, 1, origin)
+            Case "每两天"
+                nextt = DateAdd(DateInterval.DayOfYear, 2, origin)
+            Case "每周"
+                nextt = DateAdd(DateInterval.DayOfYear, 7, origin)
+            Case "每两周"
+                nextt = DateAdd(DateInterval.DayOfYear, 14, origin)
+            Case "每月"
+                nextt = DateAdd(DateInterval.Month, 1, origin)
+            Case "每年"
+                nextt = DateAdd(DateInterval.Year, 1, origin)
+        End Select
+        Return nextt
+    End Function
 
     Private Function Find(ByVal item As ListViewItem) As Boolean
         Dim i As Integer
@@ -257,6 +244,8 @@ Public Class Form1
                 SelectedView.SelectedItems(0).Text = Dialog2.DateTimePicker1.Value
                 SelectedView.SelectedItems(0).SubItems(1).Text = Dialog2.TextBox1.Text
                 SelectedView.SelectedItems(0).SubItems(2).Text = Dialog2.TextBox2.Text
+                SelectedView.SelectedItems(0).SubItems(4).Text = Dialog2.ComboBox1.Text
+                SelectedView.SelectedItems(0).SubItems(5).Text = CalculateNextDate(Dialog2.DateTimePicker1.Value, Dialog2.ComboBox1.Text)
             End If
         End If
     End Sub

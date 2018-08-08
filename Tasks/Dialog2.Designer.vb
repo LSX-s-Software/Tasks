@@ -28,12 +28,14 @@ Partial Class Dialog2
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel2.SuspendLayout()
@@ -47,7 +49,7 @@ Partial Class Dialog2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.1145!))
         Me.TableLayoutPanel1.Controls.Add(Me.OK_Button, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Cancel_Button, 1, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(355, 209)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(355, 224)
         Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
@@ -100,7 +102,9 @@ Partial Class Dialog2
         '
         Me.TableLayoutPanel2.ColumnCount = 2
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 109.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 255.0!))
+        Me.TableLayoutPanel2.Controls.Add(Me.ComboBox1, 1, 4)
+        Me.TableLayoutPanel2.Controls.Add(Me.Label5, 0, 4)
         Me.TableLayoutPanel2.Controls.Add(Me.TextBox2, 1, 3)
         Me.TableLayoutPanel2.Controls.Add(Me.Label4, 0, 3)
         Me.TableLayoutPanel2.Controls.Add(Me.Label1, 0, 0)
@@ -108,15 +112,40 @@ Partial Class Dialog2
         Me.TableLayoutPanel2.Controls.Add(Me.Label3, 0, 2)
         Me.TableLayoutPanel2.Controls.Add(Me.DateTimePicker1, 1, 2)
         Me.TableLayoutPanel2.Controls.Add(Me.TextBox1, 1, 1)
-        Me.TableLayoutPanel2.Location = New System.Drawing.Point(150, 65)
+        Me.TableLayoutPanel2.Location = New System.Drawing.Point(150, 50)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
-        Me.TableLayoutPanel2.RowCount = 4
+        Me.TableLayoutPanel2.RowCount = 5
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(318, 132)
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(318, 163)
         Me.TableLayoutPanel2.TabIndex = 3
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextBox2.Location = New System.Drawing.Point(66, 106)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(249, 23)
+        Me.TextBox2.TabIndex = 8
+        '
+        'Label4
+        '
+        Me.Label4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label4.Location = New System.Drawing.Point(3, 103)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(57, 29)
+        Me.Label4.TabIndex = 7
+        Me.Label4.Text = "备注"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label2
         '
@@ -167,29 +196,29 @@ Partial Class Dialog2
         Me.TextBox1.Size = New System.Drawing.Size(249, 23)
         Me.TextBox1.TabIndex = 6
         '
-        'Label4
+        'Label5
         '
-        Me.Label4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.Label5.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label4.Location = New System.Drawing.Point(3, 103)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(57, 29)
-        Me.Label4.TabIndex = 7
-        Me.Label4.Text = "备注"
-        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label5.Location = New System.Drawing.Point(3, 132)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(57, 31)
+        Me.Label5.TabIndex = 9
+        Me.Label5.Text = "重复方式"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'TextBox2
+        'ComboBox1
         '
-        Me.TextBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox2.Location = New System.Drawing.Point(66, 106)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(249, 23)
-        Me.TextBox2.TabIndex = 8
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"从不", "每天", "每两天", "每周", "每两周", "每月", "每年"})
+        Me.ComboBox1.Location = New System.Drawing.Point(66, 135)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(249, 25)
+        Me.ComboBox1.TabIndex = 10
         '
         'Dialog2
         '
@@ -197,7 +226,7 @@ Partial Class Dialog2
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
-        Me.ClientSize = New System.Drawing.Size(500, 263)
+        Me.ClientSize = New System.Drawing.Size(500, 278)
         Me.Controls.Add(Me.TableLayoutPanel2)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.PictureBox1)
@@ -229,4 +258,6 @@ Partial Class Dialog2
     Friend WithEvents DateTimePicker1 As DateTimePicker
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents ComboBox1 As ComboBox
 End Class

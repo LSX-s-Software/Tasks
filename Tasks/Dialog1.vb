@@ -88,6 +88,11 @@
             GroupBox2.Visible = True
             GroupBox1.Visible = False
             GroupBox2.BringToFront()
+            If RadioButton1.Checked = True Then
+                ComboBox1.Enabled = False
+            Else
+                ComboBox1.Enabled = True
+            End If
             steps = steps + 1
             Exit Sub
         End If
