@@ -35,7 +35,17 @@ Public Class Form1
                     Case "从不"
                         nextt = Dialog1.DateTimePicker1.Value
                     Case "每天"
-
+                        nextt = DateAdd(DateInterval.DayOfYear, 1, Dialog1.DateTimePicker1.Value)
+                    Case "每两天"
+                        nextt = DateAdd(DateInterval.DayOfYear, 2, Dialog1.DateTimePicker1.Value)
+                    Case "每周"
+                        nextt = DateAdd(DateInterval.DayOfYear, 7, Dialog1.DateTimePicker1.Value)
+                    Case "每两周"
+                        nextt = DateAdd(DateInterval.DayOfYear, 14, Dialog1.DateTimePicker1.Value)
+                    Case "每月"
+                        nextt = DateAdd(DateInterval.Month, 1, Dialog1.DateTimePicker1.Value)
+                    Case "每年"
+                        nextt = DateAdd(DateInterval.Year, 1, Dialog1.DateTimePicker1.Value)
                 End Select
                 itm.SubItems.AddRange({Dialog1.TextBox1.Text, Dialog1.TextBox2.Text, Now, Dialog1.ComboBox1.Text, nextt})
             End If
@@ -104,6 +114,28 @@ Public Class Form1
                 ListView2.Items(i).ImageIndex = 99
             End If
             If (t1 <= 0) AndAlso Not Find(ListView2.Items(i)) Then
+                If ListView2.Items(i).SubItems(4).Text <> "从不" Then
+                    Dim nextt As Date
+                    Select Case ListView2.Items(i).SubItems(4).Text
+                        Case "每天"
+                            nextt = DateAdd(DateInterval.DayOfYear, 1, CDate(ListView2.Items(i).Text))
+                        Case "每两天"
+                            nextt = DateAdd(DateInterval.DayOfYear, 2, CDate(ListView2.Items(i).Text))
+                        Case "每周"
+                            nextt = DateAdd(DateInterval.DayOfYear, 7, CDate(ListView2.Items(i).Text))
+                        Case "每两周"
+                            nextt = DateAdd(DateInterval.DayOfYear, 14, CDate(ListView2.Items(i).Text))
+                        Case "每月"
+                            nextt = DateAdd(DateInterval.Month, 1, CDate(ListView2.Items(i).Text))
+                        Case "每年"
+                            nextt = DateAdd(DateInterval.Year, 1, CDate(ListView2.Items(i).Text))
+                    End Select
+                    Dim itm = ListView2.Items(i).Clone()
+                    ListView2.Items.Add(itm)
+                    itm.Text = ListView2.Items(i).SubItems(5).Text
+                    itm.Subitems(5).text = nextt
+                    itm = Nothing
+                End If
                 Form2.Show() '打开提醒窗体
                 Form2.Label1.Text = "您的提醒事项" & ChrW(13) & ChrW(13) & "时间已到"
                 Form2.Label2.Text = ListView2.Items(i).SubItems(1).Text
@@ -115,8 +147,8 @@ Public Class Form1
                 Enabled = False
                 Timer1.Enabled = False
                 Timer3.Enabled = False
-                Exit Sub
-            End If
+                    Exit Sub
+                End If
         Next
     End Sub
 
@@ -260,7 +292,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub ContextMenuStrip2_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip2.Opening
+    Private Sub ContextMenuStrip2_Opening(sender As Object, e As CancelEventArgs) Handles ContextMenuStrip2.Opening
         If ListView2.SelectedItems.Count > 0 Then
             ToolStripTextBox3.Visible = True
             ToolStripMenuItem3.Visible = True
@@ -335,7 +367,7 @@ Public Class Form1
         Next
         file = file & "END OF FILE" '文件终止
         If Not (FileExists(Application.StartupPath & "\Saves.tasks")) Then
-            WriteAllText(Application.StartupPath & "\Saves.tasks", file, False, System.Text.Encoding.Default)
+            WriteAllText(Application.StartupPath & "\Saves.tasks", file, False, System.Text.Encoding.UTF8)
         Else
             WriteAllText(Application.StartupPath & "\Saves.tasks", file, False)
         End If

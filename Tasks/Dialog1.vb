@@ -86,7 +86,7 @@
     Private Sub Button_Next_Click(sender As Object, e As EventArgs) Handles Button_Next.Click
         If steps = 1 Then
             GroupBox2.Visible = True
-            'GroupBox1.Visible = False
+            GroupBox1.Visible = False
             GroupBox2.BringToFront()
             steps = steps + 1
             Exit Sub
@@ -94,8 +94,9 @@
         If steps = 2 Then
             GroupBox3.Visible = True
             GroupBox4.Visible = True
-            'GroupBox2.Visible = False
+            GroupBox2.Visible = False
             GroupBox3.BringToFront()
+            GroupBox4.BringToFront()
             steps = steps + 1
             TextBox1.Focus()
             Button_Next.Visible = False
@@ -142,7 +143,7 @@
         dday = DateDiff(DateInterval.DayOfYear, Now, DateTimePicker1.Value)
         dhour = DateDiff(DateInterval.Hour, Now, DateTimePicker1.Value) - dday * 24
         dmin = DateDiff(DateInterval.Minute, Now, DateTimePicker1.Value) - dday * 24 * 60 - dhour * 60
-        dsec = DateDiff(DateInterval.Second, Now, DateTimePicker1.Value) - dday * 24 * 86400 - dhour * 3600 - dmin * 60
+        dsec = DateDiff(DateInterval.Second, Now, DateTimePicker1.Value) - dday * 86400 - dhour * 3600 - dmin * 60
         Label2.Text = "距今"
         If dday <> 0 Then Label2.Text = Label2.Text & dday & "天"
         If dhour <> 0 Then Label2.Text = Label2.Text & dhour & "小时"

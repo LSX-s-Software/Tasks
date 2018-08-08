@@ -1,5 +1,5 @@
 ﻿Public Class Form2
-    Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Form2_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim path As Drawing2D.GraphicsPath = RoundedRectPath(ClientRectangle, 30)
         Region = New Region(path)
         Dim loc As Point
@@ -32,6 +32,7 @@
         Form1.Timer1.Enabled = True
         Form1.Timer3.Enabled = True
         AnimateOut()
+        Dispose()
     End Sub
 
     Public Sub AnimateOut()
@@ -39,6 +40,5 @@
             Left = Left + 2
             Threading.Thread.Sleep(1)
         Loop
-        Dispose()
     End Sub
 End Class

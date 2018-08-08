@@ -46,6 +46,8 @@ Partial Class Form1
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripTextBox3 = New System.Windows.Forms.ToolStripTextBox()
@@ -66,8 +68,7 @@ Partial Class Form1
         Me.设置ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripSeparator()
         Me.退出ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader10 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ContextMenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ContextMenuStrip2.SuspendLayout()
@@ -186,7 +187,7 @@ Partial Class Form1
         '
         resources.ApplyResources(Me.ListView2, "ListView2")
         Me.ListView2.CheckBoxes = True
-        Me.ListView2.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader8, Me.ColumnHeader9})
+        Me.ListView2.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader10, Me.ColumnHeader8, Me.ColumnHeader9})
         Me.ListView2.ContextMenuStrip = Me.ContextMenuStrip2
         Me.ListView2.FullRowSelect = True
         Me.ListView2.LabelEdit = True
@@ -206,6 +207,14 @@ Partial Class Form1
         'ColumnHeader6
         '
         resources.ApplyResources(Me.ColumnHeader6, "ColumnHeader6")
+        '
+        'ColumnHeader8
+        '
+        resources.ApplyResources(Me.ColumnHeader8, "ColumnHeader8")
+        '
+        'ColumnHeader9
+        '
+        resources.ApplyResources(Me.ColumnHeader9, "ColumnHeader9")
         '
         'ContextMenuStrip2
         '
@@ -327,13 +336,9 @@ Partial Class Form1
         Me.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem"
         resources.ApplyResources(Me.退出ToolStripMenuItem, "退出ToolStripMenuItem")
         '
-        'ColumnHeader8
+        'ColumnHeader10
         '
-        resources.ApplyResources(Me.ColumnHeader8, "ColumnHeader8")
-        '
-        'ColumnHeader9
-        '
-        resources.ApplyResources(Me.ColumnHeader9, "ColumnHeader9")
+        resources.ApplyResources(Me.ColumnHeader10, "ColumnHeader10")
         '
         'Form1
         '
@@ -406,4 +411,5 @@ Partial Class Form1
     Friend WithEvents 退出ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ColumnHeader8 As ColumnHeader
     Friend WithEvents ColumnHeader9 As ColumnHeader
+    Friend WithEvents ColumnHeader10 As ColumnHeader
 End Class
