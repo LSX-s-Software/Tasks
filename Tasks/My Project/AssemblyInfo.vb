@@ -9,7 +9,7 @@ Imports System.Runtime.InteropServices
 '查看程序集特性的值
 
 <Assembly: AssemblyTitle("Tasks")>
-<Assembly: AssemblyDescription("")>
+<Assembly: AssemblyDescription("由林思行编写的一款提醒事项软件")>
 <Assembly: AssemblyCompany("LSX's Software")>
 <Assembly: AssemblyProduct("Tasks")>
 <Assembly: AssemblyCopyright("Copyright © LSX's Software 2018")>

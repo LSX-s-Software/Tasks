@@ -44,8 +44,11 @@ Partial Class Settings
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.Button_Help = New System.Windows.Forms.Button()
+        Me.Button_About = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.TrackBar2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -56,6 +59,7 @@ Partial Class Settings
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -307,16 +311,6 @@ Partial Class Settings
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "开机启动"
         '
-        'CheckBox1
-        '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(6, 24)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(83, 21)
-        Me.CheckBox1.TabIndex = 0
-        Me.CheckBox1.Text = "启用(推荐)"
-        Me.CheckBox1.UseVisualStyleBackColor = True
-        '
         'CheckBox2
         '
         Me.CheckBox2.AutoSize = True
@@ -327,11 +321,55 @@ Partial Class Settings
         Me.CheckBox2.Text = "延迟启动"
         Me.CheckBox2.UseVisualStyleBackColor = True
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(6, 24)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(83, 21)
+        Me.CheckBox1.TabIndex = 0
+        Me.CheckBox1.Text = "启用(推荐)"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.Button_About)
+        Me.GroupBox5.Controls.Add(Me.Button_Help)
+        Me.GroupBox5.Location = New System.Drawing.Point(451, 239)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(191, 81)
+        Me.GroupBox5.TabIndex = 11
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "帮助与关于"
+        '
+        'Button_Help
+        '
+        Me.Button_Help.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button_Help.Location = New System.Drawing.Point(6, 22)
+        Me.Button_Help.Name = "Button_Help"
+        Me.Button_Help.Size = New System.Drawing.Size(179, 23)
+        Me.Button_Help.TabIndex = 0
+        Me.Button_Help.Text = "查看帮助文件"
+        Me.Button_Help.UseVisualStyleBackColor = True
+        '
+        'Button_About
+        '
+        Me.Button_About.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button_About.Location = New System.Drawing.Point(6, 51)
+        Me.Button_About.Name = "Button_About"
+        Me.Button_About.Size = New System.Drawing.Size(179, 23)
+        Me.Button_About.TabIndex = 1
+        Me.Button_About.Text = "关于本程序"
+        Me.Button_About.UseVisualStyleBackColor = True
+        '
         'Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(654, 377)
+        Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
@@ -357,6 +395,7 @@ Partial Class Settings
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
+        Me.GroupBox5.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -386,4 +425,7 @@ Partial Class Settings
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents CheckBox2 As CheckBox
     Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents GroupBox5 As GroupBox
+    Friend WithEvents Button_About As Button
+    Friend WithEvents Button_Help As Button
 End Class

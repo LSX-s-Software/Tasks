@@ -2,6 +2,7 @@
     Private Sub Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim path As Drawing2D.GraphicsPath = RoundedRectPath(ClientRectangle, 20)
         Region = New Region(path)
+        '加载主题
         BackColor = My.Settings.ThemeColor
         ForeColor = My.Settings.TForeColor
         Label.ForeColor = My.Settings.TForeColor
@@ -11,8 +12,13 @@
         Cancel_Button.ForeColor = My.Settings.TForeColor
         Button1.BackColor = My.Settings.ThemeColor
         Button1.ForeColor = My.Settings.TForeColor
+        Button_About.BackColor = My.Settings.ThemeColor
+        Button_About.ForeColor = My.Settings.TForeColor
+        Button_Help.BackColor = My.Settings.ThemeColor
+        Button_Help.ForeColor = My.Settings.TForeColor
         PictureBox2.BackColor = My.Settings.ThemeColor
         PictureBox3.BackColor = My.Settings.TForeColor
+        '加载设定
         TrackBar1.Value = My.Settings.NoticeLevel
         TrackBar2.Value = My.Settings.WarningLevel
         ComboBox1.SelectedItem = My.Settings.RemindInterval
@@ -115,5 +121,9 @@
         If r = DialogResult.OK Then
             PictureBox3.BackColor = ColorDialog1.Color
         End If
+    End Sub
+
+    Private Sub Button_About_Click(sender As Object, e As EventArgs) Handles Button_About.Click
+        AboutBox1.ShowDialog()
     End Sub
 End Class

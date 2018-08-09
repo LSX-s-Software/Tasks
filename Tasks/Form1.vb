@@ -106,11 +106,6 @@ Public Class Form1
         For i = 0 To ListView2.Items.Count - 1
             t1 = System.DateTime.Parse(ListView2.Items(i).Text).Subtract(DateTime.Now).TotalMilliseconds '现在时间到截止时间的长度
             t2 = System.DateTime.Parse(DateTime.Now).Subtract(ListView2.Items(i).SubItems(3).Text).TotalMilliseconds + 1 '从任务创建到现在的时间
-            If ((t1 + t2) > t2) And (t1 >= 0) Then
-                ListView2.Items(i).ImageIndex = Int(t2 / (t1 + t2) * 100)
-            Else
-                ListView2.Items(i).ImageIndex = 99
-            End If
             If (t1 <= 0) AndAlso Not Find(ListView2.Items(i)) Then
                 If (ListView2.Items(i).SubItems(4).Text <> "从不") AndAlso ItemExisted(ListView2, ListView2.Items(i).SubItems(1).Text) Then
                     Dim itm = ListView2.Items(i).Clone()

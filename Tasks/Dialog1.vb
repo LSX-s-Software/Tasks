@@ -36,7 +36,7 @@
         ForeColor = My.Settings.TForeColor
     End Sub
 
-    Private Function RoundedRectPath(ByVal Rectangle As Rectangle, ByVal r As Integer) As Drawing2D.GraphicsPath
+    Public Shared Function RoundedRectPath(ByVal Rectangle As Rectangle, ByVal r As Integer) As Drawing2D.GraphicsPath
         Rectangle.Offset(-1, -1)
         Dim RoundRect As New Rectangle(Rectangle.Location, New Size(r - 1, r - 1))
         Dim path As New Drawing2D.GraphicsPath
