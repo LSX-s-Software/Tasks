@@ -306,9 +306,6 @@
   <data name="ColumnHeader6.Width" type="System.Int32, mscorlib">
     <value>187</value>
   </data>
-  <data name="ColumnHeader10.DisplayIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
   <data name="ColumnHeader10.Text" xml:space="preserve">
     <value>创建时间</value>
   </data>
@@ -318,8 +315,14 @@
   <data name="ColumnHeader8.Text" xml:space="preserve">
     <value>重复方式</value>
   </data>
+  <data name="ColumnHeader8.Width" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="ColumnHeader9.Text" xml:space="preserve">
     <value>下次提醒时间</value>
+  </data>
+  <data name="ColumnHeader9.Width" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <metadata name="ContextMenuStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>636, 17</value>
@@ -337,9 +340,24 @@
     <value>False</value>
   </data>
   <data name="ToolStripTextBox3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei UI, 7pt</value>
+    <value>Microsoft YaHei UI, 8pt</value>
   </data>
   <data name="ToolStripTextBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 21</value>
+  </data>
+  <data name="ToolStripMenuItem8.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="ToolStripMenuItem8.Text" xml:space="preserve">
+    <value>重复方式</value>
+  </data>
+  <data name="ToolStripTextBox4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 7pt</value>
+  </data>
+  <data name="ToolStripTextBox4.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 19</value>
   </data>
   <data name="ToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
@@ -364,7 +382,7 @@
     <value>删除</value>
   </data>
   <data name="ContextMenuStrip2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 119</value>
+    <value>161, 164</value>
   </data>
   <data name="&gt;&gt;ContextMenuStrip2.Name" xml:space="preserve">
     <value>ContextMenuStrip2</value>
@@ -1969,6 +1987,12 @@
   <data name="&gt;&gt;ColumnHeader6.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;ColumnHeader10.Name" xml:space="preserve">
+    <value>ColumnHeader10</value>
+  </data>
+  <data name="&gt;&gt;ColumnHeader10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;ColumnHeader8.Name" xml:space="preserve">
     <value>ColumnHeader8</value>
   </data>
@@ -2059,11 +2083,17 @@
   <data name="&gt;&gt;退出ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ColumnHeader10.Name" xml:space="preserve">
-    <value>ColumnHeader10</value>
+  <data name="&gt;&gt;ToolStripMenuItem8.Name" xml:space="preserve">
+    <value>ToolStripMenuItem8</value>
   </data>
-  <data name="&gt;&gt;ColumnHeader10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ToolStripMenuItem8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripTextBox4.Name" xml:space="preserve">
+    <value>ToolStripTextBox4</value>
+  </data>
+  <data name="&gt;&gt;ToolStripTextBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form1</value>

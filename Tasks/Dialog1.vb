@@ -30,7 +30,7 @@
         steps = 1
         DateTimePicker1.Value = Now
         DateTimePicker1.CustomFormat = "yyyy/MM/dd HH:mm:ss"
-        Dim path As Drawing2D.GraphicsPath = RoundedRectPath(ClientRectangle, 30)
+        Dim path As Drawing2D.GraphicsPath = RoundedRectPath(ClientRectangle, 20)
         Region = New Region(path)
         BackColor = My.Settings.ThemeColor
         ForeColor = My.Settings.TForeColor

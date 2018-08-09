@@ -14,7 +14,7 @@ Public Class Form1
     End Sub
 
     Public Sub Add()
-        Dim result
+        Dim result As DialogResult
         Dim itm As ListViewItem
         If ListView1.Visible = True Then
             Dialog1.RadioButton1.Checked = True
@@ -26,14 +26,29 @@ Public Class Form1
         result = Dialog1.ShowDialog()
         If result = DialogResult.OK Then
             If Dialog1.RadioButton1.Checked = True Then
+                If ListView1.Items.Count <> 0 AndAlso ItemExisted(ListView1, Dialog1.TextBox1.Text) Then
+                    If MsgBox("项目已存在，仍要继续添加？", MsgBoxStyle.YesNo) = MsgBoxResult.No Then Exit Sub
+                End If
                 itm = ListView1.Items.Add(Dialog1.TextBox1.Text)
                 itm.SubItems.AddRange({Dialog1.DateTimePicker1.Value, Dialog1.TextBox2.Text, Now})
             Else
+                If ListView2.Items.Count <> 0 AndAlso ItemExisted(ListView2, Dialog1.TextBox1.Text) Then
+                    If MsgBox("项目已存在，仍要继续添加？", MsgBoxStyle.YesNo) = MsgBoxResult.No Then Exit Sub
+                End If
                 itm = ListView2.Items.Add(Dialog1.DateTimePicker1.Value)
                 itm.SubItems.AddRange({Dialog1.TextBox1.Text, Dialog1.TextBox2.Text, Now, Dialog1.ComboBox1.Text, CalculateNextDate(Dialog1.DateTimePicker1.Value, Dialog1.ComboBox1.Text)})
             End If
         End If
     End Sub
+
+    Private Function ItemExisted(list As ListView, text As String) As Boolean
+        If list Is ListView1 Then
+            If ListView1.FindItemWithText(text, False, 0, False) IsNot Nothing Then Return True
+        Else
+            If ListView2.FindItemWithText(text, True, 0, False) IsNot Nothing Then Return True
+        End If
+        Return False
+    End Function
 
     Private Sub Button_Add_Click(sender As Object, e As EventArgs) Handles Button_Add.Click
         Add()
@@ -97,7 +112,7 @@ Public Class Form1
                 ListView2.Items(i).ImageIndex = 99
             End If
             If (t1 <= 0) AndAlso Not Find(ListView2.Items(i)) Then
-                If ListView2.Items(i).SubItems(4).Text <> "从不" Then
+                If (ListView2.Items(i).SubItems(4).Text <> "从不") AndAlso ItemExisted(ListView2, ListView2.Items(i).SubItems(1).Text) Then
                     Dim itm = ListView2.Items(i).Clone()
                     ListView2.Items.Add(itm)
                     itm.Text = ListView2.Items(i).SubItems(5).Text
@@ -121,22 +136,24 @@ Public Class Form1
     End Sub
 
     Private Function CalculateNextDate(origin As Date, 方式 As String) As Date
-        Dim nextt As Date
         Select Case 方式
+            Case "从不"
+                Return origin
             Case "每天"
-                nextt = DateAdd(DateInterval.DayOfYear, 1, origin)
+                Return DateAdd(DateInterval.DayOfYear, 1, origin)
             Case "每两天"
-                nextt = DateAdd(DateInterval.DayOfYear, 2, origin)
+                Return DateAdd(DateInterval.DayOfYear, 2, origin)
             Case "每周"
-                nextt = DateAdd(DateInterval.DayOfYear, 7, origin)
+                Return DateAdd(DateInterval.DayOfYear, 7, origin)
             Case "每两周"
-                nextt = DateAdd(DateInterval.DayOfYear, 14, origin)
+                Return DateAdd(DateInterval.DayOfYear, 14, origin)
             Case "每月"
-                nextt = DateAdd(DateInterval.Month, 1, origin)
+                Return DateAdd(DateInterval.Month, 1, origin)
             Case "每年"
-                nextt = DateAdd(DateInterval.Year, 1, origin)
+                Return DateAdd(DateInterval.Year, 1, origin)
+            Case Else
+                Return origin
         End Select
-        Return nextt
     End Function
 
     Private Function Find(ByVal item As ListViewItem) As Boolean
@@ -151,10 +168,14 @@ Public Class Form1
     End Function
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Dim a As New Drawing2D.GraphicsPath()
+        Dim a As New Drawing2D.GraphicsPath
         a.AddEllipse(2, 2, 35, 35)
         Button_Add.Region = New Region(a)
         Button_Add.BringToFront()
+        a = New Drawing2D.GraphicsPath
+        a.AddEllipse(2, 2, 25, 25)
+        Button_Del.Region = New Region(a)
+        Button_Edit.Region = New Region(a)
         ToolStripStatusLabel2.ForeColor = My.Settings.ThemeColor
         SelectedView = ListView1
         If My.Settings.RemindInterval <> "永不重复" Then
@@ -287,10 +308,13 @@ Public Class Form1
             ToolStripMenuItem3.Visible = True
             ToolStripSeparator2.Visible = True
             ToolStripTextBox3.Text = ListView2.SelectedItems(0).SubItems(3).Text
+            ToolStripTextBox4.Text = ListView2.SelectedItems(0).SubItems(4).Text & "(下次：" & CDate(ListView2.SelectedItems(0).SubItems(5).Text).ToShortDateString & ")"
         Else
             ToolStripTextBox3.Visible = False
             ToolStripMenuItem3.Visible = False
             ToolStripSeparator2.Visible = False
+            ToolStripMenuItem8.Visible = False
+            ToolStripTextBox4.Visible = False
         End If
     End Sub
 
@@ -378,6 +402,12 @@ Public Class Form1
         Else
             Save()
             Application.Exit()
+        End If
+    End Sub
+
+    Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.DoubleClick
+        If ListView1.SelectedItems.Count > 0 Then
+            ListView1.SelectedItems(0).BeginEdit()
         End If
     End Sub
 End Class

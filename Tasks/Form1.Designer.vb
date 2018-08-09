@@ -46,6 +46,7 @@ Partial Class Form1
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader10 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
@@ -68,7 +69,8 @@ Partial Class Form1
         Me.设置ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripSeparator()
         Me.退出ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ColumnHeader10 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ToolStripMenuItem8 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripTextBox4 = New System.Windows.Forms.ToolStripTextBox()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ContextMenuStrip2.SuspendLayout()
@@ -208,6 +210,10 @@ Partial Class Form1
         '
         resources.ApplyResources(Me.ColumnHeader6, "ColumnHeader6")
         '
+        'ColumnHeader10
+        '
+        resources.ApplyResources(Me.ColumnHeader10, "ColumnHeader10")
+        '
         'ColumnHeader8
         '
         resources.ApplyResources(Me.ColumnHeader8, "ColumnHeader8")
@@ -218,7 +224,7 @@ Partial Class Form1
         '
         'ContextMenuStrip2
         '
-        Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem3, Me.ToolStripTextBox3, Me.ToolStripSeparator2, Me.ToolStripMenuItem5, Me.ToolStripMenuItem6, Me.ToolStripMenuItem7})
+        Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem3, Me.ToolStripTextBox3, Me.ToolStripMenuItem8, Me.ToolStripTextBox4, Me.ToolStripSeparator2, Me.ToolStripMenuItem5, Me.ToolStripMenuItem6, Me.ToolStripMenuItem7})
         Me.ContextMenuStrip2.Name = "ContextMenuStrip1"
         resources.ApplyResources(Me.ContextMenuStrip2, "ContextMenuStrip2")
         '
@@ -278,6 +284,7 @@ Partial Class Form1
         '
         resources.ApplyResources(Me.Button_Del, "Button_Del")
         Me.Button_Del.BackColor = System.Drawing.Color.Transparent
+        Me.Button_Del.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Button_Del.Image = Global.Tasks.My.Resources.Resources.Trash1
         Me.Button_Del.Name = "Button_Del"
         Me.Button_Del.UseVisualStyleBackColor = False
@@ -286,6 +293,7 @@ Partial Class Form1
         '
         resources.ApplyResources(Me.Button_Edit, "Button_Edit")
         Me.Button_Edit.BackColor = System.Drawing.Color.Transparent
+        Me.Button_Edit.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Button_Edit.Image = Global.Tasks.My.Resources.Resources.Edit
         Me.Button_Edit.Name = "Button_Edit"
         Me.Button_Edit.UseVisualStyleBackColor = False
@@ -336,9 +344,17 @@ Partial Class Form1
         Me.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem"
         resources.ApplyResources(Me.退出ToolStripMenuItem, "退出ToolStripMenuItem")
         '
-        'ColumnHeader10
+        'ToolStripMenuItem8
         '
-        resources.ApplyResources(Me.ColumnHeader10, "ColumnHeader10")
+        resources.ApplyResources(Me.ToolStripMenuItem8, "ToolStripMenuItem8")
+        Me.ToolStripMenuItem8.Name = "ToolStripMenuItem8"
+        '
+        'ToolStripTextBox4
+        '
+        Me.ToolStripTextBox4.BackColor = System.Drawing.SystemColors.HighlightText
+        resources.ApplyResources(Me.ToolStripTextBox4, "ToolStripTextBox4")
+        Me.ToolStripTextBox4.Name = "ToolStripTextBox4"
+        Me.ToolStripTextBox4.ReadOnly = True
         '
         'Form1
         '
@@ -412,4 +428,6 @@ Partial Class Form1
     Friend WithEvents ColumnHeader8 As ColumnHeader
     Friend WithEvents ColumnHeader9 As ColumnHeader
     Friend WithEvents ColumnHeader10 As ColumnHeader
+    Friend WithEvents ToolStripMenuItem8 As ToolStripMenuItem
+    Friend WithEvents ToolStripTextBox4 As ToolStripTextBox
 End Class

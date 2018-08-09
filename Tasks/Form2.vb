@@ -1,6 +1,6 @@
 ﻿Public Class Form2
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Dim path As Drawing2D.GraphicsPath = RoundedRectPath(ClientRectangle, 30)
+        Dim path As Drawing2D.GraphicsPath = RoundedRectPath(ClientRectangle, 20)
         Region = New Region(path)
         Dim loc As Point
         loc.X = Screen.PrimaryScreen.WorkingArea.Width - Width - 10

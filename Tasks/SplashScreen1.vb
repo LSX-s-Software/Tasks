@@ -56,6 +56,7 @@
             file = rawfile.Split("|")
             Dim i = 0
             With Form1.ListView1
+                .BeginUpdate()
                 Do While file(i) <> "END OF LIST1"
                     .Items.Add(file(i))
                     .Items(.Items.Count - 1).SubItems.Add(file(i + 1))
@@ -63,9 +64,11 @@
                     .Items(.Items.Count - 1).SubItems.Add(file(i + 3))
                     i = i + 4
                 Loop
+                .EndUpdate()
             End With
             i = i + 1
             With Form1.ListView2
+                .BeginUpdate()
                 Do While file(i) <> "END OF FILE"
                     .Items.Add(file(i))
                     .Items(.Items.Count - 1).SubItems.Add(file(i + 1))
@@ -75,6 +78,7 @@
                     .Items(.Items.Count - 1).SubItems.Add(file(i + 5))
                     i = i + 6
                 Loop
+                .EndUpdate()
             End With
         End If
         ProgressBar1.Value = 80

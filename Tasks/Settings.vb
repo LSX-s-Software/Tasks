@@ -1,6 +1,6 @@
 ﻿Public Class Settings
     Private Sub Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim path As Drawing2D.GraphicsPath = RoundedRectPath(ClientRectangle, 30)
+        Dim path As Drawing2D.GraphicsPath = RoundedRectPath(ClientRectangle, 20)
         Region = New Region(path)
         BackColor = My.Settings.ThemeColor
         ForeColor = My.Settings.TForeColor
