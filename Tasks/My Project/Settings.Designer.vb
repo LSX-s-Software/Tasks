@@ -80,7 +80,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("65")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("75")>  _
         Public Property NoticeLevel() As Integer
             Get
                 Return CType(Me("NoticeLevel"),Integer)
@@ -123,6 +123,18 @@ Namespace My
             End Get
             Set
                 Me("RunWhenSysStart") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property HideWhenAutoRun() As Boolean
+            Get
+                Return CType(Me("HideWhenAutoRun"),Boolean)
+            End Get
+            Set
+                Me("HideWhenAutoRun") = value
             End Set
         End Property
     End Class

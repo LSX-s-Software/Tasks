@@ -1,6 +1,6 @@
 ﻿Public NotInheritable Class SplashScreen1
     Private Sub SplashScreen1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
-        If Command() = "-h" Then
+        If (Command() = "-h") AndAlso My.Settings.HideWhenAutoRun Then
             Hide()
         Else
             Show()
@@ -77,7 +77,7 @@
         '----------加载完毕-------
         ProgressBar1.Value = 100
         'Animate()
-        If Command() <> "-h" Then
+        If Not (Command() = "-h" AndAlso My.Settings.HideWhenAutoRun) Then
             Form1.Show()
         End If
         Close()

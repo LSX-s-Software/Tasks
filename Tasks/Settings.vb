@@ -23,6 +23,7 @@
         TrackBar2.Value = My.Settings.WarningLevel
         ComboBox1.SelectedItem = My.Settings.RemindInterval
         CheckBox1.Checked = My.Settings.RunWhenSysStart
+        CheckBox2.Checked = My.Settings.HideWhenAutoRun
 
         DrawProgressBar()
     End Sub
@@ -89,6 +90,7 @@
             Reg.DeleteValue(Application.ProductName) '删除注册表键
             Reg.Close()
         End If
+        My.Settings.HideWhenAutoRun = CheckBox2.Checked
         '----------------------------
         MsgBox("保存成功！部分设置需要在重启软件后生效", MsgBoxStyle.Information)
         Close()

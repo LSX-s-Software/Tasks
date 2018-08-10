@@ -47,8 +47,8 @@ Partial Class Settings
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.Button_Help = New System.Windows.Forms.Button()
         Me.Button_About = New System.Windows.Forms.Button()
+        Me.Button_Help = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.TrackBar2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -318,7 +318,7 @@ Partial Class Settings
         Me.CheckBox2.Name = "CheckBox2"
         Me.CheckBox2.Size = New System.Drawing.Size(75, 21)
         Me.CheckBox2.TabIndex = 1
-        Me.CheckBox2.Text = "延迟启动"
+        Me.CheckBox2.Text = "静默启动"
         Me.CheckBox2.UseVisualStyleBackColor = True
         '
         'CheckBox1
@@ -342,17 +342,6 @@ Partial Class Settings
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "帮助与关于"
         '
-        'Button_Help
-        '
-        Me.Button_Help.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button_Help.Location = New System.Drawing.Point(6, 22)
-        Me.Button_Help.Name = "Button_Help"
-        Me.Button_Help.Size = New System.Drawing.Size(179, 23)
-        Me.Button_Help.TabIndex = 0
-        Me.Button_Help.Text = "查看帮助文件"
-        Me.Button_Help.UseVisualStyleBackColor = True
-        '
         'Button_About
         '
         Me.Button_About.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -363,6 +352,17 @@ Partial Class Settings
         Me.Button_About.TabIndex = 1
         Me.Button_About.Text = "关于本程序"
         Me.Button_About.UseVisualStyleBackColor = True
+        '
+        'Button_Help
+        '
+        Me.Button_Help.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button_Help.Location = New System.Drawing.Point(6, 22)
+        Me.Button_Help.Name = "Button_Help"
+        Me.Button_Help.Size = New System.Drawing.Size(179, 23)
+        Me.Button_Help.TabIndex = 0
+        Me.Button_Help.Text = "查看帮助文件"
+        Me.Button_Help.UseVisualStyleBackColor = True
         '
         'Settings
         '

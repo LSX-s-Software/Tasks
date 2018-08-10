@@ -9,7 +9,7 @@
       <Value Profile="(Default)">White</Value>
     </Setting>
     <Setting Name="NoticeLevel" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">65</Value>
+      <Value Profile="(Default)">75</Value>
     </Setting>
     <Setting Name="WarningLevel" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">90</Value>
@@ -18,6 +18,9 @@
       <Value Profile="(Default)">900000</Value>
     </Setting>
     <Setting Name="RunWhenSysStart" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="HideWhenAutoRun" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>

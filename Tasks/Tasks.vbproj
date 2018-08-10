@@ -216,6 +216,9 @@
     <None Include="bin\Debug\icon\项目1.ico" />
     <None Include="bin\Debug\icon\图标_512.png" />
     <None Include="bin\Debug\icon\图标_256.png" />
+    <None Include="bin\Debug\icon\背景1.png" />
+    <None Include="bin\Debug\icon\背景1.jpg" />
+    <None Include="bin\Debug\icon\提醒.png" />
     <Content Include="项目1.ico" />
   </ItemGroup>
   <ItemGroup>

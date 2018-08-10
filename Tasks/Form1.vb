@@ -88,7 +88,7 @@ Public Class Form1
             Else
                 ListView1.Items(i).ImageIndex = 99
             End If
-            If (t1 <= 0) AndAlso Not Find(ListView1.Items(i)) Then
+            If (t1 <= 0) AndAlso Find(ListView1.Items(i)) = -1 Then
                 Form2.Show() '打开提醒窗体
                 Form2.Label2.Text = ListView1.Items(i).Text
                 If reminded Is Nothing Then
@@ -106,7 +106,7 @@ Public Class Form1
         For i = 0 To ListView2.Items.Count - 1
             t1 = System.DateTime.Parse(ListView2.Items(i).Text).Subtract(DateTime.Now).TotalMilliseconds '现在时间到截止时间的长度
             t2 = System.DateTime.Parse(DateTime.Now).Subtract(ListView2.Items(i).SubItems(3).Text).TotalMilliseconds + 1 '从任务创建到现在的时间
-            If (t1 <= 0) AndAlso Not Find(ListView2.Items(i)) Then
+            If (t1 <= 0) AndAlso Find(ListView2.Items(i)) = -1 Then
                 If (ListView2.Items(i).SubItems(4).Text <> "从不") AndAlso ItemExisted(ListView2, ListView2.Items(i).SubItems(1).Text) Then
                     Dim itm = ListView2.Items(i).Clone()
                     ListView2.Items.Add(itm)
@@ -151,13 +151,13 @@ Public Class Form1
         End Select
     End Function
 
-    Private Function Find(ByVal item As ListViewItem) As Boolean
+    Private Function Find(ByVal item As ListViewItem) As Integer
         Dim i As Integer
-        Find = False
-        If reminded Is Nothing Then Return False
+        Find = -1
+        If reminded Is Nothing Then Return -1
         For i = 0 To reminded.Count - 1
             If reminded(i) Is item Then
-                Return True
+                Return i
             End If
         Next
     End Function
@@ -179,10 +179,11 @@ Public Class Form1
             Timer3.Enabled = False
         End If
         DrawProgressBar()
+        If ListView1.Items.Count > 0 Then ListView1.BackgroundImage = Nothing
     End Sub
 
     Private Sub DrawProgressBar()
-        Dim bmp As Bitmap
+        Dim bmp As Bitmap = New Bitmap(32, 32)
         Dim gra As Graphics
         Dim ThemeColor As Color = My.Settings.ThemeColor
         Dim border As Pen = New Pen(ThemeColor, 2)
@@ -191,6 +192,7 @@ Public Class Form1
         Dim i, c As Integer
         Dim NoticeLevel As Integer = My.Settings.NoticeLevel
         Dim WarningLevel As Integer = My.Settings.WarningLevel
+        ImageList1.ImageSize = bmp.Size
         For i = 1 To 100
             If i < NoticeLevel Then
                 border = New Pen(ThemeColor, 2)
@@ -202,14 +204,21 @@ Public Class Form1
                 border = New Pen(Color.FromArgb(255, 0, 0), 2)
                 b1 = New SolidBrush(Color.FromArgb(255, 0, 0))
             End If
-            bmp = New Bitmap(10, 25)
+            'bmp = New Bitmap(10, 25)
+            bmp = New Bitmap(32, 32)
             gra = Graphics.FromImage(bmp)
-            gra.FillRectangle(b, 0, 0, 10, 25)
-            gra.DrawRectangle(border, 1, 1, 8, 23)
-            c = Int(i / 4) - 1
-            gra.FillRectangle(b1, 1, 1, 8, c)
+            gra.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+            'gra.FillRectangle(b, 0, 0, 10, 25)
+            'gra.DrawRectangle(border, 1, 1, 8, 23)
+            'c = Int(i / 4) - 1
+            'gra.FillRectangle(b1, 1, 1, 8, c)
+            gra.FillRectangle(b, 0, 0, bmp.Size.Width, bmp.Size.Height)
+            gra.DrawEllipse(border, 0, 0, bmp.Size.Width - border.Width, bmp.Size.Height - border.Width)
+            Dim rect As New Rectangle(2, 2, bmp.Size.Width - border.Width * 2 - 2, bmp.Size.Height - border.Width * 2 - 2)
+            gra.FillPie(b1, rect, -90, 360 * i / 100)
             ImageList1.Images.Add(bmp)
         Next
+        bmp.Dispose()
     End Sub
 
     Private Sub ListView2_ItemChecked(sender As Object, e As ItemCheckedEventArgs) Handles ListView2.ItemChecked
@@ -263,6 +272,13 @@ Public Class Form1
                 SelectedView.SelectedItems(0).SubItems(4).Text = Dialog2.ComboBox1.Text
                 SelectedView.SelectedItems(0).SubItems(5).Text = CalculateNextDate(Dialog2.DateTimePicker1.Value, Dialog2.ComboBox1.Text)
             End If
+        End If
+        Dim index As Integer = Find(SelectedView.SelectedItems(0))
+        If index > -1 Then
+            For i = index To reminded.Count - 2
+                reminded(i) = reminded(i + 1)
+            Next
+            reminded(reminded.Count - 1) = Nothing
         End If
     End Sub
 
@@ -384,7 +400,7 @@ Public Class Form1
 
     Private Sub Form1_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         Dim r As MsgBoxResult = MsgBoxResult.No
-        If sender Is Me Then
+        If (sender Is Me) AndAlso (ListView1.Items.Count + ListView2.Items.Count > 0) Then
             r = MsgBox("是否需要隐藏至托盘？", MsgBoxStyle.YesNo)
         End If
         If r = MsgBoxResult.Yes Then
