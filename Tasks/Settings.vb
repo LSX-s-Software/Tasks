@@ -106,6 +106,9 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         My.Settings.Reset()
+        Dim Reg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Run", True)
+        Reg.SetValue(Application.ProductName, Application.StartupPath & "\" & Application.ProductName & ".exe" & " -h") '写入注册表
+        Reg.Close()
         Close()
     End Sub
 

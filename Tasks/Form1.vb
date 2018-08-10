@@ -31,6 +31,7 @@ Public Class Form1
                 End If
                 itm = ListView1.Items.Add(Dialog1.TextBox1.Text)
                 itm.SubItems.AddRange({Dialog1.DateTimePicker1.Value, Dialog1.TextBox2.Text, Now})
+                ListView1.BackgroundImage = Nothing
             Else
                 If ListView2.Items.Count <> 0 AndAlso ItemExisted(ListView2, Dialog1.TextBox1.Text) Then
                     If MsgBox("项目已存在，仍要继续添加？", MsgBoxStyle.YesNo) = MsgBoxResult.No Then Exit Sub
