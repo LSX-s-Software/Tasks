@@ -91,6 +91,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  查找类似 每天END|每两天END|每周END|每两周END|工资|总结|租金|信用卡|银行卡|每月END|生日|每年END| 的本地化字符串。
+        '''</summary>
+        Friend ReadOnly Property SmartSense() As String
+            Get
+                Return ResourceManager.GetString("SmartSense", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
         Friend ReadOnly Property Trash1() As System.Drawing.Bitmap

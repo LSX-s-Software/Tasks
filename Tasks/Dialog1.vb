@@ -1,6 +1,6 @@
 ﻿Public Class Dialog1
-    Dim speed As Byte
-    Dim steps As Byte
+    Dim speed, steps As Byte
+    Dim SSSource() As String
     Dim originXY As Point
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles OK_Button.Click
         DialogResult = DialogResult.OK
@@ -23,6 +23,7 @@
         GroupBox2.Visible = False
         GroupBox3.Visible = False
         GroupBox4.Visible = False
+        GroupBox2.Height = 104
         TextBox1.Text = ""
         TextBox2.Text = ""
         ComboBox1.SelectedItem = "从不"
@@ -34,6 +35,7 @@
         Region = New Region(path)
         BackColor = My.Settings.ThemeColor
         ForeColor = My.Settings.TForeColor
+        SSSource = My.Resources.SmartSense.Split("|")
     End Sub
 
     Public Shared Function RoundedRectPath(ByVal Rectangle As Rectangle, ByVal r As Integer) As Drawing2D.GraphicsPath
@@ -84,38 +86,88 @@
     End Sub
 
     Private Sub Button_Next_Click(sender As Object, e As EventArgs) Handles Button_Next.Click
-        If steps = 1 Then
+        If steps = 2 Then
             GroupBox2.Visible = True
-            GroupBox1.Visible = False
+            GroupBox3.Visible = False
+            GroupBox4.Visible = False
             GroupBox2.BringToFront()
+            DateTimePicker1.Value = DateAdd(DateInterval.Hour, 1, Now)
+            DateTimePicker1.Value = DateAdd(DateInterval.Second, -DateTimePicker1.Value.Second, DateTimePicker1.Value)
             If RadioButton1.Checked = True Then
                 ComboBox1.Enabled = False
             Else
                 ComboBox1.Enabled = True
+                Dim result As String = SmartSense(TextBox1.Text)
+                If result <> "" Then
+                    ComboBox1.SelectedItem = result
+                    GroupBox2.Height = 127
+                End If
             End If
             steps = steps + 1
+            Button_Next.Visible = False
+            OK_Button.Visible = True
             Exit Sub
         End If
-        If steps = 2 Then
+        If steps = 1 Then
             GroupBox3.Visible = True
             GroupBox4.Visible = True
             GroupBox2.Visible = False
             GroupBox3.BringToFront()
             GroupBox4.BringToFront()
+            GroupBox1.Visible = False
+            Button_Next.Enabled = False
             steps = steps + 1
             TextBox1.Focus()
-            Button_Next.Visible = False
-            OK_Button.Visible = True
-            OK_Button.Enabled = False
             Exit Sub
         End If
     End Sub
+    '---------智能感知模块----------
+    Private Function SmartSense(text As String) As String
+        'If text.Contains("生日") Then Return "每年"
+        'If text.Contains("工资") OrElse text.Contains("总结") OrElse text.Contains("租金") OrElse text.Contains("信用卡") OrElse text.Contains("银行卡") Then Return "每月"
+        Dim i As UInteger = 0
+        Do Until SSSource(i) = "每天END"
+            If text.Contains(SSSource(i)) Then Return "每天"
+            i = i + 1
+        Loop
+        i = i + 1
 
+        Do Until SSSource(i) = "每两天END"
+            If text.Contains(SSSource(i)) Then Return "每两天"
+            i = i + 1
+        Loop
+        i = i + 1
+
+        Do Until SSSource(i) = "每周END"
+            If text.Contains(SSSource(i)) Then Return "每两周"
+            i = i + 1
+        Loop
+        i = i + 1
+
+        Do Until SSSource(i) = "每两周END"
+            If text.Contains(SSSource(i)) Then Return "每两周"
+            i = i + 1
+        Loop
+        i = i + 1
+
+        Do Until SSSource(i) = "每月END"
+            If text.Contains(SSSource(i)) Then Return "每月"
+            i = i + 1
+        Loop
+        i = i + 1
+
+        Do Until SSSource(i) = "每年END"
+            If text.Contains(SSSource(i)) Then Return "每年"
+            i = i + 1
+        Loop
+        Return ""
+    End Function
+    '-------------------------------
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
         If TextBox1.Text = "" Then
-            OK_Button.Enabled = False
+            Button_Next.Enabled = False
         Else
-            OK_Button.Enabled = True
+            Button_Next.Enabled = True
         End If
     End Sub
 

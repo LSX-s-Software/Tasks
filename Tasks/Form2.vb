@@ -1,4 +1,5 @@
 ﻿Public Class Form2
+    Dim speed As Byte
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim path As Drawing2D.GraphicsPath = Dialog1.RoundedRectPath(ClientRectangle, 20)
         Region = New Region(path)
@@ -21,8 +22,18 @@
     End Sub
 
     Public Sub AnimateOut()
-        Do Until Left >= Screen.PrimaryScreen.WorkingArea.Width
-            Left = Left + 2
+        Do Until Left > Screen.PrimaryScreen.WorkingArea.Width
+            Select Case Screen.PrimaryScreen.WorkingArea.Width - Left
+                Case < 50
+                    speed = 1
+                Case > 100
+                    speed = 3
+                Case > 150
+                    speed = 5
+                Case > 170
+                    speed = 1
+            End Select
+            Left = Left + speed
             Threading.Thread.Sleep(1)
         Loop
     End Sub

@@ -41,6 +41,7 @@ Partial Class Dialog1
         Me.Button_Next = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -130,13 +131,14 @@ Partial Class Dialog1
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Label4)
         Me.GroupBox2.Controls.Add(Me.ComboBox1)
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.DateTimePicker1)
         Me.GroupBox2.Location = New System.Drawing.Point(211, 219)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(208, 103)
+        Me.GroupBox2.Size = New System.Drawing.Size(208, 104)
         Me.GroupBox2.TabIndex = 6
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "截止时间是"
@@ -235,6 +237,17 @@ Partial Class Dialog1
         Me.TextBox2.TabIndex = 0
         Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'Label4
+        '
+        Me.Label4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label4.Location = New System.Drawing.Point(6, 103)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(196, 17)
+        Me.Label4.TabIndex = 4
+        Me.Label4.Text = "（来自SmartSense建议）"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'Dialog1
         '
         Me.AcceptButton = Me.OK_Button
@@ -289,4 +302,5 @@ Partial Class Dialog1
     Friend WithEvents Label2 As Label
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
 End Class

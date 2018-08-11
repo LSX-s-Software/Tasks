@@ -422,4 +422,13 @@ Public Class Form1
             ListView1.SelectedItems(0).BeginEdit()
         End If
     End Sub
+
+    Private Sub ListView1_KeyDown(sender As Object, e As KeyEventArgs) Handles ListView1.KeyDown
+        If (e.KeyCode = Keys.Delete) AndAlso (ListView1.Items.Count > 0) Then ListView1.SelectedItems(0).Remove()
+        If (e.KeyCode = Keys.F2) AndAlso (ListView1.Items.Count > 0) Then ListView1.SelectedItems(0).BeginEdit()
+    End Sub
+
+    Private Sub ListView2_KeyDown(sender As Object, e As KeyEventArgs) Handles ListView2.KeyDown
+        If (e.KeyCode = Keys.Delete) AndAlso (ListView2.Items.Count > 0) Then ListView2.SelectedItems(0).Remove()
+    End Sub
 End Class
