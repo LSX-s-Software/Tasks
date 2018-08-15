@@ -371,8 +371,7 @@ Partial Class Settings
         '
         'HelpProvider1
         '
-        Me.HelpProvider1.HelpNamespace = "C:\Users\admin\Documents\我的文档\VB.NET程序\Tasks\Tasks\bin\Debug\帮助文件\chm\Tasks帮助.chm" &
-    ""
+        Me.HelpProvider1.HelpNamespace = "C:\Users\admin\Documents\我的文档\VB.NET程序\Tasks\Tasks\帮助文件\chm\Tasks帮助.chm"
         '
         'Settings
         '

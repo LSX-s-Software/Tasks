@@ -139,9 +139,6 @@
   <data name="背景1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\icon\背景1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tasks帮助" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\帮助文件\chm\Tasks帮助.chm;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Trash1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\icon\Trash1.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -186,5 +183,8 @@
   </data>
   <data name="教程7" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\icon\教程7.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tasks帮助" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\帮助文件\chm\Tasks帮助.chm;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
