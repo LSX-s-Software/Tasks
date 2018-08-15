@@ -8,8 +8,8 @@
         End If
         ProgressBar1.Value = 0
         Label1.Text = "加载主题"
-        Dim path As Drawing2D.GraphicsPath = Dialog1.RoundedRectPath(ClientRectangle, 30)
-        Region = New Region(path)
+        Region = New Region(FX.RoundedRectPath(ClientRectangle, 20)) '圆角
+        FX.SetClassLong(Handle, FX.GCL_STYLE, FX.GetClassLong(Handle, FX.GCL_STYLE) Or FX.CS_DROPSHADOW) '阴影
         BackColor = My.Settings.ThemeColor
         ForeColor = My.Settings.TForeColor
         Label1.BackColor = Color.Transparent

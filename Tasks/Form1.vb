@@ -136,45 +136,6 @@ Public Class Form1
                 Else
                     reminded1 = reminded.Concat({ListView1.Items(i)}).ToArray
                 End If
-                'ElseIf (t2 / (t1 + t2) * 100 >= My.Settings.WarningLevel) AndAlso Find(ListView1.Items(i), 4) = -1 Then
-                '    Form2.Show() '打开提醒窗体
-                '    Form2.Label1.Text = "您的任务" & ChrW(13) & ChrW(13) & "剩余时间已不到" & My.Settings.WarningLevel & "%"
-                '    Form2.Label2.Text = ListView1.Items(i).Text
-                '    'If RemindedWarning Is Nothing Then
-                '    '    RemindedWarning = New ListViewItem() {ListView1.Items(i)}
-                '    'Else
-                '    '    RemindedWarning = RemindedWarning.Concat({ListView1.Items(i)}).ToArray
-                '    'End If
-                '    Enabled = False
-                '    Timer1.Enabled = False
-                '    Timer3.Enabled = False
-                '    Exit Sub
-                'ElseIf (t2 / (t1 + t2) * 100 >= My.Settings.NoticeLevel) AndAlso Find(ListView1.Items(i), 3) = -1 Then
-                '    Form2.Show() '打开提醒窗体
-                '    Form2.Label1.Text = "您的任务" & ChrW(13) & ChrW(13) & "剩余时间已不到" & My.Settings.NoticeLevel & "%"
-                '    Form2.Label2.Text = ListView1.Items(i).Text
-                '    'If RemindedNotice Is Nothing Then
-                '    '    RemindedNotice = New ListViewItem() {ListView1.Items(i)}
-                '    'Else
-                '    '    RemindedNotice = RemindedNotice.Concat({ListView1.Items(i)}).ToArray
-                '    'End If
-                '    Enabled = False
-                '    Timer1.Enabled = False
-                '    Timer3.Enabled = False
-                '    Exit Sub
-                'ElseIf (t2 / (t1 + t2) * 100 >= 50) AndAlso Find(ListView1.Items(i), 2) = -1 Then
-                '    Form2.Show() '打开提醒窗体
-                '    Form2.Label1.Text = "您的任务" & ChrW(13) & ChrW(13) & "剩余时间已不到一半"
-                '    Form2.Label2.Text = ListView1.Items(i).Text
-                '    'If Reminded50 Is Nothing Then
-                '    '    Reminded50 = New ListViewItem() {ListView1.Items(i)}
-                '    'Else
-                '    '    Reminded50 = Reminded50.Concat({ListView1.Items(i)}).ToArray
-                '    'End If
-                '    Enabled = False
-                '    Timer1.Enabled = False
-                '    Timer3.Enabled = False
-                '    Exit Sub
             End If
         Next
         '------------------------------------------
@@ -244,27 +205,6 @@ Public Class Form1
                         Return i
                     End If
                 Next
-                'Case 2
-                '    If Reminded50 Is Nothing Then Return -1
-                '    For i = 0 To Reminded50.Count - 1
-                '        If Reminded50(i) Is item Then
-                '            Return i
-                '        End If
-                '    Next
-                'Case 3
-                '    If RemindedNotice Is Nothing Then Return -1
-                '    For i = 0 To RemindedNotice.Count - 1
-                '        If RemindedNotice(i) Is item Then
-                '            Return i
-                '        End If
-                '    Next
-                'Case 4
-                '    If RemindedWarning Is Nothing Then Return -1
-                '    For i = 0 To RemindedWarning.Count - 1
-                '        If RemindedWarning(i) Is item Then
-                '            Return i
-                '        End If
-                '    Next
         End Select
     End Function
 
@@ -542,8 +482,17 @@ Public Class Form1
                     My.Settings.RunWhenSysStart = True
                 End If
             End If
-            Application.Exit()
+            If (ListView1.Items.Count + ListView2.Items.Count = 0) AndAlso My.Settings.RunWhenSysStart Then
+                r = MsgBox("SmartSense发现您没有未完成的任务或提醒事项" & vbCrLf & "是否需要关闭开机启动？", MsgBoxStyle.YesNo)
+                If r = MsgBoxResult.Yes Then
+                    Dim Reg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Run", True)
+                    Reg.DeleteValue(Application.ProductName) '删除注册表键
+                    Reg.Close()
+                    My.Settings.RunWhenSysStart = False
+                End If
             End If
+            Application.Exit()
+        End If
     End Sub
 
     Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.DoubleClick

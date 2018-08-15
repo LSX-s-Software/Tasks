@@ -40,27 +40,12 @@
         Button_Next.Enabled = False
         steps = 1
         DateTimePicker1.CustomFormat = "yyyy/MM/dd HH:mm:ss"
-        Dim path As Drawing2D.GraphicsPath = RoundedRectPath(ClientRectangle, 20)
-        Region = New Region(path)
+        Region = New Region(FX.RoundedRectPath(ClientRectangle, 20)) '圆角
+        FX.SetClassLong(Handle, FX.GCL_STYLE, FX.GetClassLong(Handle, FX.GCL_STYLE) Or FX.CS_DROPSHADOW) '阴影
         BackColor = My.Settings.ThemeColor
         ForeColor = My.Settings.TForeColor
         SSSource = My.Resources.SmartSense.Split("|")
     End Sub
-
-    Public Shared Function RoundedRectPath(ByVal Rectangle As Rectangle, ByVal r As Integer) As Drawing2D.GraphicsPath
-        Rectangle.Offset(-1, -1)
-        Dim RoundRect As New Rectangle(Rectangle.Location, New Size(r - 1, r - 1))
-        Dim path As New Drawing2D.GraphicsPath
-        path.AddArc(RoundRect, 180, 90)
-        RoundRect.X = Rectangle.Right - r
-        path.AddArc(RoundRect, 270, 90)
-        RoundRect.Y = Rectangle.Bottom - r
-        path.AddArc(RoundRect, 0, 90)
-        RoundRect.X = Rectangle.Left
-        path.AddArc(RoundRect, 90, 90)
-        path.CloseFigure()
-        Return path
-    End Function
 
     Private Sub Dialog1_MouseEnter(sender As Object, e As EventArgs) Handles Me.MouseEnter
         If Label1.Top > 140 Then

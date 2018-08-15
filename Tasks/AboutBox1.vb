@@ -15,8 +15,8 @@
         LabelCopyright.Text = My.Application.Info.Copyright
         LabelCompanyName.Text = My.Application.Info.CompanyName
         TextBoxDescription.Text = My.Application.Info.Description
-        Dim path As Drawing2D.GraphicsPath = Dialog1.RoundedRectPath(ClientRectangle, 20)
-        Region = New Region(path)
+        Region = New Region(FX.RoundedRectPath(ClientRectangle, 20)) '圆角
+        FX.SetClassLong(Handle, FX.GCL_STYLE, FX.GetClassLong(Handle, FX.GCL_STYLE) Or FX.CS_DROPSHADOW) '阴影
     End Sub
 
     Private Sub OKButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles OKButton.Click

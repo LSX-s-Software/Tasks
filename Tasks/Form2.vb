@@ -2,8 +2,8 @@
     Public Declare Auto Function PlaySound Lib "winmm.dll" (ByVal lpszSoundName As String, ByVal hModule As Integer, ByVal dwFlags As Integer) As Integer
     Dim speed As Byte
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Dim path As Drawing2D.GraphicsPath = Dialog1.RoundedRectPath(ClientRectangle, 20)
-        Region = New Region(path)
+        Region = New Region(FX.RoundedRectPath(ClientRectangle, 20)) '圆角
+        FX.SetClassLong(Handle, FX.GCL_STYLE, FX.GetClassLong(Handle, FX.GCL_STYLE) Or FX.CS_DROPSHADOW) '阴影
         Dim loc As Point
         loc.X = Screen.PrimaryScreen.WorkingArea.Width - Width - 10
         loc.Y = Screen.PrimaryScreen.WorkingArea.Height - Height - 40

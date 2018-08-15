@@ -14,8 +14,8 @@
         BackColor = My.Settings.ThemeColor
         ForeColor = My.Settings.TForeColor
         Show()
-        Dim path As Drawing2D.GraphicsPath = Dialog1.RoundedRectPath(ClientRectangle, 20)
-        Region = New Region(path)
+        Region = New Region(FX.RoundedRectPath(ClientRectangle, 20)) '圆角
+        FX.SetClassLong(Handle, FX.GCL_STYLE, FX.GetClassLong(Handle, FX.GCL_STYLE) Or FX.CS_DROPSHADOW) '阴影
         With Form1
             If Form1.SelectedView Is .ListView1 Then
                 Label1.Text = "更改您的任务内容"
