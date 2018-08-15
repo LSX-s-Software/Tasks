@@ -32,6 +32,7 @@ Partial Class Dialog1
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -41,12 +42,14 @@ Partial Class Dialog1
         Me.Button_Next = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.HelpProvider1 = New System.Windows.Forms.HelpProvider()
+        Me.Help_Button = New System.Windows.Forms.PictureBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
+        CType(Me.Help_Button, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'OK_Button
@@ -98,8 +101,10 @@ Partial Class Dialog1
         '
         Me.GroupBox1.Controls.Add(Me.RadioButton2)
         Me.GroupBox1.Controls.Add(Me.RadioButton1)
+        Me.HelpProvider1.SetHelpString(Me.GroupBox1, "任务可以设置截止时间，距离截止的时间可以通过进度条清楚地知道；提醒事项可以设置提醒时间，但不会显示进度条")
         Me.GroupBox1.Location = New System.Drawing.Point(211, 219)
         Me.GroupBox1.Name = "GroupBox1"
+        Me.HelpProvider1.SetShowHelp(Me.GroupBox1, True)
         Me.GroupBox1.Size = New System.Drawing.Size(208, 63)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
@@ -138,10 +143,22 @@ Partial Class Dialog1
         Me.GroupBox2.Controls.Add(Me.DateTimePicker1)
         Me.GroupBox2.Location = New System.Drawing.Point(211, 219)
         Me.GroupBox2.Name = "GroupBox2"
+        Me.HelpProvider1.SetShowHelp(Me.GroupBox2, False)
         Me.GroupBox2.Size = New System.Drawing.Size(208, 104)
         Me.GroupBox2.TabIndex = 6
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "截止时间是"
+        '
+        'Label4
+        '
+        Me.Label4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label4.Location = New System.Drawing.Point(6, 103)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(196, 17)
+        Me.Label4.TabIndex = 4
+        Me.Label4.Text = "（来自SmartSense建议）"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'ComboBox1
         '
@@ -237,16 +254,25 @@ Partial Class Dialog1
         Me.TextBox2.TabIndex = 0
         Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'Label4
+        'HelpProvider1
         '
-        Me.Label4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label4.Location = New System.Drawing.Point(6, 103)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(196, 17)
-        Me.Label4.TabIndex = 4
-        Me.Label4.Text = "（来自SmartSense建议）"
-        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.HelpProvider1.HelpNamespace = "C:\Users\admin\Documents\我的文档\VB.NET程序\Tasks\Tasks\bin\Debug\帮助文件\chm\Tasks帮助.chm" &
+    ""
+        '
+        'Help_Button
+        '
+        Me.Help_Button.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Help_Button.BackgroundImage = Global.Tasks.My.Resources.Resources.help
+        Me.Help_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Help_Button.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.HelpProvider1.SetHelpKeyword(Me.Help_Button, "3")
+        Me.HelpProvider1.SetHelpNavigator(Me.Help_Button, System.Windows.Forms.HelpNavigator.TopicId)
+        Me.Help_Button.Location = New System.Drawing.Point(10, 359)
+        Me.Help_Button.Name = "Help_Button"
+        Me.HelpProvider1.SetShowHelp(Me.Help_Button, True)
+        Me.Help_Button.Size = New System.Drawing.Size(25, 25)
+        Me.Help_Button.TabIndex = 9
+        Me.Help_Button.TabStop = False
         '
         'Dialog1
         '
@@ -255,6 +281,7 @@ Partial Class Dialog1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
         Me.ClientSize = New System.Drawing.Size(630, 394)
+        Me.Controls.Add(Me.Help_Button)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox4)
@@ -266,10 +293,13 @@ Partial Class Dialog1
         Me.Controls.Add(Me.OK_Button)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.HelpProvider1.SetHelpKeyword(Me, "3")
+        Me.HelpProvider1.SetHelpNavigator(Me, System.Windows.Forms.HelpNavigator.TopicId)
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Dialog1"
+        Me.HelpProvider1.SetShowHelp(Me, True)
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "添加"
@@ -281,6 +311,7 @@ Partial Class Dialog1
         Me.GroupBox3.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
+        CType(Me.Help_Button, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -303,4 +334,6 @@ Partial Class Dialog1
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
+    Friend WithEvents HelpProvider1 As HelpProvider
+    Friend WithEvents Help_Button As PictureBox
 End Class

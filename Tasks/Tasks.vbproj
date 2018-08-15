@@ -125,6 +125,12 @@
     <Compile Include="Form2.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form3.Designer.vb">
+      <DependentUpon>Form3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form3.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -172,6 +178,9 @@
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form3.resx">
+      <DependentUpon>Form3.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -186,6 +195,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Debug\帮助文件\chm\Tasks帮助.chm" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -196,7 +206,9 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="bin\Debug\icon\Trash.ico" />
@@ -217,6 +229,17 @@
     <None Include="bin\Debug\icon\图标_256.png" />
     <None Include="bin\Debug\icon\背景1.jpg" />
     <None Include="bin\Debug\icon\提醒.png" />
+    <None Include="bin\Debug\icon\Next.png" />
+    <None Include="bin\Debug\icon\Previous.png" />
+    <None Include="bin\Debug\icon\教程1.jpg" />
+    <None Include="bin\Debug\icon\教程2.jpg" />
+    <None Include="bin\Debug\icon\教程3.jpg" />
+    <None Include="bin\Debug\icon\help.png" />
+    <None Include="bin\Debug\icon\help_Pressed.png" />
+    <None Include="bin\Debug\icon\教程4.jpg" />
+    <None Include="bin\Debug\icon\教程5.jpg" />
+    <None Include="bin\Debug\icon\教程6.jpg" />
+    <None Include="bin\Debug\icon\教程7.jpg" />
     <Content Include="项目1.ico" />
   </ItemGroup>
   <ItemGroup>

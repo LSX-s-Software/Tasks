@@ -49,6 +49,7 @@ Partial Class Settings
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.Button_About = New System.Windows.Forms.Button()
         Me.Button_Help = New System.Windows.Forms.Button()
+        Me.HelpProvider1 = New System.Windows.Forms.HelpProvider()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.TrackBar2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -85,6 +86,7 @@ Partial Class Settings
         Me.Cancel_Button.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Cancel_Button.Font = New System.Drawing.Font("微软雅黑", 12.0!)
         Me.Cancel_Button.Location = New System.Drawing.Point(136, 4)
         Me.Cancel_Button.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
@@ -285,7 +287,7 @@ Partial Class Settings
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(126, 42)
         Me.Label6.TabIndex = 1
-        Me.Label6.Text = "任务第一次提醒后每间隔以上时间会重新提醒"
+        Me.Label6.Text = "第一次提醒后每间隔以上时间会重新提醒"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'ComboBox1
@@ -357,17 +359,26 @@ Partial Class Settings
         '
         Me.Button_Help.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.HelpProvider1.SetHelpKeyword(Me.Button_Help, "1")
+        Me.HelpProvider1.SetHelpNavigator(Me.Button_Help, System.Windows.Forms.HelpNavigator.TopicId)
         Me.Button_Help.Location = New System.Drawing.Point(6, 22)
         Me.Button_Help.Name = "Button_Help"
+        Me.HelpProvider1.SetShowHelp(Me.Button_Help, True)
         Me.Button_Help.Size = New System.Drawing.Size(179, 23)
         Me.Button_Help.TabIndex = 0
         Me.Button_Help.Text = "查看帮助文件"
         Me.Button_Help.UseVisualStyleBackColor = True
         '
+        'HelpProvider1
+        '
+        Me.HelpProvider1.HelpNamespace = "C:\Users\admin\Documents\我的文档\VB.NET程序\Tasks\Tasks\bin\Debug\帮助文件\chm\Tasks帮助.chm" &
+    ""
+        '
         'Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.Cancel_Button
         Me.ClientSize = New System.Drawing.Size(654, 377)
         Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
@@ -378,8 +389,11 @@ Partial Class Settings
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.HelpProvider1.SetHelpKeyword(Me, "8")
+        Me.HelpProvider1.SetHelpNavigator(Me, System.Windows.Forms.HelpNavigator.TopicId)
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "Settings"
+        Me.HelpProvider1.SetShowHelp(Me, True)
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
@@ -428,4 +442,5 @@ Partial Class Settings
     Friend WithEvents GroupBox5 As GroupBox
     Friend WithEvents Button_About As Button
     Friend WithEvents Button_Help As Button
+    Friend WithEvents HelpProvider1 As HelpProvider
 End Class

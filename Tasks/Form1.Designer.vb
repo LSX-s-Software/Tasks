@@ -30,6 +30,9 @@ Partial Class Form1
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripTextBox2 = New System.Windows.Forms.ToolStripTextBox()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.新建ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.编辑ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.删除ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -47,6 +50,9 @@ Partial Class Form1
         Me.ToolStripMenuItem8 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripTextBox4 = New System.Windows.Forms.ToolStripTextBox()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem6 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem7 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
@@ -65,16 +71,16 @@ Partial Class Form1
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem6 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem7 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.新建ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.编辑ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.删除ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.Pre_Button = New System.Windows.Forms.Button()
+        Me.Next_Button = New System.Windows.Forms.Button()
+        Me.HelpProvider1 = New System.Windows.Forms.HelpProvider()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ContextMenuStrip2.SuspendLayout()
         Me.ContextMenuStrip3.SuspendLayout()
+        Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ContextMenuStrip1
@@ -111,6 +117,24 @@ Partial Class Form1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         resources.ApplyResources(Me.ToolStripSeparator1, "ToolStripSeparator1")
+        '
+        '新建ToolStripMenuItem
+        '
+        Me.新建ToolStripMenuItem.Image = Global.Tasks.My.Resources.Resources.add
+        Me.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem"
+        resources.ApplyResources(Me.新建ToolStripMenuItem, "新建ToolStripMenuItem")
+        '
+        '编辑ToolStripMenuItem
+        '
+        Me.编辑ToolStripMenuItem.Image = Global.Tasks.My.Resources.Resources.Edit
+        Me.编辑ToolStripMenuItem.Name = "编辑ToolStripMenuItem"
+        resources.ApplyResources(Me.编辑ToolStripMenuItem, "编辑ToolStripMenuItem")
+        '
+        '删除ToolStripMenuItem
+        '
+        Me.删除ToolStripMenuItem.Image = Global.Tasks.My.Resources.Resources.Trash1
+        Me.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem"
+        resources.ApplyResources(Me.删除ToolStripMenuItem, "删除ToolStripMenuItem")
         '
         'ImageList1
         '
@@ -207,6 +231,24 @@ Partial Class Form1
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
         resources.ApplyResources(Me.ToolStripSeparator2, "ToolStripSeparator2")
+        '
+        'ToolStripMenuItem5
+        '
+        Me.ToolStripMenuItem5.Image = Global.Tasks.My.Resources.Resources.add
+        Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
+        resources.ApplyResources(Me.ToolStripMenuItem5, "ToolStripMenuItem5")
+        '
+        'ToolStripMenuItem6
+        '
+        Me.ToolStripMenuItem6.Image = Global.Tasks.My.Resources.Resources.Edit
+        Me.ToolStripMenuItem6.Name = "ToolStripMenuItem6"
+        resources.ApplyResources(Me.ToolStripMenuItem6, "ToolStripMenuItem6")
+        '
+        'ToolStripMenuItem7
+        '
+        Me.ToolStripMenuItem7.Image = Global.Tasks.My.Resources.Resources.Trash1
+        Me.ToolStripMenuItem7.Name = "ToolStripMenuItem7"
+        resources.ApplyResources(Me.ToolStripMenuItem7, "ToolStripMenuItem7")
         '
         'Timer1
         '
@@ -321,46 +363,43 @@ Partial Class Form1
         '
         resources.ApplyResources(Me.ColumnHeader7, "ColumnHeader7")
         '
-        'ToolStripMenuItem5
+        'TableLayoutPanel1
         '
-        Me.ToolStripMenuItem5.Image = Global.Tasks.My.Resources.Resources.add
-        Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
-        resources.ApplyResources(Me.ToolStripMenuItem5, "ToolStripMenuItem5")
+        resources.ApplyResources(Me.TableLayoutPanel1, "TableLayoutPanel1")
+        Me.TableLayoutPanel1.Controls.Add(Me.Pre_Button, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.Next_Button, 2, 0)
+        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         '
-        'ToolStripMenuItem6
+        'Pre_Button
         '
-        Me.ToolStripMenuItem6.Image = Global.Tasks.My.Resources.Resources.Edit
-        Me.ToolStripMenuItem6.Name = "ToolStripMenuItem6"
-        resources.ApplyResources(Me.ToolStripMenuItem6, "ToolStripMenuItem6")
+        resources.ApplyResources(Me.Pre_Button, "Pre_Button")
+        Me.Pre_Button.BackgroundImage = Global.Tasks.My.Resources.Resources.Previous
+        Me.Pre_Button.Name = "Pre_Button"
+        Me.Pre_Button.UseVisualStyleBackColor = True
         '
-        'ToolStripMenuItem7
+        'Next_Button
         '
-        Me.ToolStripMenuItem7.Image = Global.Tasks.My.Resources.Resources.Trash1
-        Me.ToolStripMenuItem7.Name = "ToolStripMenuItem7"
-        resources.ApplyResources(Me.ToolStripMenuItem7, "ToolStripMenuItem7")
+        resources.ApplyResources(Me.Next_Button, "Next_Button")
+        Me.Next_Button.BackgroundImage = Global.Tasks.My.Resources.Resources.Nxt
+        Me.Next_Button.Name = "Next_Button"
+        Me.Next_Button.UseVisualStyleBackColor = True
         '
-        '新建ToolStripMenuItem
+        'HelpProvider1
         '
-        Me.新建ToolStripMenuItem.Image = Global.Tasks.My.Resources.Resources.add
-        Me.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem"
-        resources.ApplyResources(Me.新建ToolStripMenuItem, "新建ToolStripMenuItem")
+        resources.ApplyResources(Me.HelpProvider1, "HelpProvider1")
         '
-        '编辑ToolStripMenuItem
+        'Button1
         '
-        Me.编辑ToolStripMenuItem.Image = Global.Tasks.My.Resources.Resources.Edit
-        Me.编辑ToolStripMenuItem.Name = "编辑ToolStripMenuItem"
-        resources.ApplyResources(Me.编辑ToolStripMenuItem, "编辑ToolStripMenuItem")
-        '
-        '删除ToolStripMenuItem
-        '
-        Me.删除ToolStripMenuItem.Image = Global.Tasks.My.Resources.Resources.Trash1
-        Me.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem"
-        resources.ApplyResources(Me.删除ToolStripMenuItem, "删除ToolStripMenuItem")
+        resources.ApplyResources(Me.Button1, "Button1")
+        Me.Button1.Name = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         resources.ApplyResources(Me, "$this")
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.Button_Setting)
         Me.Controls.Add(Me.Button_Del)
         Me.Controls.Add(Me.Button_Edit)
@@ -370,8 +409,12 @@ Partial Class Form1
         Me.Controls.Add(Me.ListView1)
         Me.Controls.Add(Me.ListView2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.HelpButton = True
+        Me.HelpProvider1.SetHelpKeyword(Me, resources.GetString("$this.HelpKeyword"))
+        Me.HelpProvider1.SetHelpNavigator(Me, CType(resources.GetObject("$this.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         Me.MaximizeBox = False
         Me.Name = "Form1"
+        Me.HelpProvider1.SetShowHelp(Me, CType(resources.GetObject("$this.ShowHelp"), Boolean))
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ContextMenuStrip1.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
@@ -379,6 +422,7 @@ Partial Class Form1
         Me.ContextMenuStrip2.ResumeLayout(False)
         Me.ContextMenuStrip2.PerformLayout()
         Me.ContextMenuStrip3.ResumeLayout(False)
+        Me.TableLayoutPanel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -431,4 +475,9 @@ Partial Class Form1
     Friend WithEvents ColumnHeader10 As ColumnHeader
     Friend WithEvents ToolStripMenuItem8 As ToolStripMenuItem
     Friend WithEvents ToolStripTextBox4 As ToolStripTextBox
+    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents Pre_Button As Button
+    Friend WithEvents Next_Button As Button
+    Friend WithEvents HelpProvider1 As HelpProvider
+    Friend WithEvents Button1 As Button
 End Class

@@ -2,9 +2,11 @@
 Imports Microsoft.VisualBasic.FileIO.FileSystem
 
 Public Class Form1
+    Public PicList() As Image
+    Dim PicIndex As Integer = 0
     Public SelectedView As ListView
-    Public reminded As ListViewItem()
-    Public RemindInt, t As Long
+    Public reminded， reminded1 As ListViewItem()
+    Public RemindInt, t, t1 As Long
     Private Sub StatusStrip1_MouseEnter(sender As Object, e As EventArgs) Handles StatusStrip1.MouseEnter
         Cursor = Cursors.Hand
     End Sub
@@ -39,6 +41,11 @@ Public Class Form1
                 itm = ListView2.Items.Add(Dialog1.DateTimePicker1.Value)
                 itm.SubItems.AddRange({Dialog1.TextBox1.Text, Dialog1.TextBox2.Text, Now, Dialog1.ComboBox1.Text, CalculateNextDate(Dialog1.DateTimePicker1.Value, Dialog1.ComboBox1.Text)})
             End If
+            If My.Settings.FirstRun Then
+                TableLayoutPanel1.Visible = False
+                StatusStrip1.Visible = True
+                ListView1.BackgroundImage = PicList(3)
+            End If
         End If
     End Sub
 
@@ -58,6 +65,7 @@ Public Class Form1
     Private Sub Button_Del_Click(sender As Object, e As EventArgs) Handles Button_Del.Click
         On Error Resume Next
         SelectedView.SelectedItems(0).Remove()
+        If ListView1.Items.Count = 0 Then ListView1.BackgroundImage = My.Resources.背景1
     End Sub
 
     Private Sub ToolStripStatusLabel2_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel2.Click
@@ -82,14 +90,14 @@ Public Class Form1
         Dim i As Integer
         Dim t1, t2 As Int64
         For i = 0 To ListView1.Items.Count - 1
-            t1 = System.DateTime.Parse(ListView1.Items(i).SubItems(1).Text).Subtract(DateTime.Now).TotalMilliseconds '现在时间到截止时间的长度
-            t2 = System.DateTime.Parse(DateTime.Now).Subtract(ListView1.Items(i).SubItems(3).Text).TotalMilliseconds + 1 '从任务创建到现在的时间
+            t1 = Date.Parse(ListView1.Items(i).SubItems(1).Text).Subtract(Date.Now).TotalMilliseconds '现在时间到截止时间的长度
+            t2 = Date.Parse(Date.Now).Subtract(ListView1.Items(i).SubItems(3).Text).TotalMilliseconds + 1 '从任务创建到现在的时间
             If ((t1 + t2) > t2) And (t1 >= 0) Then
                 ListView1.Items(i).ImageIndex = Int(t2 / (t1 + t2) * 100)
             Else
                 ListView1.Items(i).ImageIndex = 99
             End If
-            If (t1 <= 0) AndAlso Find(ListView1.Items(i)) = -1 Then
+            If (t1 <= 0) AndAlso Find(ListView1.Items(i), 1) = -1 Then
                 Form2.Show() '打开提醒窗体
                 Form2.Label2.Text = ListView1.Items(i).Text
                 If reminded Is Nothing Then
@@ -101,13 +109,79 @@ Public Class Form1
                 Timer1.Enabled = False
                 Timer3.Enabled = False
                 Exit Sub
+            ElseIf (t2 / (t1 + t2) * 100 >= 50) And (t2 / (t1 + t2) * 100 < My.Settings.NoticeLevel) AndAlso Find(ListView1.Items(i), 2) = -1 Then
+                Form3.Show()
+                Form3.Label1.Text = "您的任务" & ChrW(13) & ChrW(13) & ChrW(13) & "剩余时间不到50%"
+                Form3.Label2.Text = ListView1.Items(i).Text
+                If reminded1 Is Nothing Then
+                    reminded1 = New ListViewItem() {ListView1.Items(i)}
+                Else
+                    reminded1 = reminded.Concat({ListView1.Items(i)}).ToArray
+                End If
+            ElseIf (t2 / (t1 + t2) * 100 >= My.Settings.NoticeLevel) And (t2 / (t1 + t2) * 100 < My.Settings.WarningLevel) AndAlso Find(ListView1.Items(i), 2) = -1 Then
+                Form3.Show()
+                Form3.Label1.Text = "您的任务" & ChrW(13) & ChrW(13) & ChrW(13) & "剩余时间不到" & My.Settings.NoticeLevel & "%"
+                Form3.Label2.Text = ListView1.Items(i).Text
+                If reminded1 Is Nothing Then
+                    reminded1 = New ListViewItem() {ListView1.Items(i)}
+                Else
+                    reminded1 = reminded.Concat({ListView1.Items(i)}).ToArray
+                End If
+            ElseIf (t2 / (t1 + t2) * 100 >= My.Settings.WarningLevel) And (t1 > 0) AndAlso Find(ListView1.Items(i), 2) = -1 Then
+                Form3.Show()
+                Form3.Label1.Text = "您的任务" & ChrW(13) & ChrW(13) & ChrW(13) & "剩余时间不到" & My.Settings.WarningLevel & "%"
+                Form3.Label2.Text = ListView1.Items(i).Text
+                If reminded1 Is Nothing Then
+                    reminded1 = New ListViewItem() {ListView1.Items(i)}
+                Else
+                    reminded1 = reminded.Concat({ListView1.Items(i)}).ToArray
+                End If
+                'ElseIf (t2 / (t1 + t2) * 100 >= My.Settings.WarningLevel) AndAlso Find(ListView1.Items(i), 4) = -1 Then
+                '    Form2.Show() '打开提醒窗体
+                '    Form2.Label1.Text = "您的任务" & ChrW(13) & ChrW(13) & "剩余时间已不到" & My.Settings.WarningLevel & "%"
+                '    Form2.Label2.Text = ListView1.Items(i).Text
+                '    'If RemindedWarning Is Nothing Then
+                '    '    RemindedWarning = New ListViewItem() {ListView1.Items(i)}
+                '    'Else
+                '    '    RemindedWarning = RemindedWarning.Concat({ListView1.Items(i)}).ToArray
+                '    'End If
+                '    Enabled = False
+                '    Timer1.Enabled = False
+                '    Timer3.Enabled = False
+                '    Exit Sub
+                'ElseIf (t2 / (t1 + t2) * 100 >= My.Settings.NoticeLevel) AndAlso Find(ListView1.Items(i), 3) = -1 Then
+                '    Form2.Show() '打开提醒窗体
+                '    Form2.Label1.Text = "您的任务" & ChrW(13) & ChrW(13) & "剩余时间已不到" & My.Settings.NoticeLevel & "%"
+                '    Form2.Label2.Text = ListView1.Items(i).Text
+                '    'If RemindedNotice Is Nothing Then
+                '    '    RemindedNotice = New ListViewItem() {ListView1.Items(i)}
+                '    'Else
+                '    '    RemindedNotice = RemindedNotice.Concat({ListView1.Items(i)}).ToArray
+                '    'End If
+                '    Enabled = False
+                '    Timer1.Enabled = False
+                '    Timer3.Enabled = False
+                '    Exit Sub
+                'ElseIf (t2 / (t1 + t2) * 100 >= 50) AndAlso Find(ListView1.Items(i), 2) = -1 Then
+                '    Form2.Show() '打开提醒窗体
+                '    Form2.Label1.Text = "您的任务" & ChrW(13) & ChrW(13) & "剩余时间已不到一半"
+                '    Form2.Label2.Text = ListView1.Items(i).Text
+                '    'If Reminded50 Is Nothing Then
+                '    '    Reminded50 = New ListViewItem() {ListView1.Items(i)}
+                '    'Else
+                '    '    Reminded50 = Reminded50.Concat({ListView1.Items(i)}).ToArray
+                '    'End If
+                '    Enabled = False
+                '    Timer1.Enabled = False
+                '    Timer3.Enabled = False
+                '    Exit Sub
             End If
         Next
         '------------------------------------------
         For i = 0 To ListView2.Items.Count - 1
-            t1 = System.DateTime.Parse(ListView2.Items(i).Text).Subtract(DateTime.Now).TotalMilliseconds '现在时间到截止时间的长度
-            t2 = System.DateTime.Parse(DateTime.Now).Subtract(ListView2.Items(i).SubItems(3).Text).TotalMilliseconds + 1 '从任务创建到现在的时间
-            If (t1 <= 0) AndAlso Find(ListView2.Items(i)) = -1 Then
+            t1 = Date.Parse(ListView2.Items(i).Text).Subtract(Date.Now).TotalMilliseconds '现在时间到截止时间的长度
+            t2 = Date.Parse(Date.Now).Subtract(ListView2.Items(i).SubItems(3).Text).TotalMilliseconds + 1 '从任务创建到现在的时间
+            If (t1 <= 0) AndAlso Find(ListView2.Items(i), 1) = -1 Then
                 If (ListView2.Items(i).SubItems(4).Text <> "从不") AndAlso ItemExisted(ListView2, ListView2.Items(i).SubItems(1).Text) Then
                     Dim itm = ListView2.Items(i).Clone()
                     ListView2.Items.Add(itm)
@@ -131,7 +205,7 @@ Public Class Form1
         Next
     End Sub
 
-    Private Function CalculateNextDate(origin As Date, 方式 As String) As Date
+    Public Function CalculateNextDate(origin As Date, 方式 As String) As Date
         Select Case 方式
             Case "从不"
                 Return origin
@@ -152,22 +226,52 @@ Public Class Form1
         End Select
     End Function
 
-    Private Function Find(ByVal item As ListViewItem) As Integer
+    Private Function Find(ByVal item As ListViewItem, listnum As Integer) As Integer
         Dim i As Integer
         Find = -1
-        If reminded Is Nothing Then Return -1
-        For i = 0 To reminded.Count - 1
-            If reminded(i) Is item Then
-                Return i
-            End If
-        Next
+        Select Case listnum
+            Case 1
+                If reminded Is Nothing Then Return -1
+                For i = 0 To reminded.Count - 1
+                    If reminded(i) Is item Then
+                        Return i
+                    End If
+                Next
+            Case 2
+                If reminded1 Is Nothing Then Return -1
+                For i = 0 To reminded1.Count - 1
+                    If reminded1(i) Is item Then
+                        Return i
+                    End If
+                Next
+                'Case 2
+                '    If Reminded50 Is Nothing Then Return -1
+                '    For i = 0 To Reminded50.Count - 1
+                '        If Reminded50(i) Is item Then
+                '            Return i
+                '        End If
+                '    Next
+                'Case 3
+                '    If RemindedNotice Is Nothing Then Return -1
+                '    For i = 0 To RemindedNotice.Count - 1
+                '        If RemindedNotice(i) Is item Then
+                '            Return i
+                '        End If
+                '    Next
+                'Case 4
+                '    If RemindedWarning Is Nothing Then Return -1
+                '    For i = 0 To RemindedWarning.Count - 1
+                '        If RemindedWarning(i) Is item Then
+                '            Return i
+                '        End If
+                '    Next
+        End Select
     End Function
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim a As New Drawing2D.GraphicsPath
         a.AddEllipse(2, 2, 35, 35)
         Button_Add.Region = New Region(a)
-        Button_Add.BringToFront()
         a = New Drawing2D.GraphicsPath
         a.AddEllipse(2, 2, 25, 25)
         Button_Del.Region = New Region(a)
@@ -181,6 +285,20 @@ Public Class Form1
         End If
         DrawProgressBar()
         If ListView1.Items.Count > 0 Then ListView1.BackgroundImage = Nothing
+        If My.Settings.FirstRun Then
+            Demo()
+        Else
+            PicList = Nothing
+        End If
+    End Sub
+
+    Private Sub Demo()
+        StatusStrip1.Visible = False
+        With TableLayoutPanel1
+            .Dock = DockStyle.Fill
+            .Visible = True
+            .BackgroundImage = PicList(0)
+        End With
     End Sub
 
     Private Sub DrawProgressBar()
@@ -190,7 +308,7 @@ Public Class Form1
         Dim border As Pen = New Pen(ThemeColor, 2)
         Dim b1 As SolidBrush = New SolidBrush(ThemeColor)
         Dim b As SolidBrush = New SolidBrush(Color.White)
-        Dim i, c As Integer
+        Dim i As Integer
         Dim NoticeLevel As Integer = My.Settings.NoticeLevel
         Dim WarningLevel As Integer = My.Settings.WarningLevel
         ImageList1.ImageSize = bmp.Size
@@ -205,14 +323,9 @@ Public Class Form1
                 border = New Pen(Color.FromArgb(255, 0, 0), 2)
                 b1 = New SolidBrush(Color.FromArgb(255, 0, 0))
             End If
-            'bmp = New Bitmap(10, 25)
             bmp = New Bitmap(32, 32)
             gra = Graphics.FromImage(bmp)
             gra.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
-            'gra.FillRectangle(b, 0, 0, 10, 25)
-            'gra.DrawRectangle(border, 1, 1, 8, 23)
-            'c = Int(i / 4) - 1
-            'gra.FillRectangle(b1, 1, 1, 8, c)
             gra.FillRectangle(b, 0, 0, bmp.Size.Width, bmp.Size.Height)
             gra.DrawEllipse(border, 0, 0, bmp.Size.Width - border.Width, bmp.Size.Height - border.Width)
             Dim rect As New Rectangle(2, 2, bmp.Size.Width - border.Width * 2 - 2, bmp.Size.Height - border.Width * 2 - 2)
@@ -274,7 +387,7 @@ Public Class Form1
                 SelectedView.SelectedItems(0).SubItems(5).Text = CalculateNextDate(Dialog2.DateTimePicker1.Value, Dialog2.ComboBox1.Text)
             End If
         End If
-        Dim index As Integer = Find(SelectedView.SelectedItems(0))
+        Dim index As Integer = Find(SelectedView.SelectedItems(0), 1)
         If index > -1 Then
             For i = index To reminded.Count - 2
                 reminded(i) = reminded(i + 1)
@@ -294,6 +407,7 @@ Public Class Form1
     Private Sub 删除ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 删除ToolStripMenuItem.Click
         On Error Resume Next
         SelectedView.SelectedItems(0).Remove()
+        If ListView1.Items.Count = 0 Then ListView1.BackgroundImage = My.Resources.背景1
     End Sub
 
     Private Sub ContextMenuStrip1_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip1.Opening
@@ -354,6 +468,12 @@ Public Class Form1
         Else
             t = t + 10
         End If
+        If t1 >= 600 Then
+            reminded1 = {}
+            t1 = 0
+        Else
+            t1 = t1 + 10
+        End If
     End Sub
 
     Private Sub 打开主窗体ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 打开主窗体ToolStripMenuItem.Click
@@ -402,7 +522,7 @@ Public Class Form1
     Private Sub Form1_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         Dim r As MsgBoxResult = MsgBoxResult.No
         If (sender Is Me) AndAlso (ListView1.Items.Count + ListView2.Items.Count > 0) Then
-            r = MsgBox("是否需要隐藏至托盘？", MsgBoxStyle.YesNo)
+            r = MsgBox("SmartSense发现您有未完成的任务或提醒事项" & vbCrLf & "是否需要隐藏至托盘？", MsgBoxStyle.YesNo)
         End If
         If r = MsgBoxResult.Yes Then
             e.Cancel = True
@@ -413,8 +533,17 @@ Public Class Form1
             NotifyIcon1.ShowBalloonTip(3000)
         Else
             Save()
+            If (ListView1.Items.Count + ListView2.Items.Count > 0) AndAlso Not My.Settings.RunWhenSysStart Then
+                r = MsgBox("SmartSense发现您有未完成的任务或提醒事项" & vbCrLf & "是否需要开机启动？", MsgBoxStyle.YesNo)
+                If r = MsgBoxResult.Yes Then
+                    Dim Reg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Run", True)
+                    Reg.SetValue(Application.ProductName, Application.StartupPath & "\" & Application.ProductName & ".exe" & " -h") '写入注册表
+                    Reg.Close()
+                    My.Settings.RunWhenSysStart = True
+                End If
+            End If
             Application.Exit()
-        End If
+            End If
     End Sub
 
     Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.DoubleClick
@@ -424,8 +553,35 @@ Public Class Form1
     End Sub
 
     Private Sub ListView1_KeyDown(sender As Object, e As KeyEventArgs) Handles ListView1.KeyDown
-        If (e.KeyCode = Keys.Delete) AndAlso (ListView1.Items.Count > 0) Then ListView1.SelectedItems(0).Remove()
+        If (e.KeyCode = Keys.Delete) AndAlso (ListView1.Items.Count > 0) Then
+            ListView1.SelectedItems(0).Remove()
+            If ListView1.Items.Count = 0 Then ListView1.BackgroundImage = My.Resources.背景1
+        End If
         If (e.KeyCode = Keys.F2) AndAlso (ListView1.Items.Count > 0) Then ListView1.SelectedItems(0).BeginEdit()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        ListView2.BackgroundImage = Nothing
+        My.Settings.FirstRun = False
+        Button1.Visible = False
+    End Sub
+
+    Private Sub Next_Button_Click(sender As Object, e As EventArgs) Handles Next_Button.Click
+        Select Case PicIndex
+            Case 1
+                Button_Add.BringToFront()
+                Next_Button.Visible = False
+        End Select
+        Pre_Button.Visible = True
+        PicIndex = PicIndex + 1
+        TableLayoutPanel1.BackgroundImage = PicList(PicIndex)
+    End Sub
+
+    Private Sub Pre_Button_Click(sender As Object, e As EventArgs) Handles Pre_Button.Click
+        PicIndex = PicIndex - 1
+        TableLayoutPanel1.BackgroundImage = PicList(PicIndex)
+        Next_Button.Visible = True
+        If PicIndex = 0 Then Pre_Button.Visible = False
     End Sub
 
     Private Sub ListView2_KeyDown(sender As Object, e As KeyEventArgs) Handles ListView2.KeyDown

@@ -1,4 +1,5 @@
 ﻿Public Class Form2
+    Public Declare Auto Function PlaySound Lib "winmm.dll" (ByVal lpszSoundName As String, ByVal hModule As Integer, ByVal dwFlags As Integer) As Integer
     Dim speed As Byte
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim path As Drawing2D.GraphicsPath = Dialog1.RoundedRectPath(ClientRectangle, 20)
@@ -11,6 +12,7 @@
         Label1.ForeColor = My.Settings.TForeColor
         Label2.ForeColor = My.Settings.TForeColor
         Button1.BackColor = My.Settings.ThemeColor
+        PlaySound(Environment.GetFolderPath(Environment.SpecialFolder.Windows) & "\media\Windows Notify Calendar.wav", &H10000, &H1)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -18,6 +20,17 @@
         Form1.Timer1.Enabled = True
         Form1.Timer3.Enabled = True
         AnimateOut()
+        If My.Settings.FirstRun Then
+            If Label1.Text.Contains("任务") Then
+                Form1.ListView1.BackgroundImage = Form1.PicList(4)
+                Form1.ListView2.BackgroundImage = Form1.PicList(5)
+            Else
+                Form1.ListView1.BackgroundImage = Nothing
+                Form1.ListView2.BackgroundImage = Form1.PicList(6)
+                Form1.Button1.Visible = True
+                Form1.Button1.BringToFront()
+            End If
+        End If
         Dispose()
     End Sub
 
@@ -27,14 +40,14 @@
                 Case < 50
                     speed = 1
                 Case > 100
-                    speed = 3
-                Case > 150
                     speed = 5
+                Case > 150
+                    speed = 10
                 Case > 170
                     speed = 1
             End Select
             Left = Left + speed
-            Threading.Thread.Sleep(1)
+            Threading.Thread.Sleep(2)
         Loop
     End Sub
 End Class

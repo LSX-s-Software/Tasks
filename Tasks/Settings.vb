@@ -109,6 +109,7 @@
         Dim Reg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Run", True)
         Reg.SetValue(Application.ProductName, Application.StartupPath & "\" & Application.ProductName & ".exe" & " -h") '写入注册表
         Reg.Close()
+        My.Settings.FirstRun = False
         Close()
     End Sub
 
@@ -130,5 +131,9 @@
 
     Private Sub Button_About_Click(sender As Object, e As EventArgs) Handles Button_About.Click
         AboutBox1.ShowDialog()
+    End Sub
+
+    Private Sub Button_Help_Click(sender As Object, e As EventArgs) Handles Button_Help.Click
+        SendKeys.Send("{F1}")
     End Sub
 End Class

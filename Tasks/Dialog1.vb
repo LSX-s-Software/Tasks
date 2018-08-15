@@ -24,12 +24,21 @@
         GroupBox3.Visible = False
         GroupBox4.Visible = False
         GroupBox2.Height = 104
-        TextBox1.Text = ""
-        TextBox2.Text = ""
+        If My.Settings.FirstRun Then
+            If RadioButton1.Checked Then
+                TextBox1.Text = "完成教程"
+                TextBox2.Text = "这是示例任务，无需修改"
+            Else
+                TextBox1.Text = "每日签到"
+                TextBox2.Text = "这是示例提醒事项，无需修改"
+            End If
+        Else
+            TextBox1.Text = ""
+            TextBox2.Text = ""
+        End If
         ComboBox1.SelectedItem = "从不"
         Button_Next.Enabled = False
         steps = 1
-        DateTimePicker1.Value = Now
         DateTimePicker1.CustomFormat = "yyyy/MM/dd HH:mm:ss"
         Dim path As Drawing2D.GraphicsPath = RoundedRectPath(ClientRectangle, 20)
         Region = New Region(path)
@@ -91,8 +100,12 @@
             GroupBox3.Visible = False
             GroupBox4.Visible = False
             GroupBox2.BringToFront()
-            DateTimePicker1.Value = DateAdd(DateInterval.Hour, 1, Now)
-            DateTimePicker1.Value = DateAdd(DateInterval.Second, -DateTimePicker1.Value.Second, DateTimePicker1.Value)
+            If My.Settings.FirstRun Then
+                DateTimePicker1.Value = DateAdd(DateInterval.Minute, 1, Now)
+            Else
+                DateTimePicker1.Value = DateAdd(DateInterval.Hour, 1, Now)
+                DateTimePicker1.Value = DateAdd(DateInterval.Second, -DateTimePicker1.Value.Second, DateTimePicker1.Value)
+            End If
             If RadioButton1.Checked = True Then
                 ComboBox1.Enabled = False
             Else
@@ -115,7 +128,11 @@
             GroupBox3.BringToFront()
             GroupBox4.BringToFront()
             GroupBox1.Visible = False
-            Button_Next.Enabled = False
+            If My.Settings.FirstRun Then
+                Button_Next.Enabled = True
+            Else
+                Button_Next.Enabled = False
+            End If
             steps = steps + 1
             TextBox1.Focus()
             Exit Sub
@@ -123,8 +140,6 @@
     End Sub
     '---------智能感知模块----------
     Private Function SmartSense(text As String) As String
-        'If text.Contains("生日") Then Return "每年"
-        'If text.Contains("工资") OrElse text.Contains("总结") OrElse text.Contains("租金") OrElse text.Contains("信用卡") OrElse text.Contains("银行卡") Then Return "每月"
         Dim i As UInteger = 0
         Do Until SSSource(i) = "每天END"
             If text.Contains(SSSource(i)) Then Return "每天"
@@ -195,6 +210,10 @@
         originXY = e.Location
     End Sub
 
+    Private Sub Help_Button_Click(sender As Object, e As EventArgs) Handles Help_Button.Click
+        SendKeys.Send("{F1}")
+    End Sub
+
     Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
         Dim dday, dhour, dmin, dsec As Integer
         dday = DateDiff(DateInterval.DayOfYear, Now, DateTimePicker1.Value)
@@ -206,5 +225,13 @@
         If dhour <> 0 Then Label2.Text = Label2.Text & dhour & "小时"
         If dmin <> 0 Then Label2.Text = Label2.Text & dmin & "分"
         Label2.Text = Label2.Text & dsec & "秒"
+    End Sub
+
+    Private Sub Help_Button_MouseDown(sender As Object, e As MouseEventArgs) Handles Help_Button.MouseDown
+        Help_Button.BackgroundImage = My.Resources.help_Pressed
+    End Sub
+
+    Private Sub Help_Button_MouseUp(sender As Object, e As MouseEventArgs) Handles Help_Button.MouseUp
+        Help_Button.BackgroundImage = My.Resources.help
     End Sub
 End Class
