@@ -228,7 +228,6 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="帮助文件\chm\Tasks帮助.chm" />
-    <None Include="Tasks_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="bin\Debug\icon\Trash.ico" />

@@ -18,4 +18,22 @@
         path.CloseFigure()
         Return path
     End Function
+
+    Public Shared Sub AnimateOut(obj As Object)
+        Dim speed As Byte
+        Do Until obj.Left() > Screen.PrimaryScreen.WorkingArea.Width
+            Select Case Screen.PrimaryScreen.WorkingArea.Width - obj.Left
+                Case < 50
+                    speed = 1
+                Case > 100
+                    speed = 5
+                Case > 150
+                    speed = 10
+                Case > 170
+                    speed = 1
+            End Select
+            obj.Left = obj.Left + speed
+            Threading.Thread.Sleep(2)
+        Loop
+    End Sub
 End Class

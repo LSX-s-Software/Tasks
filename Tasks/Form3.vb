@@ -1,6 +1,5 @@
 ﻿Public Class Form3
     Dim originXY As Point
-    Dim speed As Byte
 
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Region = New Region(FX.RoundedRectPath(ClientRectangle, 20)) '圆角
@@ -9,10 +8,9 @@
         loc.X = Screen.PrimaryScreen.WorkingArea.Width - Width - 10
         loc.Y = (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2
         Location = loc
-        BackColor = My.Settings.ThemeColor
         Label1.ForeColor = My.Settings.TForeColor
         Label2.ForeColor = My.Settings.TForeColor
-        Button1.BackColor = My.Settings.ThemeColor
+        Button1.BackColor = BackColor
         Form2.PlaySound(Environment.GetFolderPath(Environment.SpecialFolder.Windows) & "\media\Windows Notify Calendar.wav", &H10000, &H1)
     End Sub
 
@@ -27,24 +25,7 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        AnimateOut()
+        FX.AnimateOut(Me)
         Close()
-    End Sub
-
-    Sub AnimateOut()
-        Do Until Left > Screen.PrimaryScreen.WorkingArea.Width
-            Select Case Screen.PrimaryScreen.WorkingArea.Width - Left
-                Case < 50
-                    speed = 1
-                Case > 100
-                    speed = 5
-                Case > 150
-                    speed = 10
-                Case > 170
-                    speed = 1
-            End Select
-            Left = Left + speed
-            Threading.Thread.Sleep(2)
-        Loop
     End Sub
 End Class

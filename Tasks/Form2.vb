@@ -19,7 +19,7 @@
         Form1.Enabled = True
         Form1.Timer1.Enabled = True
         Form1.Timer3.Enabled = True
-        AnimateOut()
+        FX.AnimateOut(Me)
         If My.Settings.FirstRun Then
             If Label1.Text.Contains("任务") Then
                 Form1.ListView1.BackgroundImage = Form1.PicList(4)
@@ -32,22 +32,5 @@
             End If
         End If
         Dispose()
-    End Sub
-
-    Public Sub AnimateOut()
-        Do Until Left > Screen.PrimaryScreen.WorkingArea.Width
-            Select Case Screen.PrimaryScreen.WorkingArea.Width - Left
-                Case < 50
-                    speed = 1
-                Case > 100
-                    speed = 5
-                Case > 150
-                    speed = 10
-                Case > 170
-                    speed = 1
-            End Select
-            Left = Left + speed
-            Threading.Thread.Sleep(2)
-        Loop
     End Sub
 End Class

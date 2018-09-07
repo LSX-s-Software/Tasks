@@ -113,28 +113,31 @@ Public Class Form1
                 Form3.Show()
                 Form3.Label1.Text = "您的任务" & ChrW(13) & ChrW(13) & ChrW(13) & "剩余时间不到50%"
                 Form3.Label2.Text = ListView1.Items(i).Text
+                Form3.BackColor = My.Settings.ThemeColor
                 If reminded1 Is Nothing Then
                     reminded1 = New ListViewItem() {ListView1.Items(i)}
                 Else
-                    reminded1 = reminded.Concat({ListView1.Items(i)}).ToArray
+                    reminded1 = reminded1.Concat({ListView1.Items(i)}).ToArray
                 End If
             ElseIf (t2 / (t1 + t2) * 100 >= My.Settings.NoticeLevel) And (t2 / (t1 + t2) * 100 < My.Settings.WarningLevel) AndAlso Find(ListView1.Items(i), 2) = -1 Then
                 Form3.Show()
                 Form3.Label1.Text = "您的任务" & ChrW(13) & ChrW(13) & ChrW(13) & "剩余时间不到" & My.Settings.NoticeLevel & "%"
                 Form3.Label2.Text = ListView1.Items(i).Text
+                Form3.BackColor = Color.Orange
                 If reminded1 Is Nothing Then
                     reminded1 = New ListViewItem() {ListView1.Items(i)}
                 Else
-                    reminded1 = reminded.Concat({ListView1.Items(i)}).ToArray
+                    reminded1 = reminded1.Concat({ListView1.Items(i)}).ToArray
                 End If
             ElseIf (t2 / (t1 + t2) * 100 >= My.Settings.WarningLevel) And (t1 > 0) AndAlso Find(ListView1.Items(i), 2) = -1 Then
                 Form3.Show()
                 Form3.Label1.Text = "您的任务" & ChrW(13) & ChrW(13) & ChrW(13) & "剩余时间不到" & My.Settings.WarningLevel & "%"
                 Form3.Label2.Text = ListView1.Items(i).Text
+                Form3.BackColor = Color.FromArgb(255, 0, 0)
                 If reminded1 Is Nothing Then
                     reminded1 = New ListViewItem() {ListView1.Items(i)}
                 Else
-                    reminded1 = reminded.Concat({ListView1.Items(i)}).ToArray
+                    reminded1 = reminded1.Concat({ListView1.Items(i)}).ToArray
                 End If
             End If
         Next
