@@ -1,4 +1,9 @@
-﻿Public Class FX '窗口的特殊效果类，如阴影、圆角等
+﻿Imports System.Threading
+
+Public Class FX '窗口的特殊效果类，如阴影、圆角等
+    Public Shared listitem As ListViewItem
+    Public Shared index, targetindex As Byte
+    Public Shared td As Thread
     Public Const CS_DROPSHADOW = &H20000
     Public Const GCL_STYLE = (-26)
     Public Declare Function GetClassLong Lib "user32" Alias "GetClassLongA" (ByVal hwnd As Integer, ByVal nIndex As Integer) As Integer
@@ -33,7 +38,32 @@
                     speed = 1
             End Select
             obj.Left = obj.Left + speed
-            Threading.Thread.Sleep(2)
+            Thread.Sleep(2)
         Loop
+    End Sub
+
+    Public Shared Sub ProgressAnimate(Start As SByte, Target As Byte, obj As ListViewItem)
+        listitem = obj
+        index = If(Start < 0, 0, Start)
+        targetindex = Target
+        td = New Thread(AddressOf fun1)
+        td.Start()
+    End Sub
+
+    Public Shared Sub fun1()
+        Debug.Print(Form1.IsHandleCreated)
+        If Form1.IsHandleCreated Then
+            Do Until index >= targetindex
+                Form1.Invoke(New Dg(AddressOf Change), index)
+                index = index + 1
+                Thread.Sleep(5)
+            Loop
+        End If
+        td.Abort()
+    End Sub
+
+    Delegate Sub Dg(ByVal index As Byte)
+    Public Shared Sub Change(ByVal index As Byte)
+        listitem.ImageIndex = index
     End Sub
 End Class

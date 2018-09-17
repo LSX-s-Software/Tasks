@@ -25,7 +25,7 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        FX.AnimateOut(Me)
+        If Not My.Settings.DecreaseAnimation Then FX.AnimateOut(Me)
         Close()
     End Sub
 End Class

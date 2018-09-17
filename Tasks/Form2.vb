@@ -19,7 +19,7 @@
         Form1.Enabled = True
         Form1.Timer1.Enabled = True
         Form1.Timer3.Enabled = True
-        FX.AnimateOut(Me)
+        If Not My.Settings.DecreaseAnimation Then FX.AnimateOut(Me)
         If My.Settings.FirstRun Then
             If Label1.Text.Contains("任务") Then
                 Form1.ListView1.BackgroundImage = Form1.PicList(4)

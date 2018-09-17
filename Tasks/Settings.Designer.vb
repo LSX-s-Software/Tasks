@@ -50,6 +50,8 @@ Partial Class Settings
         Me.Button_About = New System.Windows.Forms.Button()
         Me.Button_Help = New System.Windows.Forms.Button()
         Me.HelpProvider1 = New System.Windows.Forms.HelpProvider()
+        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.TrackBar2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -61,6 +63,7 @@ Partial Class Settings
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
+        Me.GroupBox6.SuspendLayout()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -223,14 +226,14 @@ Partial Class Settings
         Me.GroupBox2.Controls.Add(Me.PictureBox2)
         Me.GroupBox2.Location = New System.Drawing.Point(27, 191)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(101, 100)
+        Me.GroupBox2.Size = New System.Drawing.Size(111, 100)
         Me.GroupBox2.TabIndex = 8
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "主题设置"
         '
         'Label5
         '
-        Me.Label5.Location = New System.Drawing.Point(48, 60)
+        Me.Label5.Location = New System.Drawing.Point(52, 60)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(51, 32)
         Me.Label5.TabIndex = 3
@@ -239,7 +242,7 @@ Partial Class Settings
         '
         'Label4
         '
-        Me.Label4.Location = New System.Drawing.Point(48, 22)
+        Me.Label4.Location = New System.Drawing.Point(52, 22)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(51, 32)
         Me.Label4.TabIndex = 2
@@ -249,7 +252,7 @@ Partial Class Settings
         'PictureBox3
         '
         Me.PictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PictureBox3.Location = New System.Drawing.Point(10, 60)
+        Me.PictureBox3.Location = New System.Drawing.Point(12, 60)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(32, 32)
         Me.PictureBox3.TabIndex = 1
@@ -258,7 +261,7 @@ Partial Class Settings
         'PictureBox2
         '
         Me.PictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PictureBox2.Location = New System.Drawing.Point(10, 22)
+        Me.PictureBox2.Location = New System.Drawing.Point(12, 22)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(32, 32)
         Me.PictureBox2.TabIndex = 0
@@ -273,7 +276,7 @@ Partial Class Settings
         '
         Me.GroupBox3.Controls.Add(Me.Label6)
         Me.GroupBox3.Controls.Add(Me.ComboBox1)
-        Me.GroupBox3.Location = New System.Drawing.Point(134, 191)
+        Me.GroupBox3.Location = New System.Drawing.Point(144, 191)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(138, 100)
         Me.GroupBox3.TabIndex = 9
@@ -306,7 +309,7 @@ Partial Class Settings
         '
         Me.GroupBox4.Controls.Add(Me.CheckBox2)
         Me.GroupBox4.Controls.Add(Me.CheckBox1)
-        Me.GroupBox4.Location = New System.Drawing.Point(278, 191)
+        Me.GroupBox4.Location = New System.Drawing.Point(288, 191)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(97, 100)
         Me.GroupBox4.TabIndex = 10
@@ -373,12 +376,33 @@ Partial Class Settings
         '
         Me.HelpProvider1.HelpNamespace = "C:\Users\admin\Documents\我的文档\VB.NET程序\Tasks\Tasks\帮助文件\chm\Tasks帮助.chm"
         '
+        'CheckBox3
+        '
+        Me.CheckBox3.AutoSize = True
+        Me.CheckBox3.Location = New System.Drawing.Point(6, 22)
+        Me.CheckBox3.Name = "CheckBox3"
+        Me.CheckBox3.Size = New System.Drawing.Size(99, 21)
+        Me.CheckBox3.TabIndex = 4
+        Me.CheckBox3.Text = "减弱动态效果"
+        Me.CheckBox3.UseVisualStyleBackColor = True
+        '
+        'GroupBox6
+        '
+        Me.GroupBox6.Controls.Add(Me.CheckBox3)
+        Me.GroupBox6.Location = New System.Drawing.Point(27, 297)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Size = New System.Drawing.Size(111, 68)
+        Me.GroupBox6.TabIndex = 12
+        Me.GroupBox6.TabStop = False
+        Me.GroupBox6.Text = "兼容性选项"
+        '
         'Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
         Me.ClientSize = New System.Drawing.Size(654, 377)
+        Me.Controls.Add(Me.GroupBox6)
         Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
@@ -409,6 +433,8 @@ Partial Class Settings
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox6.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -442,4 +468,6 @@ Partial Class Settings
     Friend WithEvents Button_About As Button
     Friend WithEvents Button_Help As Button
     Friend WithEvents HelpProvider1 As HelpProvider
+    Friend WithEvents CheckBox3 As CheckBox
+    Friend WithEvents GroupBox6 As GroupBox
 End Class

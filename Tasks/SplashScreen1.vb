@@ -40,9 +40,12 @@
                 .BeginUpdate()
                 Do While file(i) <> "END OF LIST1"
                     .Items.Add(file(i))
-                    .Items(.Items.Count - 1).SubItems.Add(file(i + 1))
-                    .Items(.Items.Count - 1).SubItems.Add(file(i + 2))
-                    .Items(.Items.Count - 1).SubItems.Add(file(i + 3))
+                    With .Items(.Items.Count - 1).SubItems
+                        .Add(file(i + 1))
+                        .Add(file(i + 2))
+                        .Add(file(i + 3))
+                    End With
+                    .Items(.Items.Count - 1).ImageIndex = 0
                     i = i + 4
                 Loop
                 .EndUpdate()
@@ -52,11 +55,13 @@
                 .BeginUpdate()
                 Do While file(i) <> "END OF FILE"
                     .Items.Add(file(i))
-                    .Items(.Items.Count - 1).SubItems.Add(file(i + 1))
-                    .Items(.Items.Count - 1).SubItems.Add(file(i + 2))
-                    .Items(.Items.Count - 1).SubItems.Add(file(i + 3))
-                    .Items(.Items.Count - 1).SubItems.Add(file(i + 4))
-                    .Items(.Items.Count - 1).SubItems.Add(file(i + 5))
+                    With .Items(.Items.Count - 1).SubItems
+                        .Add(file(i + 1))
+                        .Add(file(i + 2))
+                        .Add(file(i + 3))
+                        .Add(file(i + 4))
+                        .Add(file(i + 5))
+                    End With
                     i = i + 6
                 Loop
                 .EndUpdate()
@@ -77,9 +82,9 @@
         Settings.Hide()
         '----------加载完毕-------
         Label1.Text = "加载完毕"
-        ProgressBar1.Value = 100
         Refresh()
-        Threading.Thread.Sleep(1000)
+        ProgressBar1.Value = 100
+        'Threading.Thread.Sleep(1000)
         'Animate()
         If Not (Command() = "-h" AndAlso My.Settings.HideWhenAutoRun) Then
             Form1.Show()

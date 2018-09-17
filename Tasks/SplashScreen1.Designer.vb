@@ -110,6 +110,7 @@ Partial Class SplashScreen1
         Me.ProgressBar1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ProgressBar1.Location = New System.Drawing.Point(0, 291)
         Me.ProgressBar1.Margin = New System.Windows.Forms.Padding(0)
+        Me.ProgressBar1.MarqueeAnimationSpeed = 10
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(496, 17)
         Me.ProgressBar1.TabIndex = 2

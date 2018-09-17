@@ -25,6 +25,7 @@
         ComboBox1.SelectedItem = My.Settings.RemindInterval
         CheckBox1.Checked = My.Settings.RunWhenSysStart
         CheckBox2.Checked = My.Settings.HideWhenAutoRun
+        CheckBox3.Checked = My.Settings.DecreaseAnimation
 
         DrawProgressBar()
     End Sub
@@ -63,6 +64,7 @@
             Exit Sub
         End If
         My.Settings.RemindInterval = ComboBox1.Text
+        My.Settings.DecreaseAnimation = CheckBox3.Checked
         My.Settings.Save()
         '------开机启动选项----------
         If (CheckBox1.Checked) AndAlso (Not My.Settings.RunWhenSysStart) Then
@@ -78,6 +80,7 @@
         End If
         My.Settings.HideWhenAutoRun = CheckBox2.Checked
         '----------------------------
+        My.Settings.Save()
         MsgBox("保存成功！部分设置需要在重启软件后生效", MsgBoxStyle.Information)
         Close()
     End Sub

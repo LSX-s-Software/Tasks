@@ -1,7 +1,11 @@
 ﻿Imports System.ComponentModel
+Imports System.Threading
 Imports Microsoft.VisualBasic.FileIO.FileSystem
 
 Public Class Form1
+    Public Shared listitem As ListViewItem
+    Public Shared index, targetindex As Byte
+    Public Shared td As Thread
     Public PicList() As Image
     Dim PicIndex As Integer = 0
     Public SelectedView As ListView
@@ -88,15 +92,30 @@ Public Class Form1
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick  '提醒功能
         Dim i As Integer
-        Dim t1, t2 As Int64
+        Dim t1, t2 As Long
+        Dim CurrentIndex, TargetIndex As Short
         For i = 0 To ListView1.Items.Count - 1
             t1 = Date.Parse(ListView1.Items(i).SubItems(1).Text).Subtract(Date.Now).TotalMilliseconds '现在时间到截止时间的长度
             t2 = Date.Parse(Date.Now).Subtract(ListView1.Items(i).SubItems(3).Text).TotalMilliseconds + 1 '从任务创建到现在的时间
+            Debug.Print(i & ": " & t1 & " " & t2 & " t1+t2=" & t1 + t2 & " %=" & Int(t2 / (t1 + t2) * 100))
+            CurrentIndex = ListView1.Items(i).ImageIndex
             If ((t1 + t2) > t2) And (t1 >= 0) Then
-                ListView1.Items(i).ImageIndex = Int(t2 / (t1 + t2) * 100)
+                TargetIndex = Int(t2 / (t1 + t2) * 100)
+                If (Math.Abs(CurrentIndex - TargetIndex) > 5) And (Not My.Settings.DecreaseAnimation) Then
+                    Timer1.Enabled = False
+                    ProgressAnimate(CurrentIndex, TargetIndex, ListView1.Items(i))
+                    Timer1.Enabled = True
+                Else
+                    ListView1.Items(i).ImageIndex = TargetIndex
+                End If
             Else
-                ListView1.Items(i).ImageIndex = 99
+                If Math.Abs(CurrentIndex - Int(t2 / (t1 + t2) * 100)) > 5 And (Not My.Settings.DecreaseAnimation) Then
+                    ProgressAnimate(CurrentIndex, 99, ListView1.Items(i))
+                Else
+                    ListView1.Items(i).ImageIndex = 99
+                End If
             End If
+            Debug.Print(i & ":" & DateDiff(DateInterval.Minute, Now, CDate(ListView1.Items(i).SubItems(3).Text).Add(New TimeSpan(0, 0, 0, 0, (t1 + t2) / 2))))
             If (t1 <= 0) AndAlso Find(ListView1.Items(i), 1) = -1 Then
                 Form2.Show() '打开提醒窗体
                 Form2.Label2.Text = ListView1.Items(i).Text
@@ -109,7 +128,7 @@ Public Class Form1
                 Timer1.Enabled = False
                 Timer3.Enabled = False
                 Exit Sub
-            ElseIf (t2 / (t1 + t2) * 100 >= 50) And (t2 / (t1 + t2) * 100 < My.Settings.NoticeLevel) AndAlso Find(ListView1.Items(i), 2) = -1 Then
+            ElseIf (t2 / (t1 + t2) * 100 >= 50) And (t2 / (t1 + t2) * 100 < My.Settings.NoticeLevel) And (DateDiff(DateInterval.Minute, Now, CDate(ListView1.Items(i).SubItems(3).Text).Add(New TimeSpan(0, 0, 0, 0, (t1 + t2) / 2))) > -10) AndAlso Find(ListView1.Items(i), 2) = -1 Then
                 Form3.Show()
                 Form3.Label1.Text = "您的任务" & ChrW(13) & ChrW(13) & ChrW(13) & "剩余时间不到50%"
                 Form3.Label2.Text = ListView1.Items(i).Text
@@ -119,7 +138,7 @@ Public Class Form1
                 Else
                     reminded1 = reminded1.Concat({ListView1.Items(i)}).ToArray
                 End If
-            ElseIf (t2 / (t1 + t2) * 100 >= My.Settings.NoticeLevel) And (t2 / (t1 + t2) * 100 < My.Settings.WarningLevel) AndAlso Find(ListView1.Items(i), 2) = -1 Then
+            ElseIf (t2 / (t1 + t2) * 100 >= My.Settings.NoticeLevel) And (t2 / (t1 + t2) * 100 < My.Settings.WarningLevel) And (DateDiff(DateInterval.Minute, Now, CDate(ListView1.Items(i).SubItems(3).Text).Add(New TimeSpan(0, 0, 0, 0, (t1 + t2) * My.Settings.NoticeLevel / 100))) > -10) AndAlso Find(ListView1.Items(i), 2) = -1 Then
                 Form3.Show()
                 Form3.Label1.Text = "您的任务" & ChrW(13) & ChrW(13) & ChrW(13) & "剩余时间不到" & My.Settings.NoticeLevel & "%"
                 Form3.Label2.Text = ListView1.Items(i).Text
@@ -129,7 +148,7 @@ Public Class Form1
                 Else
                     reminded1 = reminded1.Concat({ListView1.Items(i)}).ToArray
                 End If
-            ElseIf (t2 / (t1 + t2) * 100 >= My.Settings.WarningLevel) And (t1 > 0) AndAlso Find(ListView1.Items(i), 2) = -1 Then
+            ElseIf (t2 / (t1 + t2) * 100 >= My.Settings.WarningLevel) And (t1 > 0) And (DateDiff(DateInterval.Minute, Now, CDate(ListView1.Items(i).SubItems(3).Text).Add(New TimeSpan(0, 0, 0, 0, (t1 + t2) * My.Settings.WarningLevel / 100))) > -10) AndAlso Find(ListView1.Items(i), 2) = -1 Then
                 Form3.Show()
                 Form3.Label1.Text = "您的任务" & ChrW(13) & ChrW(13) & ChrW(13) & "剩余时间不到" & My.Settings.WarningLevel & "%"
                 Form3.Label2.Text = ListView1.Items(i).Text
@@ -167,6 +186,35 @@ Public Class Form1
                 Exit Sub
             End If
         Next
+    End Sub
+
+    Private Sub ProgressAnimate(Start As SByte, Target As Byte, obj As ListViewItem)
+        'On Error Resume Next
+        If td.ThreadState <> ThreadState.Running Then
+            listitem = obj
+            index = If(Start < 0, 0, Start)
+            targetindex = Target
+            td = New Thread(AddressOf fun1)
+            'fun1()
+            td.Start()
+        End If
+    End Sub
+
+    Private Sub fun1()
+        If index < targetindex Then
+            Do Until index >= targetindex
+                index = index + 1
+                Invoke(New Dg(AddressOf Change), index)
+                Thread.Sleep(10)
+            Loop
+        Else
+            Do Until index <= targetindex
+                index = index - 1
+                Invoke(New Dg(AddressOf Change), index)
+                Thread.Sleep(10)
+            Loop
+        End If
+        td.Abort()
     End Sub
 
     Public Function CalculateNextDate(origin As Date, 方式 As String) As Date
@@ -221,6 +269,7 @@ Public Class Form1
         Button_Edit.Region = New Region(a)
         ToolStripStatusLabel2.ForeColor = My.Settings.ThemeColor
         SelectedView = ListView1
+        td = New Thread(AddressOf fun1)
         If My.Settings.RemindInterval <> "永不重复" Then
             RemindInt = CInt(My.Settings.RemindInterval) * 60
         Else
@@ -271,7 +320,7 @@ Public Class Form1
             gra.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
             gra.FillRectangle(b, 0, 0, bmp.Size.Width, bmp.Size.Height)
             gra.DrawEllipse(border, 0, 0, bmp.Size.Width - border.Width, bmp.Size.Height - border.Width)
-            Dim rect As New Rectangle(2, 2, bmp.Size.Width - border.Width * 2 - 2, bmp.Size.Height - border.Width * 2 - 2)
+            Dim rect As New Rectangle(3, 3, bmp.Size.Width - border.Width * 2 - 4, bmp.Size.Height - border.Width * 2 - 4)
             gra.FillPie(b1, rect, -90, 360 * i / 100)
             ImageList1.Images.Add(bmp)
         Next
@@ -538,5 +587,11 @@ Public Class Form1
 
     Private Sub ListView2_KeyDown(sender As Object, e As KeyEventArgs) Handles ListView2.KeyDown
         If (e.KeyCode = Keys.Delete) AndAlso (ListView2.Items.Count > 0) Then ListView2.SelectedItems(0).Remove()
+    End Sub
+
+    Delegate Sub Dg(ByVal index As Byte)
+    Private Sub Change(ByVal index As Byte)
+        listitem.ImageIndex = index
+        Debug.Print(index)
     End Sub
 End Class

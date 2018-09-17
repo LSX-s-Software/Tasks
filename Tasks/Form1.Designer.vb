@@ -427,8 +427,6 @@ Partial Class Form1
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents ListView1 As ListView
     Friend WithEvents ColumnHeader2 As ColumnHeader
     Friend WithEvents ColumnHeader3 As ColumnHeader
     Friend WithEvents ColumnHeader4 As ColumnHeader
@@ -480,4 +478,5 @@ Partial Class Form1
     Friend WithEvents Next_Button As Button
     Friend WithEvents HelpProvider1 As HelpProvider
     Friend WithEvents Button1 As Button
+    Public WithEvents ListView1 As ListView
 End Class
