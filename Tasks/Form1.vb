@@ -115,7 +115,7 @@ Public Class Form1
                     ListView1.Items(i).ImageIndex = 99
                 End If
             End If
-            Debug.Print(i & ":" & DateDiff(DateInterval.Minute, Now, CDate(ListView1.Items(i).SubItems(3).Text).Add(New TimeSpan(0, 0, 0, 0, (t1 + t2) / 2))))
+            Debug.Print(i & ":" & DateDiff(DateInterval.Minute, Now, CDate(ListView1.Items(i).SubItems(3).Text).AddMilliseconds((t1 + t2) / 2)))
             If (t1 <= 0) AndAlso Find(ListView1.Items(i), 1) = -1 Then
                 Form2.Show() '打开提醒窗体
                 Form2.Label2.Text = ListView1.Items(i).Text
@@ -128,7 +128,7 @@ Public Class Form1
                 Timer1.Enabled = False
                 Timer3.Enabled = False
                 Exit Sub
-            ElseIf (t2 / (t1 + t2) * 100 >= 50) And (t2 / (t1 + t2) * 100 < My.Settings.NoticeLevel) And (DateDiff(DateInterval.Minute, Now, CDate(ListView1.Items(i).SubItems(3).Text).Add(New TimeSpan(0, 0, 0, 0, (t1 + t2) / 2))) > -10) AndAlso Find(ListView1.Items(i), 2) = -1 Then
+            ElseIf (t2 / (t1 + t2) * 100 >= 50) And (t2 / (t1 + t2) * 100 < My.Settings.NoticeLevel) And (DateDiff(DateInterval.Minute, Now, CDate(ListView1.Items(i).SubItems(3).Text).AddMilliseconds((t1 + t2) / 2)) > -10) AndAlso Find(ListView1.Items(i), 2) = -1 Then
                 Form3.Show()
                 Form3.Label1.Text = "您的任务" & ChrW(13) & ChrW(13) & ChrW(13) & "剩余时间不到50%"
                 Form3.Label2.Text = ListView1.Items(i).Text
@@ -138,7 +138,7 @@ Public Class Form1
                 Else
                     reminded1 = reminded1.Concat({ListView1.Items(i)}).ToArray
                 End If
-            ElseIf (t2 / (t1 + t2) * 100 >= My.Settings.NoticeLevel) And (t2 / (t1 + t2) * 100 < My.Settings.WarningLevel) And (DateDiff(DateInterval.Minute, Now, CDate(ListView1.Items(i).SubItems(3).Text).Add(New TimeSpan(0, 0, 0, 0, (t1 + t2) * My.Settings.NoticeLevel / 100))) > -10) AndAlso Find(ListView1.Items(i), 2) = -1 Then
+            ElseIf (t2 / (t1 + t2) * 100 >= My.Settings.NoticeLevel) And (t2 / (t1 + t2) * 100 < My.Settings.WarningLevel) And (DateDiff(DateInterval.Minute, Now, CDate(ListView1.Items(i).SubItems(3).Text).AddMilliseconds((t1 + t2) * My.Settings.NoticeLevel / 100)) > -10) AndAlso Find(ListView1.Items(i), 2) = -1 Then
                 Form3.Show()
                 Form3.Label1.Text = "您的任务" & ChrW(13) & ChrW(13) & ChrW(13) & "剩余时间不到" & My.Settings.NoticeLevel & "%"
                 Form3.Label2.Text = ListView1.Items(i).Text
@@ -148,7 +148,7 @@ Public Class Form1
                 Else
                     reminded1 = reminded1.Concat({ListView1.Items(i)}).ToArray
                 End If
-            ElseIf (t2 / (t1 + t2) * 100 >= My.Settings.WarningLevel) And (t1 > 0) And (DateDiff(DateInterval.Minute, Now, CDate(ListView1.Items(i).SubItems(3).Text).Add(New TimeSpan(0, 0, 0, 0, (t1 + t2) * My.Settings.WarningLevel / 100))) > -10) AndAlso Find(ListView1.Items(i), 2) = -1 Then
+            ElseIf (t2 / (t1 + t2) * 100 >= My.Settings.WarningLevel) And (t1 > 0) And (DateDiff(DateInterval.Minute, Now, CDate(ListView1.Items(i).SubItems(3).Text).AddMilliseconds((t1 + t2) * My.Settings.WarningLevel / 100)) > -10) AndAlso Find(ListView1.Items(i), 2) = -1 Then
                 Form3.Show()
                 Form3.Label1.Text = "您的任务" & ChrW(13) & ChrW(13) & ChrW(13) & "剩余时间不到" & My.Settings.WarningLevel & "%"
                 Form3.Label2.Text = ListView1.Items(i).Text
