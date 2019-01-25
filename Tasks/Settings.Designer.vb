@@ -212,7 +212,7 @@ Partial Class Settings
         Me.Label.AutoSize = True
         Me.Label.Font = New System.Drawing.Font("微软雅黑", 18.0!)
         Me.Label.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label.Location = New System.Drawing.Point(21, 20)
+        Me.Label.Location = New System.Drawing.Point(21, 15)
         Me.Label.Name = "Label"
         Me.Label.Size = New System.Drawing.Size(62, 31)
         Me.Label.TabIndex = 7
@@ -398,8 +398,8 @@ Partial Class Settings
         '
         'Settings
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.Cancel_Button
         Me.ClientSize = New System.Drawing.Size(654, 377)
         Me.Controls.Add(Me.GroupBox6)

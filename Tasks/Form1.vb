@@ -10,6 +10,7 @@ Public Class Form1
     Dim PicIndex As Integer = 0
     Public SelectedView As ListView
     Public reminded， reminded1 As ListViewItem()
+    Private SearchResults As UInteger()
     Public RemindInt, t, t1 As Long
     Private Sub StatusStrip1_MouseEnter(sender As Object, e As EventArgs) Handles StatusStrip1.MouseEnter
         Cursor = Cursors.Hand
@@ -74,20 +75,18 @@ Public Class Form1
 
     Private Sub ToolStripStatusLabel2_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel2.Click
         SelectedView = ListView1
-        ToolStripStatusLabel2.ForeColor = My.Settings.ThemeColor
+        ToolStripStatusLabel2.ForeColor = Color.White
         ToolStripStatusLabel3.ForeColor = Color.Black
         ListView1.Visible = True
         ListView2.Visible = False
-        Label1.Text = "任务"
     End Sub
 
     Private Sub ToolStripStatusLabel3_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel3.Click
         SelectedView = ListView2
-        ToolStripStatusLabel3.ForeColor = My.Settings.ThemeColor
+        ToolStripStatusLabel3.ForeColor = Color.White
         ToolStripStatusLabel2.ForeColor = Color.Black
         ListView2.Visible = True
         ListView1.Visible = False
-        Label1.Text = "提醒事项"
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick  '提醒功能
@@ -267,8 +266,14 @@ Public Class Form1
         a.AddEllipse(2, 2, 25, 25)
         Button_Del.Region = New Region(a)
         Button_Edit.Region = New Region(a)
-        ToolStripStatusLabel2.ForeColor = My.Settings.ThemeColor
+        ToolStripStatusLabel2.ForeColor = Color.White
+        BackColor = My.Settings.ThemeColor
+        Exit_Button.ForeColor = My.Settings.TForeColor
+        Min_Button.ForeColor = My.Settings.TForeColor
+        StatusStrip1.BackColor = My.Settings.ThemeColor
         SelectedView = ListView1
+        ToolStripStatusLabel2.Text = "任" & vbCrLf & "务"
+        ToolStripStatusLabel3.Text = "提" & vbCrLf & "醒" & vbCrLf & "事" & vbCrLf & "项"
         td = New Thread(AddressOf fun1)
         If My.Settings.RemindInterval <> "永不重复" Then
             RemindInt = CInt(My.Settings.RemindInterval) * 60
@@ -488,7 +493,7 @@ Public Class Form1
     Private Sub Save()
         '-----------------保存----------------
         Dim file As String = ""
-        Text = "Tasks - [保存信息中...]"
+        Label1.Text = "Tasks - [保存信息中...]"
         For i = 0 To ListView1.Items.Count - 1
             file = file & ListView1.Items(i).Text & "|"
             For j = 1 To ListView1.Items(0).SubItems.Count - 1
@@ -509,6 +514,7 @@ Public Class Form1
             WriteAllText(Application.StartupPath & "\Saves.tasks", file, False)
         End If
         '------------------------------------
+        Label1.Text = "Tasks"
     End Sub
 
     Private Sub Form1_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
@@ -578,6 +584,14 @@ Public Class Form1
         TableLayoutPanel1.BackgroundImage = PicList(PicIndex)
     End Sub
 
+    Private Sub Exit_Button_Click(sender As Object, e As EventArgs) Handles Exit_Button.Click
+        Close()
+    End Sub
+
+    Private Sub Min_Button_Click_1(sender As Object, e As EventArgs) Handles Min_Button.Click
+        WindowState = FormWindowState.Minimized
+    End Sub
+
     Private Sub Pre_Button_Click(sender As Object, e As EventArgs) Handles Pre_Button.Click
         PicIndex = PicIndex - 1
         TableLayoutPanel1.BackgroundImage = PicList(PicIndex)
@@ -593,5 +607,88 @@ Public Class Form1
     Private Sub Change(ByVal index As Byte)
         listitem.ImageIndex = index
         Debug.Print(index)
+    End Sub
+
+    Private Sub Search_Button_Click(sender As Object, e As EventArgs) Handles Search_Button.Click
+        If SearchTextBox.Width > 20 Then
+            If SearchResults Is Nothing OrElse SearchResults.Length = 0 Then
+                SearchResults = {}
+                Dim t = SearchTextBox.Text
+                For i = 0 To ListView1.Items.Count - 1
+                    For j = 0 To 3
+                        If ListView1.Items(i).SubItems(j).Text.Contains(t) Then
+                            SearchResults = SearchResults.Concat({i}).ToArray
+                        End If
+                    Next j
+                Next i
+            End If
+            Timer2.Enabled = True
+            If SearchResults.Length = 0 Then
+                MsgBox("未找到指定项目", MsgBoxStyle.Information)
+                SearchTextBox.ForeColor = Color.Red
+                Exit Sub
+            End If
+            ListView1.EnsureVisible(SearchResults(0))
+            ListView1.Items(CInt(SearchResults(0))).Focused = True
+            Dim NewResult As UInteger() = {}
+            For i = 1 To SearchResults.Length - 1
+                NewResult = NewResult.Concat({SearchResults(i + 1)}).ToArray
+            Next
+            SearchResults = NewResult
+        Else
+            If Not My.Settings.DecreaseAnimation Then
+                FX.SizeAnimate(SearchTextBox, New Size(210, 35), True)
+            Else
+                SearchTextBox.Size = New Size(210, 35)
+                SearchTextBox.Left = SearchTextBox.Location.X - 210
+            End If
+        End If
+    End Sub
+
+    Private Sub Exit_Button_MouseEnter(sender As Object, e As EventArgs) Handles Exit_Button.MouseEnter
+        Exit_Button.BackColor = Color.Red
+    End Sub
+
+    Private Sub Min_Button_MouseEnter(sender As Object, e As EventArgs) Handles Min_Button.MouseEnter
+        Min_Button.BackColor = FX.GetHoverColor
+    End Sub
+
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+        If Not My.Settings.DecreaseAnimation Then
+            FX.SizeAnimate(SearchTextBox, New Size(0, 35), True)
+        Else
+            SearchTextBox.Size = New Size(0, 35)
+            SearchTextBox.Left = SearchTextBox.Location.X + 210
+        End If
+        Timer2.Enabled = False
+    End Sub
+
+    Private Sub Exit_Button_MouseLeave(sender As Object, e As EventArgs) Handles Exit_Button.MouseLeave
+        Exit_Button.BackColor = Color.Transparent
+    End Sub
+
+    Private Sub Min_Button_MouseLeave(sender As Object, e As EventArgs) Handles Min_Button.MouseLeave
+        Min_Button.BackColor = Color.Transparent
+    End Sub
+
+    Private Sub Search_Button_MouseEnter(sender As Object, e As EventArgs) Handles Search_Button.MouseEnter
+        Search_Button.BackColor = FX.GetHoverColor
+    End Sub
+
+    Private Sub Search_Button_MouseLeave(sender As Object, e As EventArgs) Handles Search_Button.MouseLeave
+        Search_Button.BackColor = Color.Transparent
+    End Sub
+
+    Private Sub Button_Setting_MouseEnter(sender As Object, e As EventArgs) Handles Button_Setting.MouseEnter
+        Button_Setting.BackColor = FX.GetHoverColor
+    End Sub
+
+    Private Sub Button_Setting_MouseLeave(sender As Object, e As EventArgs) Handles Button_Setting.MouseLeave
+        Button_Setting.BackColor = Color.Transparent
+    End Sub
+
+    Private Sub SearchTextBox_TextChanged(sender As Object, e As EventArgs) Handles SearchTextBox.TextChanged
+        If SearchTextBox.ForeColor = Color.Red Then SearchTextBox.ForeColor = Color.Black
+        If Timer2.Enabled Then Timer2.Enabled = False
     End Sub
 End Class

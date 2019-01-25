@@ -50,6 +50,53 @@ Public Class FX '窗口的特殊效果类，如阴影、圆角等
         td.Start()
     End Sub
 
+    Public Shared Sub SizeAnimate(obj As Object, NewSize As Size, RightFix As Boolean)
+        Dim speed As Byte
+        Dim OldSize As Size = obj.Size
+        Do Until obj.Width = NewSize.Width
+            Debug.Print(speed)
+            Select Case 1 - Math.Abs(obj.Width - OldSize.Width) / Math.Abs(OldSize.Width - NewSize.Width)
+                Case < 0.05
+                    speed = 1
+                Case > 0.1
+                    speed = 5
+                Case > 0.4
+                    speed = 10
+                Case > 0.6
+                    speed = 5
+                Case > 0.85
+                    speed = 1
+            End Select
+            If NewSize.Width > obj.Width Then
+                obj.Width = obj.Width + speed
+                If RightFix Then obj.Left = obj.Left - speed
+            Else
+                obj.Width = obj.Width - speed
+                If RightFix Then obj.Left = obj.Left + speed
+            End If
+            If obj.Height <> NewSize.Height Then
+                Select Case Math.Abs(obj.Height - NewSize.Height) / Math.Abs(OldSize.Height - NewSize.Height)
+                    Case < 0.25
+                        speed = 1
+                    Case > 0.4
+                        speed = 5
+                    Case > 0.6
+                        speed = 10
+                    Case > 0.9
+                        speed = 1
+                End Select
+                If NewSize.Height > obj.Height Then
+                    obj.Height = obj.Height + speed
+                Else
+                    obj.Height = obj.Height - speed
+                End If
+            End If
+            Debug.Print(obj.Size.ToString)
+            obj.Refresh()
+            Thread.Sleep(2)
+        Loop
+    End Sub
+
     Public Shared Sub fun1()
         Debug.Print(Form1.IsHandleCreated)
         If Form1.IsHandleCreated Then
@@ -61,6 +108,10 @@ Public Class FX '窗口的特殊效果类，如阴影、圆角等
         End If
         td.Abort()
     End Sub
+
+    Public Shared Function GetHoverColor()
+        Return Color.FromArgb(Math.Abs(My.Settings.ThemeColor.R - 10), Math.Abs(My.Settings.ThemeColor.G - 10), Math.Abs(My.Settings.ThemeColor.B - 10))
+    End Function
 
     Delegate Sub Dg(ByVal index As Byte)
     Public Shared Sub Change(ByVal index As Byte)

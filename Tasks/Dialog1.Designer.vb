@@ -55,7 +55,7 @@ Partial Class Dialog1
         'OK_Button
         '
         Me.OK_Button.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.OK_Button.Location = New System.Drawing.Point(478, 351)
+        Me.OK_Button.Location = New System.Drawing.Point(450, 327)
         Me.OK_Button.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.OK_Button.Name = "OK_Button"
         Me.OK_Button.Size = New System.Drawing.Size(78, 30)
@@ -67,7 +67,7 @@ Partial Class Dialog1
         '
         Me.Cancel_Button.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Cancel_Button.Location = New System.Drawing.Point(562, 351)
+        Me.Cancel_Button.Location = New System.Drawing.Point(534, 327)
         Me.Cancel_Button.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Cancel_Button.Name = "Cancel_Button"
         Me.Cancel_Button.Size = New System.Drawing.Size(56, 30)
@@ -77,7 +77,7 @@ Partial Class Dialog1
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.Tasks.My.Resources.Resources.图标_128
-        Me.PictureBox1.Location = New System.Drawing.Point(244, 12)
+        Me.PictureBox1.Location = New System.Drawing.Point(230, 12)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(128, 128)
         Me.PictureBox1.TabIndex = 2
@@ -86,7 +86,7 @@ Partial Class Dialog1
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("微软雅黑", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label1.Location = New System.Drawing.Point(131, 140)
+        Me.Label1.Location = New System.Drawing.Point(117, 140)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(369, 71)
         Me.Label1.TabIndex = 3
@@ -102,7 +102,7 @@ Partial Class Dialog1
         Me.GroupBox1.Controls.Add(Me.RadioButton2)
         Me.GroupBox1.Controls.Add(Me.RadioButton1)
         Me.HelpProvider1.SetHelpString(Me.GroupBox1, "任务可以设置截止时间，距离截止的时间可以通过进度条清楚地知道；提醒事项可以设置提醒时间，但不会显示进度条")
-        Me.GroupBox1.Location = New System.Drawing.Point(211, 219)
+        Me.GroupBox1.Location = New System.Drawing.Point(197, 219)
         Me.GroupBox1.Name = "GroupBox1"
         Me.HelpProvider1.SetShowHelp(Me.GroupBox1, True)
         Me.GroupBox1.Size = New System.Drawing.Size(208, 63)
@@ -141,7 +141,7 @@ Partial Class Dialog1
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.DateTimePicker1)
-        Me.GroupBox2.Location = New System.Drawing.Point(211, 219)
+        Me.GroupBox2.Location = New System.Drawing.Point(197, 219)
         Me.GroupBox2.Name = "GroupBox2"
         Me.HelpProvider1.SetShowHelp(Me.GroupBox2, False)
         Me.GroupBox2.Size = New System.Drawing.Size(208, 104)
@@ -202,7 +202,7 @@ Partial Class Dialog1
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.TextBox1)
-        Me.GroupBox3.Location = New System.Drawing.Point(181, 214)
+        Me.GroupBox3.Location = New System.Drawing.Point(167, 214)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(268, 63)
         Me.GroupBox3.TabIndex = 7
@@ -224,7 +224,7 @@ Partial Class Dialog1
         '
         'Button_Next
         '
-        Me.Button_Next.Location = New System.Drawing.Point(478, 351)
+        Me.Button_Next.Location = New System.Drawing.Point(450, 327)
         Me.Button_Next.Name = "Button_Next"
         Me.Button_Next.Size = New System.Drawing.Size(78, 30)
         Me.Button_Next.TabIndex = 5
@@ -234,7 +234,7 @@ Partial Class Dialog1
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.TextBox2)
-        Me.GroupBox4.Location = New System.Drawing.Point(181, 271)
+        Me.GroupBox4.Location = New System.Drawing.Point(167, 271)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(268, 54)
         Me.GroupBox4.TabIndex = 8
@@ -266,7 +266,7 @@ Partial Class Dialog1
         Me.Help_Button.Cursor = System.Windows.Forms.Cursors.Hand
         Me.HelpProvider1.SetHelpKeyword(Me.Help_Button, "3")
         Me.HelpProvider1.SetHelpNavigator(Me.Help_Button, System.Windows.Forms.HelpNavigator.TopicId)
-        Me.Help_Button.Location = New System.Drawing.Point(10, 359)
+        Me.Help_Button.Location = New System.Drawing.Point(10, 335)
         Me.Help_Button.Name = "Help_Button"
         Me.HelpProvider1.SetShowHelp(Me.Help_Button, True)
         Me.Help_Button.Size = New System.Drawing.Size(25, 25)
@@ -276,10 +276,10 @@ Partial Class Dialog1
         'Dialog1
         '
         Me.AcceptButton = Me.OK_Button
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.Cancel_Button
-        Me.ClientSize = New System.Drawing.Size(630, 394)
+        Me.ClientSize = New System.Drawing.Size(602, 370)
         Me.Controls.Add(Me.Help_Button)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox3)

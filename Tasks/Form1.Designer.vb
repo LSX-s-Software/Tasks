@@ -62,7 +62,6 @@ Partial Class Form1
         Me.设置ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripSeparator()
         Me.退出ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Button_Setting = New System.Windows.Forms.Button()
         Me.Button_Del = New System.Windows.Forms.Button()
         Me.Button_Edit = New System.Windows.Forms.Button()
         Me.Button_Add = New System.Windows.Forms.Button()
@@ -75,12 +74,21 @@ Partial Class Form1
         Me.Pre_Button = New System.Windows.Forms.Button()
         Me.Next_Button = New System.Windows.Forms.Button()
         Me.HelpProvider1 = New System.Windows.Forms.HelpProvider()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Exit_Button = New System.Windows.Forms.Label()
+        Me.Min_Button = New System.Windows.Forms.Label()
+        Me.Button_Setting = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.SearchTextBox = New System.Windows.Forms.TextBox()
+        Me.Search_Button = New System.Windows.Forms.PictureBox()
+        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.ContextMenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ContextMenuStrip2.SuspendLayout()
         Me.ContextMenuStrip3.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Search_Button, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ContextMenuStrip1
@@ -120,19 +128,16 @@ Partial Class Form1
         '
         '新建ToolStripMenuItem
         '
-        Me.新建ToolStripMenuItem.Image = Global.Tasks.My.Resources.Resources.add
         Me.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem"
         resources.ApplyResources(Me.新建ToolStripMenuItem, "新建ToolStripMenuItem")
         '
         '编辑ToolStripMenuItem
         '
-        Me.编辑ToolStripMenuItem.Image = Global.Tasks.My.Resources.Resources.Edit
         Me.编辑ToolStripMenuItem.Name = "编辑ToolStripMenuItem"
         resources.ApplyResources(Me.编辑ToolStripMenuItem, "编辑ToolStripMenuItem")
         '
         '删除ToolStripMenuItem
         '
-        Me.删除ToolStripMenuItem.Image = Global.Tasks.My.Resources.Resources.Trash1
         Me.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem"
         resources.ApplyResources(Me.删除ToolStripMenuItem, "删除ToolStripMenuItem")
         '
@@ -145,8 +150,10 @@ Partial Class Form1
         'StatusStrip1
         '
         resources.ApplyResources(Me.StatusStrip1, "StatusStrip1")
+        Me.StatusStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel3})
         Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.SizingGrip = False
         '
         'ToolStripStatusLabel2
         '
@@ -157,6 +164,7 @@ Partial Class Form1
         'ToolStripStatusLabel3
         '
         Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
+        Me.ToolStripStatusLabel3.Overflow = System.Windows.Forms.ToolStripItemOverflow.Always
         resources.ApplyResources(Me.ToolStripStatusLabel3, "ToolStripStatusLabel3")
         Me.ToolStripStatusLabel3.Spring = True
         '
@@ -234,19 +242,16 @@ Partial Class Form1
         '
         'ToolStripMenuItem5
         '
-        Me.ToolStripMenuItem5.Image = Global.Tasks.My.Resources.Resources.add
         Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
         resources.ApplyResources(Me.ToolStripMenuItem5, "ToolStripMenuItem5")
         '
         'ToolStripMenuItem6
         '
-        Me.ToolStripMenuItem6.Image = Global.Tasks.My.Resources.Resources.Edit
         Me.ToolStripMenuItem6.Name = "ToolStripMenuItem6"
         resources.ApplyResources(Me.ToolStripMenuItem6, "ToolStripMenuItem6")
         '
         'ToolStripMenuItem7
         '
-        Me.ToolStripMenuItem7.Image = Global.Tasks.My.Resources.Resources.Trash1
         Me.ToolStripMenuItem7.Name = "ToolStripMenuItem7"
         resources.ApplyResources(Me.ToolStripMenuItem7, "ToolStripMenuItem7")
         '
@@ -258,7 +263,10 @@ Partial Class Form1
         'Label1
         '
         resources.ApplyResources(Me.Label1, "Label1")
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Name = "Label1"
+        Me.HelpProvider1.SetShowHelp(Me.Label1, CType(resources.GetObject("Label1.ShowHelp"), Boolean))
         '
         'Timer3
         '
@@ -296,13 +304,6 @@ Partial Class Form1
         Me.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem"
         resources.ApplyResources(Me.退出ToolStripMenuItem, "退出ToolStripMenuItem")
         '
-        'Button_Setting
-        '
-        Me.Button_Setting.Image = Global.Tasks.My.Resources.Resources.Setting
-        resources.ApplyResources(Me.Button_Setting, "Button_Setting")
-        Me.Button_Setting.Name = "Button_Setting"
-        Me.Button_Setting.UseVisualStyleBackColor = True
-        '
         'Button_Del
         '
         resources.ApplyResources(Me.Button_Del, "Button_Del")
@@ -310,6 +311,7 @@ Partial Class Form1
         Me.Button_Del.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Button_Del.Image = Global.Tasks.My.Resources.Resources.Trash1
         Me.Button_Del.Name = "Button_Del"
+        Me.HelpProvider1.SetShowHelp(Me.Button_Del, CType(resources.GetObject("Button_Del.ShowHelp"), Boolean))
         Me.Button_Del.UseVisualStyleBackColor = False
         '
         'Button_Edit
@@ -344,6 +346,7 @@ Partial Class Form1
         Me.ListView1.MultiSelect = False
         Me.ListView1.Name = "ListView1"
         Me.ListView1.SmallImageList = Me.ImageList1
+        Me.ListView1.Sorting = System.Windows.Forms.SortOrder.Ascending
         Me.ListView1.UseCompatibleStateImageBehavior = False
         Me.ListView1.View = System.Windows.Forms.View.Tile
         '
@@ -373,14 +376,14 @@ Partial Class Form1
         'Pre_Button
         '
         resources.ApplyResources(Me.Pre_Button, "Pre_Button")
-        Me.Pre_Button.BackgroundImage = Global.Tasks.My.Resources.Resources.Previous
+        Me.Pre_Button.Image = Global.Tasks.My.Resources.Resources.Previous
         Me.Pre_Button.Name = "Pre_Button"
         Me.Pre_Button.UseVisualStyleBackColor = True
         '
         'Next_Button
         '
         resources.ApplyResources(Me.Next_Button, "Next_Button")
-        Me.Next_Button.BackgroundImage = Global.Tasks.My.Resources.Resources.Nxt
+        Me.Next_Button.Image = Global.Tasks.My.Resources.Resources.Nxt
         Me.Next_Button.Name = "Next_Button"
         Me.Next_Button.UseVisualStyleBackColor = True
         '
@@ -388,19 +391,73 @@ Partial Class Form1
         '
         resources.ApplyResources(Me.HelpProvider1, "HelpProvider1")
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.Tasks.My.Resources.Resources.项目1
+        resources.ApplyResources(Me.PictureBox1, "PictureBox1")
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.HelpProvider1.SetShowHelp(Me.PictureBox1, CType(resources.GetObject("PictureBox1.ShowHelp"), Boolean))
+        Me.PictureBox1.TabStop = False
+        '
+        'Exit_Button
+        '
+        resources.ApplyResources(Me.Exit_Button, "Exit_Button")
+        Me.Exit_Button.BackColor = System.Drawing.Color.Transparent
+        Me.Exit_Button.Image = Global.Tasks.My.Resources.Resources.close_s
+        Me.Exit_Button.Name = "Exit_Button"
+        Me.HelpProvider1.SetShowHelp(Me.Exit_Button, CType(resources.GetObject("Exit_Button.ShowHelp"), Boolean))
+        '
+        'Min_Button
+        '
+        resources.ApplyResources(Me.Min_Button, "Min_Button")
+        Me.Min_Button.BackColor = System.Drawing.Color.Transparent
+        Me.Min_Button.Image = Global.Tasks.My.Resources.Resources.min_s
+        Me.Min_Button.Name = "Min_Button"
+        Me.HelpProvider1.SetShowHelp(Me.Min_Button, CType(resources.GetObject("Min_Button.ShowHelp"), Boolean))
+        '
+        'Button_Setting
+        '
+        resources.ApplyResources(Me.Button_Setting, "Button_Setting")
+        Me.Button_Setting.BackColor = System.Drawing.Color.Transparent
+        Me.Button_Setting.Image = Global.Tasks.My.Resources.Resources.setting_w
+        Me.Button_Setting.Name = "Button_Setting"
+        Me.HelpProvider1.SetShowHelp(Me.Button_Setting, CType(resources.GetObject("Button_Setting.ShowHelp"), Boolean))
+        '
         'Button1
         '
         resources.ApplyResources(Me.Button1, "Button1")
         Me.Button1.Name = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'SearchTextBox
+        '
+        resources.ApplyResources(Me.SearchTextBox, "SearchTextBox")
+        Me.SearchTextBox.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.SearchTextBox.Name = "SearchTextBox"
+        '
+        'Search_Button
+        '
+        resources.ApplyResources(Me.Search_Button, "Search_Button")
+        Me.Search_Button.BackColor = System.Drawing.Color.Transparent
+        Me.Search_Button.BackgroundImage = Global.Tasks.My.Resources.Resources.search_s
+        Me.Search_Button.Name = "Search_Button"
+        Me.Search_Button.TabStop = False
+        '
+        'Timer2
+        '
+        Me.Timer2.Interval = 5000
+        '
         'Form1
         '
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         resources.ApplyResources(Me, "$this")
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.Controls.Add(Me.Button_Setting)
+        Me.Controls.Add(Me.Search_Button)
+        Me.Controls.Add(Me.Min_Button)
+        Me.Controls.Add(Me.Exit_Button)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TableLayoutPanel1)
-        Me.Controls.Add(Me.Button_Setting)
         Me.Controls.Add(Me.Button_Del)
         Me.Controls.Add(Me.Button_Edit)
         Me.Controls.Add(Me.Label1)
@@ -408,7 +465,8 @@ Partial Class Form1
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.ListView1)
         Me.Controls.Add(Me.ListView2)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Controls.Add(Me.SearchTextBox)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.HelpButton = True
         Me.HelpProvider1.SetHelpKeyword(Me, resources.GetString("$this.HelpKeyword"))
         Me.HelpProvider1.SetHelpNavigator(Me, CType(resources.GetObject("$this.HelpNavigator"), System.Windows.Forms.HelpNavigator))
@@ -423,6 +481,8 @@ Partial Class Form1
         Me.ContextMenuStrip2.PerformLayout()
         Me.ContextMenuStrip3.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Search_Button, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -460,7 +520,6 @@ Partial Class Form1
     Friend WithEvents ToolStripMenuItem5 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem6 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem7 As ToolStripMenuItem
-    Friend WithEvents Button_Setting As Button
     Friend WithEvents Timer3 As Timer
     Friend WithEvents NotifyIcon1 As NotifyIcon
     Friend WithEvents ContextMenuStrip3 As ContextMenuStrip
@@ -479,4 +538,11 @@ Partial Class Form1
     Friend WithEvents HelpProvider1 As HelpProvider
     Friend WithEvents Button1 As Button
     Public WithEvents ListView1 As ListView
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Exit_Button As Label
+    Friend WithEvents Min_Button As Label
+    Friend WithEvents SearchTextBox As TextBox
+    Friend WithEvents Search_Button As PictureBox
+    Friend WithEvents Timer2 As Timer
+    Friend WithEvents Button_Setting As Label
 End Class

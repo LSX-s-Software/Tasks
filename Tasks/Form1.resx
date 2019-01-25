@@ -194,26 +194,33 @@
   <metadata name="StatusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="StatusStrip1.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="StatusStrip1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
   <data name="StatusStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 15.75pt</value>
   </data>
   <data name="ToolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>392, 28</value>
+    <value>33, 214</value>
   </data>
   <data name="ToolStripStatusLabel2.Text" xml:space="preserve">
-    <value>任务</value>
+    <value>任</value>
   </data>
   <data name="ToolStripStatusLabel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>392, 28</value>
+    <value>33, 214</value>
   </data>
   <data name="ToolStripStatusLabel3.Text" xml:space="preserve">
-    <value>提醒事项</value>
+    <value>提</value>
   </data>
   <data name="StatusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 430</value>
+    <value>0, 0</value>
   </data>
   <data name="StatusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>800, 33</value>
+    <value>35, 463</value>
   </data>
   <data name="StatusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -231,9 +238,8 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;StatusStrip1.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>14</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ListView2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
   </data>
@@ -247,7 +253,7 @@
     <value>内容</value>
   </data>
   <data name="ColumnHeader5.Width" type="System.Int32, mscorlib">
-    <value>410</value>
+    <value>405</value>
   </data>
   <data name="ColumnHeader6.Text" xml:space="preserve">
     <value>备注</value>
@@ -343,10 +349,10 @@
     <value>微软雅黑, 12pt</value>
   </data>
   <data name="ListView2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 47</value>
+    <value>35, 38</value>
   </data>
   <data name="ListView2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 380</value>
+    <value>765, 425</value>
   </data>
   <data name="ListView2.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -364,7 +370,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ListView2.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>16</value>
   </data>
   <metadata name="Timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>140, 17</value>
@@ -373,22 +379,31 @@
     <value>True</value>
   </data>
   <data name="Label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 18pt</value>
+    <value>微软雅黑, 18pt, style=Bold</value>
   </data>
   <data name="Label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 9</value>
+    <value>37, 5</value>
+  </data>
+  <metadata name="HelpProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1062, 17</value>
+  </metadata>
+  <data name="HelpProvider1.HelpNamespace" xml:space="preserve">
+    <value>C:\Users\admin\Documents\我的文档\VB.NET程序\Tasks\Tasks\帮助文件\chm\Tasks帮助.chm</value>
+  </data>
+  <data name="Label1.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 31</value>
+    <value>81, 31</value>
   </data>
   <data name="Label1.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
   <data name="Label1.Text" xml:space="preserve">
-    <value>任务</value>
+    <value>Tasks</value>
   </data>
   <data name="&gt;&gt;Label1.Name" xml:space="preserve">
     <value>Label1</value>
@@ -400,7 +415,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>12</value>
   </data>
   <metadata name="Timer3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>803, 17</value>
@@ -1070,30 +1085,6 @@
   <data name="NotifyIcon1.Visible" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="Button_Setting.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="Button_Setting.Location" type="System.Drawing.Point, System.Drawing">
-    <value>758, 9</value>
-  </data>
-  <data name="Button_Setting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="Button_Setting.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;Button_Setting.Name" xml:space="preserve">
-    <value>Button_Setting</value>
-  </data>
-  <data name="&gt;&gt;Button_Setting.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Button_Setting.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Button_Setting.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="Button_Del.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
@@ -1104,7 +1095,10 @@
     <value>NoControl</value>
   </data>
   <data name="Button_Del.Location" type="System.Drawing.Point, System.Drawing">
-    <value>702, 381</value>
+    <value>712, 416</value>
+  </data>
+  <data name="Button_Del.ShowHelp" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="Button_Del.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -1125,7 +1119,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Button_Del.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="Button_Edit.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -1140,7 +1134,7 @@
     <value>NoControl</value>
   </data>
   <data name="Button_Edit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>743, 340</value>
+    <value>753, 375</value>
   </data>
   <data name="Button_Edit.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -1161,7 +1155,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Button_Edit.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="Button_Add.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -1173,7 +1167,7 @@
     <value>NoControl</value>
   </data>
   <data name="Button_Add.Location" type="System.Drawing.Point, System.Drawing">
-    <value>738, 376</value>
+    <value>748, 411</value>
   </data>
   <data name="Button_Add.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 40</value>
@@ -1191,7 +1185,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Button_Add.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>13</value>
   </data>
   <data name="ListView1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
@@ -1224,10 +1218,13 @@
     <value>微软雅黑, 12pt</value>
   </data>
   <data name="ListView1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 47</value>
+    <value>35, 38</value>
+  </data>
+  <data name="ListView1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 3, 3</value>
   </data>
   <data name="ListView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 380</value>
+    <value>765, 425</value>
   </data>
   <data name="ListView1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1242,7 +1239,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ListView1.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>15</value>
   </data>
   <data name="TableLayoutPanel1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
@@ -1335,16 +1332,145 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TableLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>9</value>
   </data>
   <data name="TableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="Pre_Button" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="Next_Button" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,46,Percent,100,Absolute,46" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <metadata name="HelpProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1062, 17</value>
-  </metadata>
-  <data name="HelpProvider1.HelpNamespace" xml:space="preserve">
-    <value>C:\Users\admin\Documents\我的文档\VB.NET程序\Tasks\Tasks\帮助文件\chm\Tasks帮助.chm</value>
+  <data name="PictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="PictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 5</value>
+  </data>
+  <data name="PictureBox1.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="PictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 33</value>
+  </data>
+  <data name="PictureBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;PictureBox1.Name" xml:space="preserve">
+    <value>PictureBox1</value>
+  </data>
+  <data name="&gt;&gt;PictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PictureBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PictureBox1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="Exit_Button.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="Exit_Button.Font" type="System.Drawing.Font, System.Drawing">
+    <value>黑体, 15pt</value>
+  </data>
+  <data name="Exit_Button.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Exit_Button.Location" type="System.Drawing.Point, System.Drawing">
+    <value>752, 0</value>
+  </data>
+  <data name="Exit_Button.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Exit_Button.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 38</value>
+  </data>
+  <data name="Exit_Button.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="Exit_Button.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;Exit_Button.Name" xml:space="preserve">
+    <value>Exit_Button</value>
+  </data>
+  <data name="&gt;&gt;Exit_Button.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Exit_Button.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Exit_Button.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="Min_Button.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="Min_Button.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 15pt</value>
+  </data>
+  <data name="Min_Button.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Min_Button.Location" type="System.Drawing.Point, System.Drawing">
+    <value>712, 0</value>
+  </data>
+  <data name="Min_Button.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Min_Button.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 38</value>
+  </data>
+  <data name="Min_Button.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="Min_Button.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;Min_Button.Name" xml:space="preserve">
+    <value>Min_Button</value>
+  </data>
+  <data name="&gt;&gt;Min_Button.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Min_Button.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Min_Button.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="Button_Setting.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="Button_Setting.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 15pt</value>
+  </data>
+  <data name="Button_Setting.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Button_Setting.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 428</value>
+  </data>
+  <data name="Button_Setting.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Button_Setting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="Button_Setting.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="Button_Setting.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;Button_Setting.Name" xml:space="preserve">
+    <value>Button_Setting</value>
+  </data>
+  <data name="&gt;&gt;Button_Setting.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Button_Setting.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Button_Setting.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="Button1.Location" type="System.Drawing.Point, System.Drawing">
     <value>351, 357</value>
@@ -1371,11 +1497,83 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Button1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>8</value>
   </data>
+  <data name="SearchTextBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="SearchTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 15.75pt</value>
+  </data>
+  <data name="SearchTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>663, 2</value>
+  </data>
+  <data name="SearchTextBox.MaxLength" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="SearchTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 35</value>
+  </data>
+  <data name="SearchTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="SearchTextBox.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;SearchTextBox.Name" xml:space="preserve">
+    <value>SearchTextBox</value>
+  </data>
+  <data name="&gt;&gt;SearchTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SearchTextBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SearchTextBox.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="Search_Button.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="Search_Button.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="Search_Button.Location" type="System.Drawing.Point, System.Drawing">
+    <value>663, 0</value>
+  </data>
+  <data name="Search_Button.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="Search_Button.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 38</value>
+  </data>
+  <data name="Search_Button.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>CenterImage</value>
+  </data>
+  <data name="Search_Button.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;Search_Button.Name" xml:space="preserve">
+    <value>Search_Button</value>
+  </data>
+  <data name="&gt;&gt;Search_Button.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Search_Button.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Search_Button.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <metadata name="Timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1198, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>800, 463</value>
   </data>
@@ -2238,6 +2436,12 @@
   </data>
   <data name="&gt;&gt;HelpProvider1.Type" xml:space="preserve">
     <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Timer2.Name" xml:space="preserve">
+    <value>Timer2</value>
+  </data>
+  <data name="&gt;&gt;Timer2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form1</value>

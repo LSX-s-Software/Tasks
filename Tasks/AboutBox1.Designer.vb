@@ -32,13 +32,13 @@ Partial Class AboutBox1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.TableLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
+        Me.LogoPictureBox = New System.Windows.Forms.PictureBox()
         Me.LabelProductName = New System.Windows.Forms.Label()
         Me.LabelVersion = New System.Windows.Forms.Label()
         Me.LabelCopyright = New System.Windows.Forms.Label()
         Me.LabelCompanyName = New System.Windows.Forms.Label()
         Me.TextBoxDescription = New System.Windows.Forms.TextBox()
         Me.OKButton = New System.Windows.Forms.Button()
-        Me.LogoPictureBox = New System.Windows.Forms.PictureBox()
         Me.TableLayoutPanel.SuspendLayout()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -68,6 +68,20 @@ Partial Class AboutBox1
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.23529!))
         Me.TableLayoutPanel.Size = New System.Drawing.Size(463, 272)
         Me.TableLayoutPanel.TabIndex = 0
+        '
+        'LogoPictureBox
+        '
+        Me.LogoPictureBox.BackgroundImage = Global.Tasks.My.Resources.Resources.图标_256
+        Me.LogoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.LogoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LogoPictureBox.Location = New System.Drawing.Point(3, 4)
+        Me.LogoPictureBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.LogoPictureBox.Name = "LogoPictureBox"
+        Me.TableLayoutPanel.SetRowSpan(Me.LogoPictureBox, 6)
+        Me.LogoPictureBox.Size = New System.Drawing.Size(146, 264)
+        Me.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.LogoPictureBox.TabIndex = 0
+        Me.LogoPictureBox.TabStop = False
         '
         'LabelProductName
         '
@@ -142,24 +156,10 @@ Partial Class AboutBox1
         Me.OKButton.TabIndex = 0
         Me.OKButton.Text = "确定(&O)"
         '
-        'LogoPictureBox
-        '
-        Me.LogoPictureBox.BackgroundImage = Global.Tasks.My.Resources.Resources.图标_256
-        Me.LogoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.LogoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LogoPictureBox.Location = New System.Drawing.Point(3, 4)
-        Me.LogoPictureBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.LogoPictureBox.Name = "LogoPictureBox"
-        Me.TableLayoutPanel.SetRowSpan(Me.LogoPictureBox, 6)
-        Me.LogoPictureBox.Size = New System.Drawing.Size(146, 264)
-        Me.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.LogoPictureBox.TabIndex = 0
-        Me.LogoPictureBox.TabStop = False
-        '
         'AboutBox1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.OKButton
         Me.ClientSize = New System.Drawing.Size(483, 294)
         Me.Controls.Add(Me.TableLayoutPanel)
